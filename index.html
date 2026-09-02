@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bernard's Odyssey — Storytelling as a survival tool</title>
+<meta name="description" content="Map your own story onto the Homeric baseline. Name your Cyclops, chart your Lotus Island, run the six-question Socratic audit, and read your crew." />
+<style>
+  :root {
+    --sea-0: #04121f;
+    --sea-1: #071d30;
+    --sea-2: #0b2b42;
+    --wine: #3d1122;
+    --bronze: #c9a227;
+    --gold: #e9cd82;
+    --papyrus: #f0e7d6;
+    --text: #e7eef4;
+    --muted: #94aabc;
+    --dim: #6d8598;
+    --line: rgba(201, 162, 39, 0.28);
+    --card: rgba(9, 32, 50, 0.62);
+    --card-2: rgba(7, 25, 40, 0.85);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --radius: 4px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    background:
+      radial-gradient(120% 90% at 50% -10%, #123048 0%, transparent 60%),
+      linear-gradient(180deg, var(--sea-1) 0%, var(--sea-0) 45%, var(--wine) 160%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+
+  /* ---------- Moving sea ---------- */
+  .sea {
+    position: fixed;
+    inset: auto 0 0 0;
+    height: 46vh;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+    background-image:
+      repeating-linear-gradient(93deg, transparent 0 38px, rgba(148, 190, 220, 0.10) 38px 39px),
+      repeating-linear-gradient(87deg, transparent 0 61px, rgba(201, 162, 39, 0.07) 61px 62px);
+    -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 100%);
+    mask-image: linear-gradient(to top, #000 0%, transparent 100%);
+    animation: drift 40s linear infinite;
+  }
+  @keyframes drift {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-122px); }
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 1.15rem 5rem;
+  }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    padding: 3.4rem 0 1.6rem;
+    text-align: center;
+  }
+  .eyebrow {
+    margin: 0 0 0.9rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    font-weight: 600;
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.4rem, 7.5vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: 0.01em;
+    color: var(--papyrus);
+  }
+  h1 .apos { color: var(--bronze); }
+  .rule {
+    width: 190px;
+    height: 1px;
+    margin: 1.5rem auto;
+    background: linear-gradient(90deg, transparent, var(--bronze), transparent);
+  }
+  .lede {
+    max-width: 40rem;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 1.02rem;
+  }
+  .lede b { color: var(--papyrus); font-weight: 600; }
+
+  /* ---------- Cyclops prompt ---------- */
+  .hero-ask {
+    margin: 2.2rem auto 0;
+    max-width: 34rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.15rem;
+    text-align: left;
+  }
+  .hero-ask label {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 0.55rem;
+  }
+  .hero-ask .hint { color: var(--dim); font-size: 0.86rem; margin: 0.55rem 0 0; }
+
+  /* ---------- Tabs ---------- */
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+    margin: 2.6rem 0 2rem;
+    border-top: 1px solid rgba(201, 162, 39, 0.18);
+    border-bottom: 1px solid rgba(201, 162, 39, 0.18);
+    padding: 0.55rem 0;
+  }
+  .tab {
+    appearance: none;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.85rem;
+    cursor: pointer;
+    transition: color 0.16s, border-color 0.16s, background 0.16s;
+  }
+  .tab:hover { color: var(--papyrus); }
+  .tab[aria-selected="true"] {
+    color: var(--sea-0);
+    background: var(--bronze);
+    border-color: var(--bronze);
+    font-weight: 700;
+  }
+  .tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .panel[hidden] { display: none; }
+  .panel { animation: fade 0.25s ease both; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.85rem;
+    margin: 0 0 0.35rem;
+    color: var(--papyrus);
+  }
+  h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin: 0 0 0.3rem;
+    color: var(--gold);
+  }
+  .sub {
+    color: var(--muted);
+    margin: 0 0 1.7rem;
+    max-width: 46rem;
+  }
+
+  /* ---------- Generic controls ---------- */
+  input[type="text"], textarea, select {
+    width: 100%;
+    background: rgba(4, 18, 31, 0.75);
+    border: 1px solid rgba(148, 170, 188, 0.28);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 0.97rem;
+    padding: 0.62rem 0.7rem;
+    transition: border-color 0.16s, box-shadow 0.16s;
+  }
+  textarea { resize: vertical; min-height: 6.2rem; line-height: 1.55; }
+  input[type="text"]:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--bronze);
+    box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.16);
+  }
+  ::placeholder { color: #5d7387; }
+
+  .btn {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: var(--bronze);
+    color: #10202c;
+    border: 1px solid var(--bronze);
+    border-radius: var(--radius);
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    padding: 0.62rem 1.1rem;
+    cursor: pointer;
+    transition: filter 0.16s, transform 0.08s;
+  }
+  .btn:hover { filter: brightness(1.1); }
+  .btn:active { transform: translateY(1px); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn.ghost {
+    background: transparent;
+    color: var(--gold);
+    border-color: var(--line);
+    font-weight: 600;
+  }
+  .btn.ghost:hover { border-color: var(--bronze); background: rgba(201, 162, 39, 0.08); }
+  .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid rgba(148, 170, 188, 0.16);
+    border-radius: var(--radius);
+    padding: 1.15rem 1.2rem;
+  }
+
+  /* ---------- Ledger ---------- */
+  .era-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 1.3rem;
+    align-items: center;
+  }
+  .era-bar .era-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-right: 0.4rem;
+  }
+  .era {
+    appearance: none;
+    background: rgba(9, 32, 50, 0.7);
+    border: 1px solid rgba(148, 170, 188, 0.22);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    padding: 0.34rem 0.8rem;
+    cursor: pointer;
+  }
+  .era[aria-pressed="true"] {
+    border-color: var(--bronze);
+    color: var(--gold);
+    background: rgba(201, 162, 39, 0.12);
+  }
+  .era:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .ledger { display: grid; gap: 0.85rem; }
+  .lrow {
+    display: grid;
+    grid-template-columns: 1.05fr 1.35fr;
+    gap: 1.1rem;
+    background: var(--card);
+    border: 1px solid rgba(148, 170, 188, 0.16);
+    border-left: 2px solid var(--bronze);
+    border-radius: var(--radius);
+    padding: 1rem 1.15rem;
+  }
+  .lrow .glyph {
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-bottom: 0.45rem;
+    display: block;
+  }
+  .lrow .elem {
+    font-family: var(--serif);
+    font-size: 1.12rem;
+    color: var(--papyrus);
+    margin: 0 0 0.3rem;
+  }
+  .lrow .fn {
+    margin: 0;
+    color: var(--dim);
+    font-size: 0.86rem;
+    font-style: italic;
+  }
+  .lrow .baseline {
+    margin: 0 0 0.7rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .lrow .tag {
+    display: inline-block;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-right: 0.45rem;
+  }
+  .lrow .translation {
+    margin: 0 0 0.75rem;
+    color: var(--text);
+    font-size: 0.96rem;
+  }
+  .lrow .yours label {
+    display: block;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 0.3rem;
+  }
+
+  /* ---------- Audit ---------- */
+  .voyage {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.4rem;
+  }
+  .leg {
+    flex: 1;
+    height: 3px;
+    background: rgba(148, 170, 188, 0.2);
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+  }
+  .leg[data-state="done"] { background: var(--bronze); }
+  .leg[data-state="current"] { background: var(--gold); box-shadow: 0 0 10px rgba(233, 205, 130, 0.5); }
+  .leg:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+
+  .qcard { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem 1.3rem; }
+  .qnum {
+    font-size: 0.68rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin: 0 0 0.6rem;
+  }
+  .qtext {
+    font-family: var(--serif);
+    font-size: 1.42rem;
+    line-height: 1.28;
+    color: var(--papyrus);
+    margin: 0 0 0.5rem;
+  }
+  .qframe { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }
+  .qframe .homeric { color: var(--gold); }
+  .qmeta { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; margin-top: 0.5rem; }
+  .count { font-family: var(--mono); font-size: 0.74rem; color: var(--dim); }
+
+  /* ---------- Mirror ---------- */
+  .mirror { margin-top: 2rem; }
+  .mirror-block {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--card-2);
+    padding: 1.25rem 1.3rem;
+    margin-bottom: 0.9rem;
+  }
+  .mirror-block h3 {
+    font-size: 0.72rem;
+    font-family: var(--sans);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 0.8rem;
+  }
+  .mirror-block p { margin: 0 0 0.75rem; }
+  .mirror-block p:last-child { margin-bottom: 0; }
+  .mirror-block .em { color: var(--gold); }
+  .ledger-fill { list-style: none; margin: 0; padding: 0; }
+  .ledger-fill li {
+    display: grid;
+    grid-template-columns: 8.6rem 1fr;
+    gap: 0.7rem;
+    padding: 0.42rem 0;
+    border-bottom: 1px dashed rgba(148, 170, 188, 0.14);
+    font-size: 0.97rem;
+  }
+  .ledger-fill li:last-child { border-bottom: none; }
+  .ledger-fill .k {
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dim);
+    padding-top: 0.28rem;
+  }
+  .ledger-fill .v { color: var(--papyrus); }
+  .ledger-fill .v.empty { color: var(--dim); font-style: italic; }
+  .phase { display: grid; grid-template-columns: 7.4rem 1fr; gap: 0.7rem; margin-bottom: 0.7rem; }
+  .phase .pk {
+    font-family: var(--serif);
+    color: var(--gold);
+    font-size: 0.98rem;
+  }
+  .metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.2rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--dim);
+    margin-top: 0.9rem;
+    padding-top: 0.8rem;
+    border-top: 1px dashed rgba(148, 170, 188, 0.16);
+  }
+  .metrics b { color: var(--muted); font-weight: 600; }
+  .closing {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    line-height: 1.4;
+    color: var(--papyrus);
+  }
+  .closing + .attrib { color: var(--dim); font-size: 0.84rem; margin-top: 0.9rem; }
+
+  /* ---------- Lotus ---------- */
+  .choice-q { margin-bottom: 1.4rem; }
+  .choice-q > p.q {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--papyrus);
+    margin: 0 0 0.6rem;
+  }
+  .opts { display: grid; gap: 0.45rem; }
+  .opt {
+    display: flex;
+    gap: 0.65rem;
+    align-items: flex-start;
+    background: rgba(4, 18, 31, 0.55);
+    border: 1px solid rgba(148, 170, 188, 0.18);
+    border-radius: var(--radius);
+    padding: 0.62rem 0.75rem;
+    cursor: pointer;
+    transition: border-color 0.14s, background 0.14s;
+    font-size: 0.95rem;
+  }
+  .opt:hover { border-color: rgba(201, 162, 39, 0.5); }
+  .opt input { accent-color: var(--bronze); margin-top: 0.22rem; flex: none; }
+  .opt.checked { border-color: var(--bronze); background: rgba(201, 162, 39, 0.09); }
+  .lines { display: grid; gap: 0.35rem; margin: 0.8rem 0 0; }
+  .tally {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--gold);
+    margin-top: 0.9rem;
+  }
+
+  /* ---------- Crew ---------- */
+  .subject-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem; }
+  .field label {
+    display: block;
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 0.32rem;
+  }
+  .arch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem; margin-bottom: 1.6rem; }
+  .arch {
+    background: var(--card);
+    border: 1px solid rgba(148, 170, 188, 0.16);
+    border-top: 2px solid var(--bronze);
+    border-radius: var(--radius);
+    padding: 0.95rem 1rem;
+  }
+  .arch .name { font-family: var(--serif); font-size: 1.15rem; color: var(--papyrus); margin: 0 0 0.15rem; }
+  .arch .epithet { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--bronze); margin: 0 0 0.55rem; }
+  .arch p.d { margin: 0; font-size: 0.9rem; color: var(--muted); }
+  .result-hero {
+    text-align: center;
+    padding: 1.8rem 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--card-2);
+    margin-bottom: 0.9rem;
+  }
+  .result-hero .big {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 8vw, 3rem);
+    color: var(--papyrus);
+    margin: 0.3rem 0 0.2rem;
+    line-height: 1;
+  }
+  .bars { display: grid; gap: 0.4rem; margin-top: 1.2rem; text-align: left; }
+  .bar { display: grid; grid-template-columns: 5.6rem 1fr 2.4rem; gap: 0.6rem; align-items: center; font-size: 0.82rem; }
+  .bar .track { height: 6px; background: rgba(148, 170, 188, 0.18); border-radius: 3px; overflow: hidden; }
+  .bar .fill { height: 100%; background: linear-gradient(90deg, var(--bronze), var(--gold)); border-radius: 3px; transition: width 0.5s ease; }
+  .bar .pct { font-family: var(--mono); color: var(--dim); text-align: right; }
+  .pairing { border-left: 2px solid var(--gold); }
+  .stored-note { font-size: 0.84rem; color: var(--dim); margin: 0.4rem 0 0; }
+
+  .callout {
+    border-left: 2px solid var(--bronze);
+    padding: 0.3rem 0 0.3rem 0.9rem;
+    color: var(--muted);
+    margin: 1.2rem 0;
+    font-size: 0.93rem;
+  }
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 1.6rem;
+    transform: translateX(-50%) translateY(150%);
+    background: var(--bronze);
+    color: #10202c;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.1rem;
+    border-radius: var(--radius);
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid rgba(148, 170, 188, 0.14);
+    color: var(--dim);
+    font-size: 0.82rem;
+    text-align: center;
+  }
+  footer p { margin: 0.3rem 0; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  @media (max-width: 760px) {
+    .lrow { grid-template-columns: 1fr; gap: 0.7rem; }
+    .subject-bar { grid-template-columns: 1fr; }
+    .ledger-fill li { grid-template-columns: 1fr; gap: 0.1rem; }
+    .phase { grid-template-columns: 1fr; gap: 0.1rem; }
+    .bar { grid-template-columns: 4.6rem 1fr 2.2rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sea { animation: none; }
+    .panel { animation: none; }
+    html { scroll-behavior: auto; }
+    * { transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+<div class="sea" aria-hidden="true"></div>
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">Storytelling as a survival tool</p>
+  <h1>Bernard<span class="apos">&rsquo;</span>s Odyssey</h1>
+  <div class="rule" aria-hidden="true"></div>
+  <p class="lede">Every durable narrative runs on one structural continuum. The <b>props</b> change to match the era&rsquo;s lifestyle. The <b>cognitive geometry</b> does not. Homer&rsquo;s maritime terrain is the baseline; your situation is the instance.</p>
+
+  <div class="hero-ask">
+    <label for="cyclops">Who is the Cyclops in your Odyssey?</label>
+    <input type="text" id="cyclops" placeholder="Name the power that eats and does not negotiate." autocomplete="off" />
+    <p class="hint">Polyphemus owed Odysseus nothing. He was escaped by cunning, not force &mdash; and naming him out loud cost ten more years at sea.</p>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Sections">
+  <button class="tab" role="tab" id="tab-ledger" aria-controls="panel-ledger" aria-selected="true">The Ledger</button>
+  <button class="tab" role="tab" id="tab-audit"  aria-controls="panel-audit"  aria-selected="false">The Audit</button>
+  <button class="tab" role="tab" id="tab-lotus"  aria-controls="panel-lotus"  aria-selected="false">Lotus Island</button>
+  <button class="tab" role="tab" id="tab-crew"   aria-controls="panel-crew"   aria-selected="false">The Crew</button>
+</nav>
+
+<main>
+
+<!-- ============ LEDGER ============ -->
+<section class="panel" id="panel-ledger" role="tabpanel" aria-labelledby="tab-ledger">
+  <h2>The Deep-Time Parallel Matrix</h2>
+  <p class="sub">Five elements. Each one holds its function across three thousand years; only the hardware is swapped. Switch the era to see the same geometry in different props, then name your own instance in the field below each row.</p>
+
+  <div class="era-bar" role="group" aria-label="Era">
+    <span class="era-label">Props</span>
+    <button class="era" data-era="homeric" aria-pressed="true">Homeric</button>
+    <button class="era" data-era="industrial" aria-pressed="false">Industrial</button>
+    <button class="era" data-era="corporate" aria-pressed="false">Corporate</button>
+    <button class="era" data-era="digital" aria-pressed="false">Digital</button>
+  </div>
+
+  <div class="ledger" id="ledger"></div>
+
+  <p class="callout">The ledger is not a metaphor exercise. It is a coordinate system. You cannot steer out of terrain you have not named.</p>
+</section>
+
+<!-- ============ AUDIT ============ -->
+<section class="panel" id="panel-audit" role="tabpanel" aria-labelledby="tab-audit" hidden>
+  <h2>The Plain-Spoken Socratic Audit</h2>
+  <p class="sub">Six prompts. Answer about yourself, a decision you are avoiding, a character you are writing, or a memory you keep re-running. Plain words. No performance. The mirror reads what you actually wrote, not what you meant.</p>
+
+  <div class="voyage" id="voyage" role="group" aria-label="Progress"></div>
+
+  <div class="qcard">
+    <p class="qnum" id="qnum">Leg 1 of 6</p>
+    <p class="qtext" id="qtext"></p>
+    <p class="qframe" id="qframe"></p>
+    <label class="sr-only" for="answer">Your answer</label>
+    <textarea id="answer" rows="5" placeholder="Plain words."></textarea>
+    <div class="qmeta">
+      <span class="count" id="count">0 words</span>
+      <span class="btn-row">
+        <button class="btn ghost" id="prev">&larr; Back</button>
+        <button class="btn" id="next">Next &rarr;</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="btn-row" style="margin-top:1.1rem">
+    <button class="btn" id="run-mirror">Run the mirror</button>
+    <button class="btn ghost" id="copy-prompt">Copy full prompt</button>
+    <button class="btn ghost" id="clear-audit">Clear</button>
+  </div>
+  <p class="stored-note">Answers stay in this browser. Nothing is uploaded. &ldquo;Copy full prompt&rdquo; wraps them in the locked Homeric system prompt so you can paste the whole thing into any model.</p>
+
+  <div class="mirror" id="mirror" aria-live="polite"></div>
+</section>
+
+<!-- ============ LOTUS ============ -->
+<section class="panel" id="panel-lotus" role="tabpanel" aria-labelledby="tab-lotus" hidden>
+  <h2>Lotus Island</h2>
+  <p class="sub">The crew was not imprisoned. They were fed something pleasant and stopped wanting to leave. Odysseus dragged them to the ships weeping and tied them under the benches. The island is not a punishment; it is an amenity. Four questions on the shape of yours.</p>
+
+  <div class="card">
+    <div class="field" style="margin-bottom:1.3rem">
+      <label for="lotus-name">Name your lotus</label>
+      <input type="text" id="lotus-name" placeholder="The specific comfort that erases the destination." autocomplete="off" />
+    </div>
+    <div id="lotus-qs"></div>
+    <div class="btn-row">
+      <button class="btn" id="run-lotus">Read the shore</button>
+      <button class="btn ghost" id="clear-lotus">Clear</button>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.1rem">
+    <h3>Things said on the island</h3>
+    <p class="sub" style="margin-bottom:0.4rem">Tick the ones you have said out loud in the last thirty days.</p>
+    <div class="lines" id="lotus-lines"></div>
+    <p class="tally" id="lotus-tally"></p>
+  </div>
+
+  <div class="mirror" id="lotus-out" aria-live="polite"></div>
+</section>
+
+<!-- ============ CREW ============ -->
+<section class="panel" id="panel-crew" role="tabpanel" aria-labelledby="tab-crew" hidden>
+  <h2>The Crew</h2>
+  <p class="sub">Four ways of surviving the same sea. Achilles burns, Odysseus manoeuvres, Penelope holds, Circe transforms the ground people stand on. None is the healthy one. Each is a strategy with a bill attached.</p>
+
+  <div class="arch-grid" id="arch-grid"></div>
+
+  <div class="subject-bar">
+    <div class="field">
+      <label for="subject-role">Reading whom?</label>
+      <select id="subject-role">
+        <option value="self">Myself</option>
+        <option value="partner">My partner</option>
+        <option value="other">Someone else</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="subject-name">Their name (optional)</label>
+      <input type="text" id="subject-name" placeholder="Used only in the read." autocomplete="off" />
+    </div>
+  </div>
+
+  <div id="crew-qs"></div>
+
+  <div class="btn-row">
+    <button class="btn" id="run-crew">Read the crew</button>
+    <button class="btn ghost" id="clear-crew">Clear answers</button>
+  </div>
+  <p class="stored-note" id="crew-stored"></p>
+
+  <div class="mirror" id="crew-out" aria-live="polite"></div>
+</section>
+
+</main>
+
+<footer>
+  <p>Bernard&rsquo;s Odyssey &mdash; a clean, unvarnished mirror. No diagnosis, no plan, no checklist.</p>
+  <p>Everything runs in your browser. Ownership stays with you; so does the route back to Ithaca.</p>
+</footer>
+
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+"use strict";
+
+/* ============================================================
+   1. DATA — THE DEEP-TIME PARALLEL MATRIX
+   ============================================================ */
+
+const ERAS = ["homeric", "industrial", "corporate", "digital"];
+const ERA_LABEL = {
+  homeric: "Homeric baseline",
+  industrial: "Industrial",
+  corporate: "Corporate",
+  digital: "Digital"
+};
+
+const LEDGER = [
+  {
+    key: "stasis",
+    glyph: "❀",
+    element: "The Trapped State of Stasis",
+    fn: "Comfort that deletes the memory of the destination.",
+    ask: "Name your Lotus Island",
+    props: {
+      homeric: "The deceptive, amnesiac shores of Lotus-Eater Island. The crew is not chained. They are fed something pleasant and stop asking about home.",
+      industrial: "The company town. The wage returns to the company store by Friday. Nobody locks the gate because nobody walks to it.",
+      corporate: "The golden-handcuff seat. The vesting schedule replaces the horizon. Four more years is always four more years.",
+      digital: "The infinite feed. Time passes, nothing is retained, and the day ends with no record of where it went."
+    }
+  },
+  {
+    key: "transit",
+    glyph: "⛵",
+    element: "The Medium of Geographic Transit",
+    fn: "The vehicle you must steer but do not own.",
+    ask: "Name your ship",
+    props: {
+      homeric: "The wooden sailing ship, hand-steered into water no one has charted. It carries you and it can drown you.",
+      industrial: "The rail line and the steamship timetable. You move fast, along track someone else laid.",
+      corporate: "The ladder, the transfer, the org chart. Advancement along a route designed by people who are not you.",
+      digital: "The platform and its ranking function. Reach is granted, not held, and the terms change without notice."
+    }
+  },
+  {
+    key: "terrain",
+    glyph: "≋",
+    element: "The Formless Dangerous Terrain",
+    fn: "Ground with no path. Only bearings.",
+    ask: "Name your open sea",
+    props: {
+      homeric: "The untamed, chaotic maritime void. No landmarks, no guarantees, indifferent to intent.",
+      industrial: "The unmapped interior. Distance measured in weeks and in people who did not come back.",
+      corporate: "The market. Demand nobody forecasts correctly, dressed up as a quarterly plan.",
+      digital: "The open network. Unranked, unfiltered, and entirely uninterested in whether you are seen."
+    }
+  },
+  {
+    key: "threat",
+    glyph: "◉",
+    element: "The Sovereign Predatory Threat",
+    fn: "Power that eats and does not negotiate. Escaped by cunning, never by force.",
+    ask: "Name your Cyclops",
+    props: {
+      homeric: "The cave of Polyphemus. Raw devouring power, one eye, no law, no obligation to hear your case.",
+      industrial: "The owner who holds the deed, the ledger, and the constable. Appeal exists on paper.",
+      corporate: "The gatekeeper with arbitrary discretion over your file. No stated criteria, no right of reply.",
+      digital: "The platform that can delete you overnight. No hearing, no human, no appeal that reaches one."
+    }
+  },
+  {
+    key: "agency",
+    glyph: "➹",
+    element: "The Tool of Pure Agency",
+    fn: "High-friction mastery. Nobody can string it for you.",
+    ask: "Name your bow",
+    props: {
+      homeric: "The heavy bow of Odysseus. Every suitor in the hall tries it. Not one can bend it. The tool is the proof.",
+      industrial: "The mastered trade. The machine only you can run, the joint only you can cut true.",
+      corporate: "The judgment that cannot be delegated. The call that is yours whether or not it is rewarded.",
+      digital: "The unautomatable daily rep. The friction nobody outsources because outsourcing it removes the point."
+    }
+  }
+];
+
+/* ---- The six Socratic prompts ---- */
+const AUDIT = [
+  { key: "dream",    homeric: "Ithaca",              q: "What is the original dream or big ambition?",                    frame: "The destination that existed before the arrangements did." },
+  { key: "trap",     homeric: "Lotus Island",        q: "What is the comfortable box or trap holding them back?",         frame: "Comfortable is the operative word. A cage you resent is easy to leave." },
+  { key: "shock",    homeric: "The Collision",       q: "What is the sudden shock or crisis that shatters that comfort?", frame: "The moment the props, the privileges and the security blanket came off." },
+  { key: "loop",     homeric: "The Cave",            q: "How do they get stuck in their own head ruminating?",             frame: "Write the loop as it actually runs, in the words it actually uses." },
+  { key: "decision", homeric: "The Bow",             q: "What is the exact executive decision or act of ownership that breaks the loop?", frame: "Exact. A named act, not a direction of travel." },
+  { key: "practice", homeric: "The Askēsis",    q: "What hard work or daily practice do they do to stay free?",       frame: "The repeated, unglamorous, high-friction thing. With its cadence." }
+];
+
+const PHASES = [
+  { key: "map",       name: "The Map",       desc: "The constructed illusion mistaken for the terrain." },
+  { key: "collision", name: "The Collision", desc: "Collapse to point zero. The props come off." },
+  { key: "armor",     name: "The Armor",     desc: "The identity cage. The persona built to survive the system." },
+  { key: "exit",      name: "The Exit",      desc: "Askēsis. High-friction ownership." }
+];
+
+/* ---- Lotus Island ---- */
+const LOTUS_TYPES = {
+  salary: {
+    name: "The Provisioned Shore",
+    epithet: "Stasis held by material comfort",
+    read: "The island pays. Leaving has a visible price and staying has an invisible one, so the arithmetic never looks close. The cost is denominated in a currency the ledger does not carry.",
+    cost: "You will be able to justify this position for as long as you hold it. That is the mechanism, not a defence of it."
+  },
+  story: {
+    name: "The Named Shore",
+    epithet: "Stasis held by identity",
+    read: "The island issues a name. Leaving means introducing yourself differently at every table for a year. The trap is social, not material, which is why money never solves it.",
+    cost: "The persona was built to survive the box. It now selects which exits are thinkable."
+  },
+  screen: {
+    name: "The Amnesiac Shore",
+    epithet: "Stasis held by relief on demand",
+    read: "The island supplies a reliable, instant reduction in discomfort. Nothing dramatic is lost on any given evening. The loss is only visible at the scale of years.",
+    cost: "The lotus does not argue with the destination. It removes the ability to remember one."
+  },
+  someday: {
+    name: "The Preparing Shore",
+    epithet: "Stasis held by deferral",
+    read: "The island grants permission not to begin, and it renews the permission on request. Preparation is indistinguishable from progress from the inside, and distinguishable from nowhere else.",
+    cost: "Readiness is the one condition that never arrives on its own schedule."
+  }
+};
+
+const LOTUS_QS = [
+  {
+    q: "What would you actually lose by leaving tomorrow?",
+    opts: [
+      { t: "Money, benefits, the number that makes everything else quiet.", v: "salary" },
+      { t: "The way people describe me at dinner.",                          v: "story" },
+      { t: "The thing I do every evening that makes the day stop.",          v: "screen" },
+      { t: "Nothing yet. I am still preparing.",                             v: "someday" }
+    ]
+  },
+  {
+    q: "When did you last measure progress toward the thing you say you want?",
+    opts: [
+      { t: "I do not measure it. The numbers are good elsewhere.",     v: "salary" },
+      { t: "I describe it more often than I measure it.",              v: "story" },
+      { t: "I lose the hours before I reach it.",                      v: "screen" },
+      { t: "I am still gathering what I need in order to start.",      v: "someday" }
+    ]
+  },
+  {
+    q: "What do you say when someone asks how it is going?",
+    opts: [
+      { t: "“Can’t complain.”",                     v: "salary" },
+      { t: "A version I have told before, well.",                  v: "story" },
+      { t: "“Busy.”",                                    v: "screen" },
+      { t: "“Soon.”",                                    v: "someday" }
+    ]
+  },
+  {
+    q: "What does the island give you that nowhere else does?",
+    opts: [
+      { t: "Security I would have to earn again from zero.", v: "salary" },
+      { t: "A name I would have to give up.",                v: "story" },
+      { t: "Relief, on demand, tonight.",                    v: "screen" },
+      { t: "Permission not to start.",                       v: "someday" }
+    ]
+  }
+];
+
+const LOTUS_LINES = [
+  "I’ll start when things calm down.",
+  "It’s not the right time in the market.",
+  "I’m still doing my research.",
+  "I can’t complain.",
+  "I’ll give it one more year.",
+  "I’m too old to start that now.",
+  "I just need one more thing in place first.",
+  "It’s fine. It’s a good job.",
+  "I’ll do it once the kids are older.",
+  "I work better under pressure anyway."
+];
+
+/* ---- The Crew ---- */
+const ARCH = {
+  achilles: {
+    name: "Achilles",
+    epithet: "The Absolutist",
+    short: "Excellence as identity. Total engagement or total withdrawal, with no setting in between.",
+    read: "Runs on honour and on the register of insult. Unmatched while engaged; unreachable the moment the terms are violated. Withdraws to the tent completely rather than participate on degraded terms.",
+    strength: "Nothing is diluted. The standard does not move when it becomes inconvenient.",
+    cost: "The withdrawal is total, and it costs the people who were not the offender. Duration is the weak axis: this strategy is built for the decisive hour, not the ten-year siege.",
+    blind: "The slight is remembered in higher resolution than the objective."
+  },
+  odysseus: {
+    name: "Odysseus",
+    epithet: "The Tactician",
+    short: "Cunning, disguise, deferral. Will wait years and lie fluently to reach the door.",
+    read: "Solves by manoeuvre rather than by force. Keeps several routes open, tells each audience the version that moves it, and can hold a position for a decade without declaring it.",
+    strength: "Survives conditions that reward no other strategy. Escapes caves that cannot be fought out of.",
+    cost: "The disguise outlives its usefulness. The person who could tell you the plan and the person you live with are not always the same person.",
+    blind: "Optionality is mistaken for progress. Three open routes feel like motion."
+  },
+  penelope: {
+    name: "Penelope",
+    epithet: "The Holder",
+    short: "Endurance under siege. The loom woven by day and unpicked by night.",
+    read: "Keeps the structure intact while the outcome is unavailable. Absorbs pressure that would end other strategies and buys time by producing work that is deliberately never finished.",
+    strength: "Nothing collapses on their watch. The house is still standing when the answer finally arrives.",
+    cost: "The unweaving can become the point. Holding is indistinguishable from waiting after the thing being held for stops being likely.",
+    blind: "Loyalty outlasts its object, and the position gets defended long after the siege is over."
+  },
+  circe: {
+    name: "Circe",
+    epithet: "The Transformer",
+    short: "Changes the environment rather than fighting its occupants. People become something else in her house.",
+    read: "Sets conditions instead of arguing positions. Controls the lighting, the terms, the pace and the door. Others do not notice the change in themselves until they try to leave.",
+    strength: "Gets outcomes without a confrontation, and makes hard places habitable.",
+    cost: "The house works so well that leaving looks like ingratitude. Influence at the level of environment is difficult for anyone inside it to name.",
+    blind: "Consent is assumed because nobody objected. Nobody objected because the terms were set before the conversation."
+  }
+};
+
+const CREW_QS = [
+  { q: "Someone crosses them, publicly.", opts: [
+    { t: "Total withdrawal. No negotiation, no return on the old terms.", v: "achilles" },
+    { t: "Says nothing, remembers precisely, acts eighteen months later.", v: "odysseus" },
+    { t: "Absorbs it and keeps the household running.",                    v: "penelope" },
+    { t: "Quietly changes their access, never their status.",              v: "circe" } ] },
+  { q: "A year of not knowing how it ends.", opts: [
+    { t: "Intolerable. Forces a resolution, including a bad one.",   v: "achilles" },
+    { t: "Builds three routes and commits to none yet.",             v: "odysseus" },
+    { t: "Keeps the routine exactly as it was.",                     v: "penelope" },
+    { t: "Makes the waiting comfortable enough to last.",            v: "circe" } ] },
+  { q: "What do they defend hardest?", opts: [
+    { t: "Their name.",          v: "achilles" },
+    { t: "Their optionality.",   v: "odysseus" },
+    { t: "The structure.",       v: "penelope" },
+    { t: "Their terms.",         v: "circe" } ] },
+  { q: "How do they narrate their own past?", opts: [
+    { t: "As a wrong that was done to them.",     v: "achilles" },
+    { t: "As a manoeuvre they pulled off.",       v: "odysseus" },
+    { t: "As a stretch they endured.",            v: "penelope" },
+    { t: "As a scene they set.",                  v: "circe" } ] },
+  { q: "Their relationship to leaving.", opts: [
+    { t: "Leaves loudly and completely.",                       v: "achilles" },
+    { t: "Leaves, and returns unrecognisable.",                 v: "odysseus" },
+    { t: "Does not leave. Leaving is done to them.",            v: "penelope" },
+    { t: "Does not leave. Makes the place worth staying in.",   v: "circe" } ] },
+  { q: "You are at your lowest. They:", opts: [
+    { t: "Tell you to stand up.",                          v: "achilles" },
+    { t: "Fix it around you and never mention it.",        v: "odysseus" },
+    { t: "Sit there for as long as it takes.",             v: "penelope" },
+    { t: "Change the room until you feel differently.",    v: "circe" } ] },
+  { q: "Money and resources.", opts: [
+    { t: "Spends on the gesture.",                       v: "achilles" },
+    { t: "Keeps a reserve nobody knows about.",          v: "odysseus" },
+    { t: "Maintains and repairs. Does not replace.",     v: "penelope" },
+    { t: "Invests in the environment.",                  v: "circe" } ] },
+  { q: "Their tell, under stress.", opts: [
+    { t: "Goes absolute. Everything becomes a matter of principle.", v: "achilles" },
+    { t: "Goes vague. Detail thins out and options multiply.",       v: "odysseus" },
+    { t: "Goes quiet and increases the maintenance.",                v: "penelope" },
+    { t: "Goes hospitable. Starts managing the conditions.",         v: "circe" } ] },
+  { q: "What would they never say out loud?", opts: [
+    { t: "That the slight still governs the decision.",       v: "achilles" },
+    { t: "What the actual plan is.",                          v: "odysseus" },
+    { t: "That they stopped expecting it years ago.",         v: "penelope" },
+    { t: "That the outcome was arranged before the talk.",    v: "circe" } ] },
+  { q: "In ten years, what do they regret?", opts: [
+    { t: "The fight they did not win.",                            v: "achilles" },
+    { t: "The door they held open too long.",                      v: "odysseus" },
+    { t: "The years spent holding a position nobody relieved.",    v: "penelope" },
+    { t: "The people who could not leave.",                        v: "circe" } ] }
+];
+
+const PAIRINGS = {
+  "achilles+achilles": "Two absolutists, one standard each, and no mechanism for a small correction. Conflicts do not de-escalate here; they are settled or they are permanent. Watch how many topics are already retired.",
+  "achilles+odysseus": "One demands the terms be stated; the other survives by not stating them. The absolutist reads the tactician as evasive, the tactician reads the absolutist as a liability in a negotiation. Both readings are accurate.",
+  "achilles+penelope": "One withdraws to the tent; the other keeps the house running through the withdrawal. Functional for years, and the bill is asymmetric: the maintenance is invisible precisely because it never fails.",
+  "achilles+circe": "One escalates in public, the other manages the conditions in private. The confrontation the absolutist wants is dissolved before it happens, which reads as peace and registers as a loss.",
+  "odysseus+odysseus": "Two people running strategies neither has declared. Enormous mutual competence, no shared map. The failure mode is not conflict; it is two well-executed plans discovered, late, to be different plans.",
+  "odysseus+penelope": "The canonical pairing: one manoeuvres abroad, one holds the ground. It works while both believe the return is real. Check the date on that belief rather than the strength of it.",
+  "odysseus+circe": "Two environment-shapers, one working through disguise, the other through conditions. Comfortable, effective, and very hard to leave — including for either of them. Delay is the shared instrument.",
+  "penelope+penelope": "Two holders, no one moving. The structure is exceptionally stable and the siege is never lifted, because lifting it is nobody’s assignment. Stability here is not the same as arrival.",
+  "penelope+circe": "One maintains the structure, the other sets the terms inside it. Deeply hospitable to everyone except a change of direction. Ask who last proposed one.",
+  "circe+circe": "Two people setting conditions for each other, courteously and continuously. Nothing is ever fought about and very little is ever decided out loud. The unspoken agenda is the actual agenda."
+};
+
+/* ============================================================
+   2. UTILITIES AND STATE
+   ============================================================ */
+
+const $  = (sel, root) => (root || document).querySelector(sel);
+const $$ = (sel, root) => Array.prototype.slice.call((root || document).querySelectorAll(sel));
+
+function esc(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
+let toastTimer = null;
+function toast(msg) {
+  const el = $("#toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove("show"), 1900);
+}
+
+const STORE_KEY = "bernards-odyssey.v1";
+
+const DEFAULT_STATE = {
+  cyclops: "",
+  era: "homeric",
+  ledger: {},                 // ledgerKey -> user text
+  audit: {},                  // auditKey  -> user text
+  step: 0,
+  lotusName: "",
+  lotus: {},                  // question index -> type
+  lotusLines: [],             // ticked indices
+  crewRole: "self",
+  crewName: "",
+  crewAnswers: {},            // question index -> archetype
+  crewResults: {}             // role -> { primary, secondary, name, scores }
+};
+
+let S = JSON.parse(JSON.stringify(DEFAULT_STATE));
+
+function load() {
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    if (raw) Object.assign(S, JSON.parse(raw));
+  } catch (e) { /* private mode, corrupt value — run on defaults */ }
+}
+function save() {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch (e) { /* not fatal */ }
+}
+
+function copyText(text, okMsg) {
+  const done = () => toast(okMsg || "Copied");
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done, () => fallbackCopy(text, done));
+  } else {
+    fallbackCopy(text, done);
+  }
+}
+function fallbackCopy(text, done) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.setAttribute("readonly", "");
+  ta.style.position = "fixed";
+  ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand("copy"); done(); } catch (e) { toast("Copy failed"); }
+  document.body.removeChild(ta);
+}
+
+/* ============================================================
+   3. TABS
+   ============================================================ */
+
+function initTabs() {
+  const tabs = $$(".tab");
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => selectTab(tab));
+    tab.addEventListener("keydown", ev => {
+      const i = tabs.indexOf(tab);
+      if (ev.key === "ArrowRight" || ev.key === "ArrowLeft") {
+        ev.preventDefault();
+        const n = (i + (ev.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length;
+        tabs[n].focus();
+        selectTab(tabs[n]);
+      }
+    });
+  });
+}
+function selectTab(tab) {
+  $$(".tab").forEach(t => {
+    const on = t === tab;
+    t.setAttribute("aria-selected", on ? "true" : "false");
+    $("#" + t.getAttribute("aria-controls")).hidden = !on;
+  });
+}
+
+/* ============================================================
+   4. THE LEDGER
+   ============================================================ */
+
+function renderLedger() {
+  const host = $("#ledger");
+  host.innerHTML = LEDGER.map(row => `
+    <div class="lrow">
+      <div>
+        <span class="glyph" aria-hidden="true">${row.glyph}</span>
+        <p class="elem">${esc(row.element)}</p>
+        <p class="fn">${esc(row.fn)}</p>
+      </div>
+      <div>
+        <p class="baseline"><span class="tag">Homeric</span>${esc(row.props.homeric)}</p>
+        <p class="translation" data-translation="${row.key}"></p>
+        <div class="yours">
+          <label for="yours-${row.key}">${esc(row.ask)}</label>
+          <input type="text" id="yours-${row.key}" data-ledger="${row.key}" autocomplete="off"
+                 value="${esc(S.ledger[row.key] || "")}" placeholder="In your own terrain." />
+        </div>
+      </div>
+    </div>`).join("");
+
+  $$("[data-ledger]", host).forEach(input => {
+    input.addEventListener("input", () => {
+      S.ledger[input.dataset.ledger] = input.value;
+      if (input.dataset.ledger === "threat" && !S.cyclops) {
+        S.cyclops = input.value;
+        $("#cyclops").value = input.value;
+      }
+      save();
+    });
+  });
+
+  paintEra();
+}
+
+function paintEra() {
+  $$(".era").forEach(b => b.setAttribute("aria-pressed", b.dataset.era === S.era ? "true" : "false"));
+  LEDGER.forEach(row => {
+    const el = $('[data-translation="' + row.key + '"]');
+    if (!el) return;
+    if (S.era === "homeric") {
+      el.innerHTML = '<span class="tag">Function</span>' + esc(row.fn);
+    } else {
+      el.innerHTML = '<span class="tag">' + esc(ERA_LABEL[S.era]) + "</span>" + esc(row.props[S.era]);
+    }
+  });
+}
+
+function initEras() {
+  $$(".era").forEach(b => b.addEventListener("click", () => {
+    S.era = b.dataset.era;
+    save();
+    paintEra();
+  }));
+}
+
+/* ============================================================
+   5. THE AUDIT — six legs
+   ============================================================ */
+
+function renderVoyage() {
+  const host = $("#voyage");
+  host.innerHTML = AUDIT.map((a, i) =>
+    `<button class="leg" data-leg="${i}" title="Leg ${i + 1}: ${esc(a.homeric)}"><span class="sr-only">Go to leg ${i + 1}: ${esc(a.q)}</span></button>`
+  ).join("");
+  $$("[data-leg]", host).forEach(b => b.addEventListener("click", () => {
+    commitAnswer();
+    S.step = Number(b.dataset.leg);
+    save();
+    renderStep();
+  }));
+}
+
+function paintVoyage() {
+  $$("[data-leg]").forEach(b => {
+    const i = Number(b.dataset.leg);
+    const answered = (S.audit[AUDIT[i].key] || "").trim().length > 0;
+    b.dataset.state = i === S.step ? "current" : (answered ? "done" : "todo");
+  });
+}
+
+function renderStep() {
+  const a = AUDIT[S.step];
+  $("#qnum").textContent = "Leg " + (S.step + 1) + " of " + AUDIT.length;
+  $("#qtext").textContent = a.q;
+  $("#qframe").innerHTML = '<span class="homeric">' + esc(a.homeric) + ".</span> " + esc(a.frame);
+  const ta = $("#answer");
+  ta.value = S.audit[a.key] || "";
+  $("#prev").disabled = S.step === 0;
+  $("#next").disabled = S.step === AUDIT.length - 1;
+  updateCount();
+  paintVoyage();
+}
+
+function wordCount(s) {
+  const t = String(s || "").trim();
+  return t ? t.split(/\s+/).length : 0;
+}
+
+function updateCount() {
+  const n = wordCount($("#answer").value);
+  $("#count").textContent = n + (n === 1 ? " word" : " words");
+}
+
+function commitAnswer() {
+  S.audit[AUDIT[S.step].key] = $("#answer").value;
+  save();
+}
+
+function initAudit() {
+  renderVoyage();
+  renderStep();
+  $("#answer").addEventListener("input", () => {
+    updateCount();
+    commitAnswer();
+    paintVoyage();
+  });
+  $("#prev").addEventListener("click", () => { commitAnswer(); S.step = Math.max(0, S.step - 1); save(); renderStep(); });
+  $("#next").addEventListener("click", () => { commitAnswer(); S.step = Math.min(AUDIT.length - 1, S.step + 1); save(); renderStep(); });
+  $("#run-mirror").addEventListener("click", () => {
+    commitAnswer();
+    renderMirror();
+    $("#mirror").scrollIntoView({ block: "start" });
+  });
+  $("#copy-prompt").addEventListener("click", () => { commitAnswer(); copyText(buildPrompt(), "Full prompt copied"); });
+  $("#clear-audit").addEventListener("click", () => {
+    if (!confirm("Clear all six answers?")) return;
+    S.audit = {};
+    S.step = 0;
+    save();
+    renderStep();
+    $("#mirror").innerHTML = "";
+  });
+}
+
+/* ============================================================
+   6. THE ENGINE — lexical read of what was actually written
+   ============================================================ */
+
+const LEX = {
+  agency: ["i decided","i chose","i quit","i left","i told","i wrote","i shipped","i called","i filed","i signed","i sold","i built","i started","i stopped","i cut","i refused","i booked","i resigned","i moved","i launched","i published","i said no","i ended","i sent","i asked","i paid","i hired","i fired","i deleted","i cancelled","i canceled","i handed in","i walked","i blocked","i closed"],
+  hedge: ["maybe","perhaps","kind of","sort of","somewhat","probably","might","hopefully","someday","some day","one day","at some point","i guess","i think","a bit","slightly","soon","if i can","when i can","try to","trying to","want to","hope to","would like","sometime","more or less","in theory"],
+  obligation: ["should","ought to","have to","has to","had to","must ","need to","needs to","supposed to","expected to"],
+  external: [" they "," them "," their "," he "," she "," his "," her ","my boss","the company","everyone","people","nobody","my parents","my family","the system","the market","my wife","my husband","my partner","clients","the industry","management","the board","my mother","my father"],
+  passive: ["was told","were told","got laid off","was laid off","was fired","was made redundant","happened to me","made me","forced me","was not allowed","wasn't allowed","was passed over","was given","i was left","it was taken","they took","they made"],
+  pastFix: ["should have","should've","could have","could've","would have","would've","if only","used to","back when","i regret","i wish","why didn't","why did i","all those years","looking back"],
+  deferral: ["when i","once i","after i","as soon as","until i","then i'll","then i will","i'll start","next year","next month","next quarter","first i need","before i can"],
+  identity: ["i'm a ","i am a ","i'm the ","i am the ","i've always been","i have always been","that's who i am","that is who i am","i'm not the type","i'm not a ","i'm just ","i am just ","it's just how i am","i'm too ","i am too ","people like me","someone like me"],
+  frequency: ["every day","each day","daily","every morning","each morning","every week","weekly","each week","every night","nightly","monday","tuesday","wednesday","thursday","friday","saturday","sunday","every session","twice a","three times","an hour","hours a","minutes a","before work","after work","5am","6am","7am","first thing","routine","ritual","cadence","schedule"],
+  selfPredator: ["myself","my own head","my own worst","i am the","i'm the problem","me. ","it's me","its me"]
+};
+
+const STOP = new Set(["about","after","again","against","because","been","before","being","between","could","doing","during","each","from","have","having","into","just","like","made","make","more","most","much","only","other","over","really","same","some","such","than","that","them","then","there","these","they","this","those","through","under","until","very","were","what","when","where","which","while","with","would","your","yourself","thing","things","something","anything","everything","never","always","still","even","also","been","their","there's","cant","dont","im","ive"]);
+
+function countPhrases(text, list) {
+  let n = 0;
+  const t = " " + text + " ";
+  for (let i = 0; i < list.length; i++) {
+    let from = 0, idx;
+    while ((idx = t.indexOf(list[i], from)) !== -1) { n++; from = idx + list[i].length; }
+  }
+  return n;
+}
+
+function analyse(raw) {
+  const text = String(raw || "").trim();
+  const low = text.toLowerCase();
+  return {
+    text: text,
+    words: wordCount(text),
+    sentences: text ? (text.match(/[.!?]+/g) || []).length || 1 : 0,
+    agency: countPhrases(low, LEX.agency),
+    hedge: countPhrases(low, LEX.hedge),
+    obligation: countPhrases(low, LEX.obligation),
+    external: countPhrases(low, LEX.external),
+    passive: countPhrases(low, LEX.passive),
+    pastFix: countPhrases(low, LEX.pastFix),
+    deferral: countPhrases(low, LEX.deferral),
+    identity: countPhrases(low, LEX.identity),
+    frequency: countPhrases(low, LEX.frequency),
+    selfPredator: countPhrases(low, LEX.selfPredator),
+    first: (low.match(/\bi\b|\bmy\b|\bme\b/g) || []).length,
+    digits: (text.match(/\d/g) || []).length,
+    proper: (text.replace(/^[^a-z]*/i, "").match(/(?!^)\b[A-Z][a-z]{2,}/g) || []).length,
+    question: (text.match(/\?/g) || []).length,
+    negation: (low.match(/\bnot\b|n't\b|\bnever\b|\bno\b/g) || []).length
+  };
+}
+
+function contentWords(text) {
+  return (String(text || "").toLowerCase().match(/[a-z']{5,}/g) || []).filter(w => !STOP.has(w));
+}
+function overlap(a, b) {
+  const A = new Set(contentWords(a));
+  const out = [];
+  contentWords(b).forEach(w => { if (A.has(w) && out.indexOf(w) === -1) out.push(w); });
+  return out;
+}
+
+function clause(text, max) {
+  let t = String(text || "").trim().replace(/\s+/g, " ");
+  if (!t) return "";
+  const cut = t.search(/[.;!?]\s/);
+  if (cut > 24) t = t.slice(0, cut);
+  t = t.replace(/[.;,\s]+$/, "");
+  const lim = max || 118;
+  if (t.length > lim) t = t.slice(0, t.lastIndexOf(" ", lim) > 40 ? t.lastIndexOf(" ", lim) : lim) + "…";
+  return t;
+}
+
+/* ---- Rules: each returns a probability statement, never an instruction ---- */
+
+function buildRules(m, all) {
+  const R = [];
+  const push = (id, w, text) => R.push({ id: id, w: w, text: text });
+  const tot = all.total;
+
+  if (m.decision.words && m.loop.words >= 2 * m.decision.words && m.loop.words > 25) {
+    push("loopVsExit", 9,
+      "Leg 4 runs <b>" + m.loop.words + " words</b>. Leg 5 runs <b>" + m.decision.words + "</b>. The loop carries " +
+      (m.loop.words / Math.max(1, m.decision.words)).toFixed(1) + "× the vocabulary of the exit. Probability: the decision is still a preference.");
+  }
+  if (m.decision.words > 3 && !m.decision.digits && !m.decision.proper && !m.decision.frequency) {
+    push("exitNoTime", 8.5,
+      "Leg 5 contains no date, no number and no named party. An act of ownership with no time signature is a wish with better grammar.");
+  }
+  if (m.decision.hedge >= 2) {
+    push("exitHedged", 8.4,
+      "Leg 5 hedges <b>" + m.decision.hedge + " times</b> inside the sentence where ownership is claimed. Hedges at the point of decision usually mark the true position.");
+  }
+  if (m.decision.obligation >= 1 && m.decision.agency === 0) {
+    push("exitObligation", 8.2,
+      "Leg 5 is written in the language of obligation — <i>should, have to, need to</i> — not the language of decision. Obligation is a description of pressure. It is not an act.");
+  }
+  if (m.decision.question >= 1) {
+    push("exitQuestion", 7.6, "Leg 5 contains a question mark. The executive decision is currently being asked rather than made.");
+  }
+  if (!m.practice.words) {
+    push("practiceEmpty", 8.6, "Leg 6 is empty. Whatever is decided in leg 5 has nothing holding the door open behind it.");
+  } else if (!m.practice.frequency) {
+    push("practiceNoCadence", 8.0, "Leg 6 names a practice with no cadence. Askēsis without a frequency is an intention with a nice vocabulary.");
+  }
+  const po = overlap(m.practice.text, m.trap.text);
+  if (po.length >= 2) {
+    push("practiceEchoesTrap", 7.2,
+      "Leg 6 reuses the language of leg 2 (<i>" + po.slice(0, 3).map(esc).join(", ") + "</i>). Worth testing whether the practice is a practice or a more disciplined version of the trap.");
+  }
+  const to = overlap(m.dream.text, m.trap.text);
+  if (to.length >= 2) {
+    push("trapDreamOverlap", 7.8,
+      "Legs 1 and 2 are built from the same words (<i>" + to.slice(0, 3).map(esc).join(", ") + "</i>). The trap is made of the dream's own material. That is why it is comfortable, and why leaving reads as betrayal rather than as navigation.");
+  }
+  if (m.dream.words && m.trap.words > m.dream.words * 1.6) {
+    push("trapDetail", 6.8, "The box is drawn in more detail than the destination — leg 2 at " + m.trap.words + " words against leg 1 at " + m.dream.words + ". Resolution follows attention.");
+  }
+  if (m.dream.words > 0 && m.dream.words < 9) {
+    push("dreamThin", 7.4, "Ithaca is specified in <b>" + m.dream.words + " words</b>. Every later leg is being navigated toward a destination that has not been given coordinates.");
+  }
+  if (m.shock.passive >= 1 && m.decision.first >= 1) {
+    push("voiceSplit", 6.4, "Leg 3 is written in the passive; leg 5 in the first person. The collision happened to you, the exit is done by you. Notice which of the two voices you use when you describe yourself to other people.");
+  }
+  if (m.loop.pastFix >= 2) {
+    push("pastConditional", 6.6, "The loop runs in the past conditional — <i>should have, if only</i> — <b>" + m.loop.pastFix + " times</b>. That tense has no exit built into it. It is the acoustics of the cave, not a wall of it.");
+  }
+  const def = m.loop.deferral + m.trap.deferral + m.decision.deferral;
+  if (def >= 2) {
+    push("deferral", 6.5, "Deferral markers appear <b>" + def + " times</b> — <i>when I, once I, as soon as</i>. A condition is currently doing the work that a decision is supposed to do.");
+  }
+  const idn = m.dream.identity + m.trap.identity + m.loop.identity + m.decision.identity;
+  if (idn >= 1) {
+    push("armorStated", 7.5, "You describe yourself with a fixed noun rather than an action. That is the armour, stated in your own handwriting. It was built to survive leg 2, and it is now the thing deciding which exits are thinkable.");
+  }
+  if (all.external >= 8 && all.external > all.agency * 3) {
+    push("populated", 6.2, "Third parties appear <b>" + all.external + " times</b> across the six legs; first-person acts appear <b>" + all.agency + "</b>. The account is well populated. The agency is not.");
+  }
+  if (m.threat.selfPredator >= 1) {
+    push("selfCyclops", 7.0, "The predator and the narrator are the same party in this account. That is either precise or convenient, and only one of the two is navigable.");
+  } else if (m.threat.words && m.threat.proper >= 1) {
+    push("namedCyclops", 6.0, "The Cyclops is named as a specific person. Polyphemus was blinded, not defeated — and it was the shout that named the victor which added ten years to the voyage. The naming has a running cost.");
+  }
+  if (tot > 0 && tot < 60) {
+    push("compressed", 5.4, "The entire voyage fits in <b>" + tot + " words</b>. Compression is either mastery or avoidance, and from outside the two are identical.");
+  }
+  if (m.decision.agency >= 1 && (m.decision.digits || m.decision.proper) && m.practice.frequency >= 1) {
+    push("complete", 9.2, "Leg 5 names an act and leg 6 names a cadence. Structurally, this is a complete exit. The missing variable is therefore not insight.");
+  }
+  if (m.loop.words && m.loop.negation >= 4) {
+    push("negations", 5.6, "Leg 4 is built from negations — <b>" + m.loop.negation + "</b> of them. The loop is describing what will not happen. It has no positive statement to test.");
+  }
+  return R.sort((a, b) => b.w - a.w);
+}
+
+const CLOSERS = {
+  loopVsExit:        "If leg 4 were given the word count of leg 5, what would survive the edit?",
+  exitNoTime:        "What is the date? Not the deadline — the date.",
+  exitHedged:        "Read leg 5 aloud with every hedge removed. Is it still true?",
+  exitObligation:    "Who imposed the obligation in leg 5, and what happens to it if they never ask again?",
+  exitQuestion:      "Who are you waiting to answer that question, and what is their standing?",
+  practiceEmpty:     "What did you do today that the version of you in leg 1 would recognise?",
+  practiceNoCadence: "What time tomorrow?",
+  practiceEchoesTrap:"If the practice were removed entirely for a month, what in leg 2 would actually change?",
+  trapDreamOverlap:  "Which parts of the dream can survive without the trap that is currently holding them?",
+  trapDetail:        "Write Ithaca at the length you wrote the box. What did you find you did not know?",
+  dreamThin:         "State the destination in one sentence a stranger could hold you to.",
+  voiceSplit:        "In whose voice do you tell leg 3 when you are not being observed?",
+  pastConditional:   "What is the earliest fact in that loop that you still cannot verify?",
+  deferral:          "What is the condition you are waiting for, and who confirms that it has been met?",
+  armorStated:       "What would you have to stop being in order to do leg 5?",
+  populated:         "Remove every third party from the account. What is left of the story?",
+  selfCyclops:       "If the predator is you, what is the cave made of?",
+  namedCyclops:      "What is naming him currently buying you?",
+  compressed:        "Which leg did you answer shortest, and what is in the part you did not write?",
+  complete:          "If the structure is complete and the exit has not been taken, what is the exit actually costing?",
+  negations:         "State the loop once with no negations. Is there still a sentence?"
+};
+
+const DEFAULT_CLOSER = "Which of the six legs did you answer for an audience, and what would the private version say?";
+
+/* ============================================================
+   7. THE MIRROR — output mechanics
+   ============================================================ */
+
+function auditMetrics() {
+  const m = {};
+  AUDIT.forEach(a => { m[a.key] = analyse(S.audit[a.key]); });
+  m.threat = analyse(S.cyclops || S.ledger.threat || "");
+  const keys = AUDIT.map(a => a.key);
+  const all = { total: 0, external: 0, agency: 0, answered: 0 };
+  keys.forEach(k => {
+    all.total += m[k].words;
+    all.external += m[k].external;
+    all.agency += m[k].agency;
+    if (m[k].words) all.answered++;
+  });
+  return { m: m, all: all };
+}
+
+function fillRow(label, value, note) {
+  const v = clause(value);
+  return '<li><span class="k">' + esc(label) + '</span><span class="v' + (v ? "" : " empty") + '">' +
+    (v ? esc(v) : esc(note)) + "</span></li>";
+}
+
+function phaseLines(m) {
+  const swapped = /\bnew (job|role|city|country|company|relationship|partner|start)|another (job|role|company)|moved to|started at|joined /i.test(m.shock.text);
+  const idn = m.dream.identity + m.trap.identity + m.loop.identity + m.decision.identity;
+
+  const map = m.trap.words
+    ? "&ldquo;" + esc(clause(m.trap.text, 96)) + "&rdquo; — carried as terrain rather than as a drawing of it. Comfort is the load-bearing element; a box you resent is easy to walk out of."
+    : "Leg 2 unanswered. The map is still running, unread.";
+
+  let collision;
+  if (m.shock.words) {
+    collision = "&ldquo;" + esc(clause(m.shock.text, 96)) + "&rdquo; — " +
+      (m.shock.passive ? "recorded as something done to you." : "recorded from inside it.") +
+      (swapped ? " The props were replaced, not stripped: a new set of structural supports arrived with the collision." : "");
+  } else {
+    collision = "Leg 3 unanswered. No point zero is on record, which usually means the props are still on.";
+  }
+
+  let armor;
+  if (idn >= 1) {
+    armor = "Stated in your own words as a fixed noun rather than an action. The persona built to survive leg 2 is now the party deciding which exits are thinkable.";
+  } else if (m.loop.words) {
+    armor = "&ldquo;" + esc(clause(m.loop.text, 88)) + "&rdquo; — " + m.loop.first + " first-person markers, " +
+      m.loop.negation + " negations, " + m.loop.pastFix + " past-conditional turns. The cage is audible in the tense.";
+  } else {
+    armor = "Leg 4 unanswered. The loop is undescribed, which does not mean it is not running.";
+  }
+
+  let exit;
+  if (m.decision.words && m.decision.agency >= 1 && (m.decision.digits || m.decision.proper) && m.practice.frequency >= 1) {
+    exit = "&ldquo;" + esc(clause(m.decision.text, 92)) + "&rdquo; — a named act with a cadence behind it. Structurally complete.";
+  } else if (m.decision.words) {
+    const missing = [];
+    if (!m.decision.digits && !m.decision.proper) missing.push("no date, number or named party");
+    if (m.decision.hedge) missing.push(m.decision.hedge + " hedge" + (m.decision.hedge > 1 ? "s" : ""));
+    if (m.decision.obligation && !m.decision.agency) missing.push("obligation in place of a verb of decision");
+    if (!m.practice.frequency) missing.push("no cadence behind it in leg 6");
+    exit = "&ldquo;" + esc(clause(m.decision.text, 92)) + "&rdquo;" + (missing.length ? " — " + esc(missing.join("; ")) + "." : " — specified.");
+  } else {
+    exit = "Leg 5 unanswered. Nothing in the account currently breaks the loop.";
+  }
+
+  return { map: map, collision: collision, armor: armor, exit: exit };
+}
+
+function renderMirror() {
+  const host = $("#mirror");
+  const data = auditMetrics();
+  const m = data.m, all = data.all;
+
+  if (all.answered === 0) {
+    host.innerHTML = '<div class="mirror-block"><h3>No input</h3><p>Six legs, none answered. The mirror reads what is written, not what is meant.</p></div>';
+    return;
+  }
+
+  const rules = buildRules(m, all);
+  const top = rules.slice(0, 4);
+  const ph = phaseLines(m);
+  const closer = (top[0] && CLOSERS[top[0].id]) || DEFAULT_CLOSER;
+
+  const ledgerRows =
+    fillRow("Ithaca", S.audit.dream, "unnamed — the destination is not on the chart") +
+    fillRow("Lotus Island", S.lotusName || S.audit.trap, "unnamed — the shore has not been described") +
+    fillRow("The ship", S.ledger.transit, "unnamed — you have not said what is carrying you") +
+    fillRow("The open sea", S.ledger.terrain, "unnamed — the formless terrain is still formless") +
+    fillRow("The Cyclops", S.cyclops || S.ledger.threat, "unnamed — the predatory power has no name yet") +
+    fillRow("The bow", S.ledger.agency || S.audit.decision, "unnamed — no tool of pure agency identified");
+
+  const probs = top.length
+    ? top.map(r => "<p>" + r.text + "</p>").join("")
+    : "<p>Nothing in the six legs contradicts itself. Either the account is clean, or it is edited. Both are worth knowing.</p>";
+
+  host.innerHTML =
+    '<div class="mirror-block"><h3>I. The ledger, filled</h3><ul class="ledger-fill">' + ledgerRows + "</ul></div>" +
+
+    '<div class="mirror-block"><h3>II. The four-part lifecycle</h3>' +
+      PHASES.map(p => '<div class="phase"><span class="pk">' + esc(p.name) + "</span><span>" + ph[p.key] + "</span></div>").join("") +
+    "</div>" +
+
+    '<div class="mirror-block"><h3>III. Probabilities and blind spots</h3>' + probs +
+      '<div class="metrics">' +
+        AUDIT.map((a, i) => "<span><b>L" + (i + 1) + "</b> " + m[a.key].words + "w</span>").join("") +
+        "<span><b>total</b> " + all.total + "w</span>" +
+        "<span><b>first-person acts</b> " + all.agency + "</span>" +
+        "<span><b>third parties</b> " + all.external + "</span>" +
+      "</div>" +
+    "</div>" +
+
+    '<div class="mirror-block"><h3>IV. One question, left open</h3>' +
+      '<p class="closing">' + esc(closer) + "</p>" +
+      '<p class="attrib">No diagnosis is offered and no plan follows. The route back to Ithaca is navigated by the person who drew the map.</p>' +
+      '<div class="btn-row" style="margin-top:1.1rem"><button class="btn ghost" id="copy-mirror">Copy the mirror</button></div>' +
+    "</div>";
+
+  $("#copy-mirror").addEventListener("click", () => {
+    const blocks = $$(".mirror-block", host).map(b => b.innerText.replace(/\nCopy the mirror\s*$/, "").trim());
+    copyText("BERNARD'S ODYSSEY — THE MIRROR\n\n" + blocks.join("\n\n———\n\n"), "Mirror copied");
+  });
+}
+
+/* ---- The locked system prompt, exported with the user's inputs ---- */
+function buildPrompt() {
+  const line = (label, val) => "- **" + label + ":** " + (String(val || "").trim() || "(not stated)");
+  return [
+"# THE UNIVERSAL STORYTELLING SYSTEM (HOMERIC BASELINE)",
+"",
+"**Role Prompting Instruction:** Act as an elite, clinical, and precise academic research collaborator. Do not use marketing jargon, do not add conversational preamble, do not anticipate future steps, and do not connect disparate concepts unless explicitly directed. Stick strictly to the parameters provided. Respond in short, active-voice, universally scannable language. **Strict Constraint:** Keep responses highly compressed. Limit the entire analysis to 3–4 concise paragraphs or punchy sections total.",
+"",
+"## 1. THE DEEP-TIME PARALLEL MATRIX",
+"Every resilient narrative maps onto a single structural continuum. The technological \"props\" change to match an era's lifestyle, but the internal cognitive geometry remains unchanged. The ancient maritime terrain of Homer's *Odyssey* serves as the universal foundational baseline.",
+"",
+"### Element Mapping Ledger:",
+"* **The Trapped State of Stasis:** The Deceptive, Amnesiac Shores of Lotus-Eater Island.",
+"* **The Medium of Geographic Transit:** The Wooden Sailing Ship navigating the unknown.",
+"* **The Formless Dangerous Terrain:** The Untamed, Chaotic Maritime Void.",
+"* **The Sovereign Predatory Threat:** The Cave of the Cyclops Polyphemus (Raw, devouring power).",
+"* **The Tool of Pure Agency:** The Heavy Bow of Odysseus (High-friction mastery).",
+"",
+"## 2. THE FOUR-PART LIFECYCLE OF HUMAN ILLUSION AND AWAKENING",
+"1. **The Constructed Illusion (The Map):** The character begins trapped inside a comfortable, manufactured mental map or social shorthand, mistaking it for the actual physical terrain.",
+"2. **The Collapse to Point Zero (The Collision):** The character suffers a violent collision with raw reality. All external props, structural privileges, and institutional security blankets are stripped completely away.",
+"3. **The Identity Cage (The Armor):** The character faces the realization that their defensive, constructed persona or identity — built to navigate the system — has become a rigid, paralyzing cage.",
+"4. **The Act of Pure Agency (The Exit):** The character rejects victimhood and executes a high-friction, disciplined act of internal mastery (*askēsis*), taking total ownership to step outside the box.",
+"",
+"## 3. THE PLAIN-SPOKEN SOCRATIC AUDIT",
+"1. What is the original dream or big ambition?",
+"2. What is the comfortable box or trap holding them back?",
+"3. What is the sudden shock or crisis that shatters that comfort?",
+"4. How do they get stuck in their own head ruminating?",
+"5. What is the exact executive decision or act of ownership that breaks the loop?",
+"6. What hard work or daily practice do they do to stay free?",
+"",
+"## 4. SOCRATIC OUTPUT MECHANICS",
+"Do not provide a top-down diagnosis, a structured self-help plan, or instructional checklists. The output must function as a clean, unvarnished mirror that analyzes probabilities and points to specific, localized blind spots or mental loops based on the inputs. Leave ownership completely with the user to recognize their own internal script and navigate their unique path back to Ithaca.",
+"",
+"---",
+"",
+"## TARGET NARRATIVE (user input)",
+"",
+"### Named elements",
+line("Lotus Island", S.lotusName || S.ledger.stasis),
+line("The ship", S.ledger.transit),
+line("The open sea", S.ledger.terrain),
+line("The Cyclops", S.cyclops || S.ledger.threat),
+line("The bow", S.ledger.agency),
+"",
+"### Socratic audit"
+  ].concat(AUDIT.map((a, i) =>
+    "**" + (i + 1) + ". " + a.q + "**\n" + (String(S.audit[a.key] || "").trim() || "(not answered)") + "\n"
+  )).concat([
+"---",
+"Run the analysis now, under the constraints above."
+  ]).join("\n");
+}
+
+/* ============================================================
+   8. LOTUS ISLAND
+   ============================================================ */
+
+function renderLotus() {
+  $("#lotus-name").value = S.lotusName || "";
+  $("#lotus-qs").innerHTML = LOTUS_QS.map((q, i) => `
+    <div class="choice-q">
+      <p class="q">${i + 1}. ${esc(q.q)}</p>
+      <div class="opts">
+        ${q.opts.map((o, j) => `
+          <label class="opt${S.lotus[i] === o.v ? " checked" : ""}">
+            <input type="radio" name="lotus-${i}" value="${o.v}" data-lq="${i}" ${S.lotus[i] === o.v ? "checked" : ""} />
+            <span>${esc(o.t)}</span>
+          </label>`).join("")}
+      </div>
+    </div>`).join("");
+
+  $$("[data-lq]").forEach(inp => inp.addEventListener("change", () => {
+    S.lotus[inp.dataset.lq] = inp.value;
+    save();
+    $$(".opt", inp.closest(".opts")).forEach(l => l.classList.remove("checked"));
+    inp.closest(".opt").classList.add("checked");
+  }));
+
+  $("#lotus-lines").innerHTML = LOTUS_LINES.map((l, i) => `
+    <label class="opt${S.lotusLines.indexOf(i) !== -1 ? " checked" : ""}">
+      <input type="checkbox" data-lline="${i}" ${S.lotusLines.indexOf(i) !== -1 ? "checked" : ""} />
+      <span>${esc(l)}</span>
+    </label>`).join("");
+
+  $$("[data-lline]").forEach(inp => inp.addEventListener("change", () => {
+    const i = Number(inp.dataset.lline);
+    const at = S.lotusLines.indexOf(i);
+    if (inp.checked && at === -1) S.lotusLines.push(i);
+    if (!inp.checked && at !== -1) S.lotusLines.splice(at, 1);
+    inp.closest(".opt").classList.toggle("checked", inp.checked);
+    save();
+    paintTally();
+  }));
+
+  paintTally();
+}
+
+function paintTally() {
+  const n = S.lotusLines.length;
+  const el = $("#lotus-tally");
+  if (!n) { el.textContent = ""; return; }
+  const verdict = n >= 7 ? "The island is well provisioned."
+    : n >= 4 ? "The supply line is established."
+    : "A landing, not yet a residence.";
+  el.textContent = n + " of " + LOTUS_LINES.length + ". " + verdict;
+}
+
+function renderLotusRead() {
+  const host = $("#lotus-out");
+  const answered = Object.keys(S.lotus).length;
+  if (!answered) {
+    host.innerHTML = '<div class="mirror-block"><h3>No input</h3><p>Four questions, none answered.</p></div>';
+    return;
+  }
+  const score = { salary: 0, story: 0, screen: 0, someday: 0 };
+  Object.keys(S.lotus).forEach(k => { score[S.lotus[k]]++; });
+  const ranked = Object.keys(score).sort((a, b) => score[b] - score[a]);
+  const top = LOTUS_TYPES[ranked[0]];
+  const second = LOTUS_TYPES[ranked[1]];
+  const split = score[ranked[0]] === score[ranked[1]];
+  const named = String(S.lotusName || "").trim();
+  const ticks = S.lotusLines.length;
+
+  const provisioning = ticks >= 7
+    ? "Ten sentences are available on this shore; you have used <b>" + ticks + "</b> of them in a month. The vocabulary of staying is fluent and rehearsed. Fluency is not the same as belief."
+    : ticks >= 4
+      ? "<b>" + ticks + "</b> of the ten island sentences were spoken in the last thirty days. Enough to hold a position, not yet enough to defend one."
+      : ticks > 0
+        ? "<b>" + ticks + "</b> of the ten island sentences in thirty days. Either the stay is short, or the reasons have not needed to be said out loud yet."
+        : "None of the ten island sentences were ticked. Either you do not say them, or you do not hear yourself say them.";
+
+  host.innerHTML =
+    '<div class="mirror-block"><h3>I. The shape of the shore</h3>' +
+      "<p><span class=\"em\">" + esc(top.name) + "</span> — " + esc(top.epithet) + ".</p>" +
+      (named ? "<p>Named: &ldquo;" + esc(clause(named, 100)) + "&rdquo;.</p>" : "<p>The lotus is unnamed. A comfort with no name cannot be declined, only endured.</p>") +
+      "<p>" + esc(top.read) + "</p>" +
+      (split ? "<p>The four answers split evenly with <span class=\"em\">" + esc(second.name) + "</span> (" + esc(second.epithet.toLowerCase()) + "). Two mechanisms are holding the same position, which is why removing one changes nothing.</p>" : "") +
+    "</div>" +
+    '<div class="mirror-block"><h3>II. What it costs</h3><p>' + esc(top.cost) + "</p><p>" + provisioning + "</p></div>" +
+    '<div class="mirror-block"><h3>III. One question, left open</h3>' +
+      '<p class="closing">' + esc(LOTUS_CLOSERS[ranked[0]]) + "</p>" +
+      '<p class="attrib">Odysseus did not persuade the crew. He carried them to the ships and tied them under the benches. Nothing here is a recommendation.</p></div>';
+}
+
+const LOTUS_CLOSERS = {
+  salary:  "What is the number at which you would leave — and when did you last say it out loud to anyone?",
+  story:   "Who exactly would you have to disappoint, and what is their actual stake in the outcome?",
+  screen:  "Where did the last three evenings go, in hours, without rounding?",
+  someday: "What would have to be true for you to start on Monday — and who decides whether it is true?"
+};
+
+function initLotus() {
+  renderLotus();
+  $("#lotus-name").addEventListener("input", e => { S.lotusName = e.target.value; save(); });
+  $("#run-lotus").addEventListener("click", () => { renderLotusRead(); $("#lotus-out").scrollIntoView({ block: "start" }); });
+  $("#clear-lotus").addEventListener("click", () => {
+    S.lotus = {}; S.lotusLines = []; S.lotusName = "";
+    save(); renderLotus(); $("#lotus-out").innerHTML = "";
+  });
+}
+
+/* ============================================================
+   9. THE CREW
+   ============================================================ */
+
+function renderCrew() {
+  $("#arch-grid").innerHTML = Object.keys(ARCH).map(k => {
+    const a = ARCH[k];
+    return '<div class="arch"><p class="name">' + esc(a.name) + '</p><p class="epithet">' + esc(a.epithet) +
+      '</p><p class="d">' + esc(a.short) + "</p></div>";
+  }).join("");
+
+  $("#subject-role").value = S.crewRole;
+  $("#subject-name").value = S.crewName || "";
+
+  $("#crew-qs").innerHTML = CREW_QS.map((q, i) => `
+    <div class="choice-q">
+      <p class="q">${i + 1}. ${esc(q.q)}</p>
+      <div class="opts">
+        ${q.opts.map(o => `
+          <label class="opt${S.crewAnswers[i] === o.v ? " checked" : ""}">
+            <input type="radio" name="crew-${i}" value="${o.v}" data-cq="${i}" ${S.crewAnswers[i] === o.v ? "checked" : ""} />
+            <span>${esc(o.t)}</span>
+          </label>`).join("")}
+      </div>
+    </div>`).join("");
+
+  $$("[data-cq]").forEach(inp => inp.addEventListener("change", () => {
+    S.crewAnswers[inp.dataset.cq] = inp.value;
+    save();
+    $$(".opt", inp.closest(".opts")).forEach(l => l.classList.remove("checked"));
+    inp.closest(".opt").classList.add("checked");
+  }));
+
+  paintStored();
+}
+
+function roleLabel(role, stored) {
+  if (stored && stored.name) return stored.name;
+  return role === "self" ? "You" : role === "partner" ? "Your partner" : "They";
+}
+
+function paintStored() {
+  const keys = Object.keys(S.crewResults);
+  if (!keys.length) {
+    $("#crew-stored").textContent = "Read yourself first, then switch the subject and read your partner. Two stored readings produce a pairing.";
+    return;
+  }
+  const list = keys.map(k => roleLabel(k, S.crewResults[k]) + " — " + ARCH[S.crewResults[k].primary].name).join(" · ");
+  $("#crew-stored").textContent = "Stored readings: " + list +
+    (keys.length < 2 ? ". Switch the subject and read a second person to unlock the pairing." : ".");
+}
+
+function renderCrewRead() {
+  const host = $("#crew-out");
+  const answered = Object.keys(S.crewAnswers).length;
+  if (answered < CREW_QS.length) {
+    host.innerHTML = '<div class="mirror-block"><h3>Incomplete</h3><p>' + answered + " of " + CREW_QS.length +
+      " answered. The read needs all ten; forced choice is the point.</p></div>";
+    return;
+  }
+  const score = { achilles: 0, odysseus: 0, penelope: 0, circe: 0 };
+  Object.keys(S.crewAnswers).forEach(k => { score[S.crewAnswers[k]]++; });
+  const ranked = Object.keys(score).sort((a, b) => score[b] - score[a]);
+  const primary = ranked[0], secondary = ranked[1];
+  const A = ARCH[primary], B = ARCH[secondary];
+
+  S.crewResults[S.crewRole] = { primary: primary, secondary: secondary, name: String(S.crewName || "").trim(), scores: score };
+  save();
+  paintStored();
+
+  const who = String(S.crewName || "").trim() ||
+    (S.crewRole === "self" ? "You" : S.crewRole === "partner" ? "Your partner" : "This person");
+  const isSelf = S.crewRole === "self" && !String(S.crewName || "").trim();
+
+  const bars = ranked.map(k => {
+    const pct = Math.round((score[k] / CREW_QS.length) * 100);
+    return '<div class="bar"><span>' + esc(ARCH[k].name) + '</span><span class="track"><span class="fill" style="width:' +
+      pct + '%"></span></span><span class="pct">' + pct + "%</span></div>";
+  }).join("");
+
+  let pairing = "";
+  const roles = Object.keys(S.crewResults);
+  if (roles.length >= 2) {
+    const other = roles.filter(r => r !== S.crewRole)[0];
+    const o = S.crewResults[other];
+    const key = [primary, o.primary].sort().join("+");
+    const otherWho = o.name || (other === "self" ? "you" : other === "partner" ? "your partner" : "the other reading");
+    pairing = '<div class="mirror-block pairing"><h3>III. The pairing</h3>' +
+      "<p><span class=\"em\">" + esc(A.name) + "</span> alongside <span class=\"em\">" + esc(ARCH[o.primary].name) +
+      "</span> — " + esc(who.toLowerCase() === "you" ? "you" : who) + " and " + esc(otherWho) + ".</p>" +
+      "<p>" + esc(PAIRINGS[key]) + "</p></div>";
+  }
+
+  host.innerHTML =
+    '<div class="result-hero">' +
+      '<p class="eyebrow">' + esc(isSelf ? "Your strategy" : who + "&rsquo;s strategy") + "</p>" +
+      '<p class="big">' + esc(A.name) + "</p>" +
+      '<p class="epithet" style="color:var(--bronze);letter-spacing:0.18em;text-transform:uppercase;font-size:0.7rem">' + esc(A.epithet) + "</p>" +
+      '<div class="bars">' + bars + "</div>" +
+    "</div>" +
+    '<div class="mirror-block"><h3>I. The read</h3><p>' + esc(A.read) + "</p>" +
+      "<p><span class=\"em\">Runner-up: " + esc(B.name) + ".</span> " + esc(B.short) + " Under pressure this is the strategy that surfaces when the first one is not available.</p></div>" +
+    '<div class="mirror-block"><h3>II. What it buys and what it bills</h3>' +
+      "<p><span class=\"em\">Buys:</span> " + esc(A.strength) + "</p>" +
+      "<p><span class=\"em\">Bills:</span> " + esc(A.cost) + "</p>" +
+      "<p><span class=\"em\">Blind spot:</span> " + esc(A.blind) + "</p></div>" +
+    pairing +
+    '<div class="mirror-block"><h3>' + (pairing ? "IV" : "III") + '. One question, left open</h3>' +
+      '<p class="closing">' + esc(isSelf
+        ? "Which of the other three strategies did you rule out early, and what did ruling it out protect?"
+        : "Which of these four strategies do you require " + who + " to keep running, and what would it cost you if they stopped?") + "</p>" +
+      '<p class="attrib">Four survival strategies, no ranking. The bill is attached to each one regardless of who is holding it.</p></div>';
+}
+
+function initCrew() {
+  renderCrew();
+  $("#subject-role").addEventListener("change", e => { S.crewRole = e.target.value; save(); });
+  $("#subject-name").addEventListener("input", e => { S.crewName = e.target.value; save(); });
+  $("#run-crew").addEventListener("click", () => { renderCrewRead(); $("#crew-out").scrollIntoView({ block: "start" }); });
+  $("#clear-crew").addEventListener("click", () => {
+    S.crewAnswers = {};
+    save();
+    renderCrew();
+    $("#crew-out").innerHTML = "";
+    toast("Answers cleared — stored readings kept");
+  });
+}
+
+/* ============================================================
+   10. BOOT
+   ============================================================ */
+
+(function init() {
+  load();
+  $("#cyclops").value = S.cyclops || "";
+  $("#cyclops").addEventListener("input", e => {
+    S.cyclops = e.target.value;
+    const led = $("#yours-threat");
+    if (led && !S.ledger.threat) led.value = e.target.value;
+    save();
+  });
+  initTabs();
+  renderLedger();
+  initEras();
+  initAudit();
+  initLotus();
+  initCrew();
+})();
+</script>
+</body>
+</html>
