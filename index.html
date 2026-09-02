@@ -739,6 +739,88 @@
   .run-note { border-left: 2px solid var(--line); padding-left: 0.9rem; margin: 0.3rem 0 1.2rem; color: var(--muted); font-size: 0.9rem; }
   .run-note .rq { color: var(--gold); font-style: italic; display: block; margin-bottom: 0.2rem; font-size: 0.86rem; }
   .disclaimer { color: var(--dim); font-size: 0.78rem; max-width: 44rem; margin: 0.9rem auto 0; }
+  /* ---------- Scaffolding: subjects, stems, examples ---------- */
+  .subject-pick { margin-bottom: 1.4rem; }
+  .subject-pick .lead {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin: 0 0 0.6rem;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .chip {
+    appearance: none;
+    background: rgba(9, 32, 50, 0.7);
+    border: 1px solid rgba(148, 170, 188, 0.22);
+    border-radius: 999px;
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    padding: 0.4rem 0.85rem;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.14s, color 0.14s, background 0.14s;
+  }
+  .chip:hover { border-color: rgba(201, 162, 39, 0.55); color: var(--papyrus); }
+  .chip[aria-pressed="true"] {
+    border-color: var(--bronze);
+    color: var(--gold);
+    background: rgba(201, 162, 39, 0.12);
+  }
+  .chip:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .chip .sub-note { display: block; font-size: 0.7rem; color: var(--dim); margin-top: 0.1rem; }
+
+  .helpers { margin: 0.9rem 0 0.2rem; }
+  .helpers .hlabel {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin: 0 0 0.4rem;
+  }
+  .stem {
+    appearance: none;
+    background: transparent;
+    border: 1px dashed rgba(201, 162, 39, 0.4);
+    border-radius: var(--radius);
+    color: var(--gold);
+    font-family: var(--sans);
+    font-size: 0.83rem;
+    padding: 0.32rem 0.7rem;
+    cursor: pointer;
+  }
+  .stem:hover { background: rgba(201, 162, 39, 0.1); border-style: solid; }
+  .stem:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .example {
+    margin-top: 0.75rem;
+    border-left: 2px solid rgba(148, 170, 188, 0.3);
+    padding: 0.3rem 0 0.3rem 0.85rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .example .tagline {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 0.25rem;
+  }
+  .example[hidden] { display: none; }
+  .linkish {
+    appearance: none;
+    background: none;
+    border: none;
+    color: var(--gold);
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    text-decoration: underline dotted;
+    cursor: pointer;
+    padding: 0;
+  }
+  .leg[data-state="skipped"] { background: repeating-linear-gradient(90deg, rgba(148,170,188,0.35) 0 4px, transparent 4px 8px); }
+  .enough { font-size: 0.78rem; color: var(--dim); margin: 0.45rem 0 0; }
 </style>
 </head>
 <body>
@@ -825,6 +907,12 @@
   <h2>The Plain-Spoken Socratic Audit</h2>
   <p class="sub">Delivered in two parts. <b>Part One</b> is the six foundational questions that locate the exact breakdown in your current script. <b>Part Two</b> is a single question that isolates the blind spot. Plain words. The mirror reads what you actually wrote, not what you meant.</p>
 
+  <div class="subject-pick">
+    <p class="lead">First: what are you bringing?</p>
+    <div class="chips" id="subjects" role="group" aria-label="Subject"></div>
+    <p class="enough">This only changes the worked example shown beside each question. Pick the nearest one; nothing is locked by it.</p>
+  </div>
+
   <div class="voyage" id="voyage" role="group" aria-label="Progress"></div>
 
   <div class="qcard">
@@ -832,12 +920,22 @@
     <p class="qnum" id="qnum">Question 1 of 6</p>
     <p class="qtext" id="qtext"></p>
     <p class="qframe" id="qframe"></p>
+
+    <div class="helpers">
+      <p class="hlabel">Not sure where to start? Take a sentence and finish it.</p>
+      <div class="chips" id="stems"></div>
+      <button class="linkish" id="ex-toggle" aria-expanded="false">Show a worked answer</button>
+      <div class="example" id="example" hidden></div>
+    </div>
+
     <label class="sr-only" for="answer">Your answer</label>
-    <textarea id="answer" rows="5" placeholder="Plain words."></textarea>
+    <textarea id="answer" rows="5" placeholder="Plain words. One sentence is a complete answer."></textarea>
+    <p class="enough">A sentence is enough. Nobody reads this but you, and &ldquo;I don&rsquo;t know&rdquo; is a real answer &mdash; the mirror will say what it makes of it.</p>
     <div class="qmeta">
       <span class="count" id="count">0 words</span>
       <span class="btn-row">
         <button class="btn ghost" id="prev">&larr; Back</button>
+        <button class="btn ghost" id="skip">Skip for now</button>
         <button class="btn" id="next">Next &rarr;</button>
       </span>
     </div>
@@ -1179,6 +1277,67 @@ const PAIRINGS = {
   "penelope+penelope": "Two holders, no one moving. The structure is exceptionally stable and the siege is never lifted, because lifting it is nobody's assignment. Stability is not the same as arrival."
 };
 
+/* ---- Scaffolding: what are you bringing, sentence stems, worked answers ---- */
+const SUBJECTS = [
+  { key: "work",         label: "Work",              note: "A job, a career, a business" },
+  { key: "creative",     label: "A stalled project", note: "A book, a build, a practice" },
+  { key: "relationship", label: "A relationship",    note: "A marriage, a family, a friendship" },
+  { key: "change",       label: "A rupture",         note: "A loss, a diagnosis, a move" },
+  { key: "other",        label: "Someone else",      note: "Their story, or a character you write" }
+];
+
+const STEMS = {
+  dream:    ["What I actually wanted was…", "Before any of this, the plan was…", "If nothing were in the way I would…"],
+  trap:     ["I stay because…", "If I left tomorrow I would lose…", "It is comfortable because…"],
+  shock:    ["It stopped working when…", "The thing that broke it was…", "I found out that…"],
+  loop:     ["At 2am I tell myself…", "The argument I keep replaying is…", "I keep coming back to…"],
+  decision: ["By [date] I will…", "I have to tell [name] that…", "The thing I keep not doing is…"],
+  practice: ["Every morning I…", "For thirty minutes a day I…", "The rule I keep is…"]
+};
+
+const EXAMPLES = {
+  work: {
+    dream: "To run my own studio. Six people, work I choose, by the time I am forty.",
+    trap: "A senior job I am good at. It pays for the house and nobody asks me to justify it.",
+    shock: "I was passed over in March. They gave the role to someone I trained.",
+    loop: "I rehearse the conversation I did not have with my director, most nights, and it always ends the same way.",
+    decision: "Tell my manager on 14 April that I am going to four days a week, and use the fifth to take clients.",
+    practice: "Two hours every Friday, blocked in the calendar, spent on my own work rather than anyone else's."
+  },
+  creative: {
+    dream: "To finish the novel. I said it out loud once in 2015 and never since.",
+    trap: "Research. I read about writing, buy books about structure, and never open the draft.",
+    shock: "A friend published theirs. I was happy for a day and could not read past chapter two.",
+    loop: "I decide the first act is wrong, plan a rewrite, then decide the whole premise is wrong.",
+    decision: "Write 500 words before work every day, and send chapter one to Sam on 1 May whatever state it is in.",
+    practice: "Ninety minutes every morning at the kitchen table. Phone in the hall."
+  },
+  relationship: {
+    dream: "To be someone my kids come to when it goes badly, not just when it goes well.",
+    trap: "We are polite. Nothing is said and nothing has to be, so the week runs smoothly.",
+    shock: "She said she had been unhappy for two years and I had not noticed one of them.",
+    loop: "I build the case in my head, win the argument, and never have it.",
+    decision: "Say the actual thing on Sunday, without the version I have rehearsed.",
+    practice: "Twenty minutes after dinner with the phone in a drawer, every night, whether or not there is anything to say."
+  },
+  change: {
+    dream: "To get back to something that felt like a life, not just an interval between appointments.",
+    trap: "Managing it. There is always a form, a call, a thing to arrange, and it fills the day completely.",
+    shock: "The diagnosis in November. Everything I had planned assumed a body that worked.",
+    loop: "I run the timeline backwards looking for the moment I should have known.",
+    decision: "Book the thing for June and tell people I am going, so it stops being provisional.",
+    practice: "A walk at seven, every day, whatever the night was like."
+  },
+  other: {
+    dream: "He wanted to be the one who kept the family together after his father died.",
+    trap: "The job he took to pay for it. Fifteen years, and nobody has asked him about it since.",
+    shock: "The company folded in a fortnight and took the pension with it.",
+    loop: "He recites what he is owed, in order, to anyone who will sit still for it.",
+    decision: "He stops telling the story of what was taken and states what he is doing on Monday.",
+    practice: "He works with his hands for an hour a day, and does not call it therapy."
+  }
+};
+
 /* ---- Lotus Island ---- */
 const LOTUS_TYPES = {
   salary: {
@@ -1307,6 +1466,7 @@ const STORE_KEY = "bernards-odyssey.v2";
 
 const DEFAULT_STATE = {
   cyclops: "", era: "homeric", ledger: {}, audit: {}, step: 0, q7: "",
+  subject: "work", skipped: {},
   lotusName: "", lotus: {}, lotusLines: [], runs: [],
   crewRole: "self", crewName: "", crewAnswers: {}, crewResults: {}
 };
@@ -1444,7 +1604,7 @@ function paintVoyage() {
   $$("[data-leg]").forEach(b => {
     const i = Number(b.dataset.leg);
     const answered = (S.audit[AUDIT[i].key] || "").trim().length > 0;
-    b.dataset.state = i === S.step ? "current" : (answered ? "done" : "todo");
+    b.dataset.state = i === S.step ? "current" : (answered ? "done" : (S.skipped[AUDIT[i].key] ? "skipped" : "todo"));
   });
 }
 
@@ -1460,9 +1620,49 @@ function renderStep() {
   $("#answer").value = S.audit[a.key] || "";
   $("#prev").disabled = S.step === 0;
   $("#next").disabled = S.step === AUDIT.length - 1;
+  renderStems(a);
+  renderExample(a);
   updateCount();
   paintVoyage();
   paintGate();
+}
+
+function renderSubjects() {
+  $("#subjects").innerHTML = SUBJECTS.map(sub =>
+    '<button class="chip" data-subject="' + sub.key + '" aria-pressed="' + (S.subject === sub.key ? "true" : "false") + '">' +
+      esc(sub.label) + '<span class="sub-note">' + esc(sub.note) + "</span></button>").join("");
+  $$("[data-subject]").forEach(b => b.addEventListener("click", () => {
+    S.subject = b.dataset.subject;
+    save();
+    renderSubjects();
+    renderExample(AUDIT[S.step]);
+  }));
+}
+
+function renderStems(a) {
+  $("#stems").innerHTML = (STEMS[a.key] || []).map(t =>
+    '<button class="stem" data-stem="' + esc(t) + '">' + esc(t) + "</button>").join("");
+  $$("[data-stem]").forEach(b => b.addEventListener("click", () => {
+    const ta = $("#answer");
+    const stem = b.dataset.stem.replace(/…$/, " ");
+    const cur = ta.value.trim();
+    ta.value = cur ? cur + (/[.!?]$/.test(cur) ? " " : ". ") + stem : stem;
+    ta.focus();
+    ta.setSelectionRange(ta.value.length, ta.value.length);
+    updateCount();
+    commitAnswer();
+    paintVoyage();
+    paintGate();
+  }));
+}
+
+function renderExample(a) {
+  const set = EXAMPLES[S.subject] || EXAMPLES.work;
+  const sub = SUBJECTS.filter(x => x.key === S.subject)[0];
+  $("#example").innerHTML = '<span class="tagline">Someone else&rsquo;s answer — ' + esc(sub ? sub.label.toLowerCase() : "work") + "</span>" +
+    "&ldquo;" + esc(set[a.key]) + "&rdquo;";
+  const t = $("#ex-toggle");
+  $("#example").hidden = t.getAttribute("aria-expanded") !== "true";
 }
 
 function updateCount() {
@@ -1471,7 +1671,9 @@ function updateCount() {
 }
 
 function commitAnswer() {
-  S.audit[AUDIT[S.step].key] = $("#answer").value;
+  const key = AUDIT[S.step].key;
+  S.audit[key] = $("#answer").value;
+  if (S.audit[key].trim()) delete S.skipped[key];
   save();
 }
 
@@ -1492,17 +1694,36 @@ function renderGate() {
 
 function paintGate() {
   const done = answeredCount();
-  const open = done === AUDIT.length;
+  const seen = done + Object.keys(S.skipped).filter(k => S.skipped[k]).length;
+  const open = seen >= 4;
   $("#gate").classList.toggle("locked", !open);
   $$("[data-q7]").forEach(i => { i.disabled = !open; });
   $("#gate-note").textContent = open
-    ? "Part Two isolates the blind spot. The mirror leads with whichever question you name here."
-    : "Locked. " + done + " of " + AUDIT.length + " answered in Part One.";
+    ? (done === AUDIT.length
+        ? "Part Two isolates the blind spot. The mirror leads with whichever question you name here."
+        : "Open at " + done + " of " + AUDIT.length + " answered. A question you skipped is a candidate for this one.")
+    : "Opens once you have been through four of the six. " + done + " answered, " + (seen - done) + " skipped.";
 }
 
 function initAudit() {
   renderVoyage();
+  renderSubjects();
   renderGate();
+  $("#ex-toggle").addEventListener("click", () => {
+    const t = $("#ex-toggle");
+    const open = t.getAttribute("aria-expanded") === "true";
+    t.setAttribute("aria-expanded", open ? "false" : "true");
+    t.textContent = open ? "Show a worked answer" : "Hide the worked answer";
+    $("#example").hidden = open;
+  });
+  $("#skip").addEventListener("click", () => {
+    commitAnswer();
+    S.skipped[AUDIT[S.step].key] = true;
+    S.step = Math.min(AUDIT.length - 1, S.step + 1);
+    save();
+    renderStep();
+    toast("Skipped — come back to it");
+  });
   renderStep();
   $("#answer").addEventListener("input", () => { updateCount(); commitAnswer(); paintVoyage(); paintGate(); });
   $("#prev").addEventListener("click", () => { commitAnswer(); S.step = Math.max(0, S.step - 1); save(); renderStep(); });
@@ -1511,7 +1732,7 @@ function initAudit() {
   $("#copy-prompt").addEventListener("click", () => { commitAnswer(); copyText(buildPrompt(), "Full prompt copied"); });
   $("#clear-audit").addEventListener("click", () => {
     if (!confirm("Clear all answers, including Part Two?")) return;
-    S.audit = {}; S.step = 0; S.q7 = "";
+    S.audit = {}; S.step = 0; S.q7 = ""; S.skipped = {};
     save();
     renderGate();
     renderStep();
@@ -1584,7 +1805,8 @@ function analyse(raw) {
     digits: (text.match(/\d/g) || []).length,
     proper: (text.replace(/^[^a-z]*/i, "").match(/(?!^)\b[A-Z][a-z]{2,}/g) || []).length,
     question: (text.match(/\?/g) || []).length,
-    negation: (low.match(/\bnot\b|n't\b|\bnever\b|\bno\b/g) || []).length
+    negation: (low.match(/\bnot\b|n't\b|\bnever\b|\bno\b/g) || []).length,
+    unsure: /^\W*(i\s+)?(really\s+)?(don'?t\s+know|do\s+not\s+know|dunno|not\s+sure|no\s+idea|unsure|\?+)\W*$/i.test(text) ? 1 : 0
   };
 }
 
@@ -1738,6 +1960,14 @@ function buildRules(m, all) {
   if (m.loop.words && m.loop.negation >= 4) {
     push("negations", "loop", 5.6, "Q4 is built from negations — <b>" + m.loop.negation + "</b> of them. The loop describes what will not happen. It has no positive statement to test.");
   }
+  const declined = AUDIT.filter(a => m[a.key].unsure);
+  if (declined.length) {
+    const n = AUDIT.indexOf(declined[0]) + 1;
+    push("declined", declined[0].key, 7.7,
+      "Q" + n + " is answered <i>&ldquo;I don&rsquo;t know&rdquo;</i>. That is a position, not an absence &mdash; the question was put and declined. " +
+      (declined.length > 1 ? declined.length + " of the six are declined. " : "") +
+      "Which questions you can answer instantly, and which one you cannot, is itself the map.");
+  }
   if (S.q7) R.forEach(r => { if (r.leg === S.q7) r.w += 2.5; });
   return R.sort((a, b) => b.w - a.w);
 }
@@ -1763,7 +1993,8 @@ const CLOSERS = {
   namedCyclops: "What is naming him currently buying you?",
   compressed: "Which question did you answer shortest, and what is in the part you did not write?",
   complete: "If the structure is complete and the exit has not been taken, what is the exit actually costing?",
-  negations: "State the loop once with no negations. Is there still a sentence?"
+  negations: "State the loop once with no negations. Is there still a sentence?",
+  declined: "Answer it badly. What did the bad answer say?"
 };
 const DEFAULT_CLOSER = "Which of the six answers did you write for an audience, and what would the private version say?";
 
@@ -1790,17 +2021,23 @@ function phaseLines(m) {
   const swapped = /\bnew (job|role|city|country|company|relationship|partner|start)|another (job|role|company)|moved to|started at|joined /i.test(m.shock.text);
   const idn = m.dream.identity + m.trap.identity + m.loop.identity + m.decision.identity;
 
-  const map = m.trap.words
+  const map = m.trap.unsure
+    ? "Declined. The box has not been described, which is the most common place for this audit to stop."
+    : m.trap.words
     ? "&ldquo;" + esc(clause(m.trap.text, 96)) + "&rdquo; — carried as terrain rather than as a drawing of it. Comfort is the load-bearing element; a box you resent is easy to walk out of."
     : "Q2 unanswered. The map is still running, unread.";
 
-  const collision = m.shock.words
+  const collision = m.shock.unsure
+    ? "Declined. Either the collision has not happened yet, or it has not been conceded as one."
+    : m.shock.words
     ? "&ldquo;" + esc(clause(m.shock.text, 96)) + "&rdquo; — " +
       (m.shock.passive ? "recorded as something done to you." : "recorded from inside it.") +
       (swapped ? " The props were replaced, not stripped: new structural supports arrived with the collision." : "")
     : "Q3 unanswered. No point zero on record, which usually means the props are still on.";
 
-  const armor = idn >= 1
+  const armor = m.loop.unsure
+    ? "Declined. The loop is running unnarrated, which is the condition under which it runs best."
+    : idn >= 1
     ? "Stated in your own words as a fixed noun rather than an action. The persona built to navigate Q2 is now the party deciding which exits are thinkable."
     : m.loop.words
       ? "&ldquo;" + esc(clause(m.loop.text, 88)) + "&rdquo; — " + m.loop.first + " first-person markers, " +
@@ -1810,6 +2047,8 @@ function phaseLines(m) {
   let exit;
   if (m.decision.words && m.decision.agency >= 1 && (m.decision.digits || m.decision.proper) && m.practice.frequency >= 1) {
     exit = "&ldquo;" + esc(clause(m.decision.text, 92)) + "&rdquo; — a named act with a cadence behind it. Structurally complete.";
+  } else if (m.decision.unsure) {
+    exit = "Declined. An exit that cannot be named is not yet an exit; it is a direction.";
   } else if (m.decision.words) {
     const missing = [];
     if (!m.decision.digits && !m.decision.proper) missing.push("no date, number or named party");
@@ -1847,12 +2086,14 @@ function renderMirror() {
   let blind = "";
   if (q7) {
     const w = m[q7key].words;
-    const median = AUDIT.map(a => m[a.key].words).sort((a, b) => a - b)[3];
-    const cross = !w
-      ? " It is also the answer you left empty."
-      : w < median
-        ? " It is also among your shorter answers: " + w + " words against a median of " + median + "."
-        : " You wrote it at length — " + w + " words — which means the difficulty is not in finding the words.";
+    const answeredLens = AUDIT.map(a => m[a.key].words).filter(n => n > 0).sort((a, b) => a - b);
+    const median = answeredLens.length ? answeredLens[Math.floor(answeredLens.length / 2)] : 0;
+    let cross = "";
+    if (!w) cross = " It is also the one you left empty.";
+    else if (m[q7key].unsure) cross = " It is also the one you declined outright.";
+    else if (S.skipped[q7key]) cross = " It is also the one you skipped.";
+    else if (median && w <= median * 0.7) cross = " It is also among your shorter answers: " + w + " words against a median of " + median + ".";
+    else if (median && w >= median * 1.4) cross = " You wrote it at length — " + w + " words against a median of " + median + " — so the difficulty is not in finding words.";
     blind = "<p><span class=\"em\">You named Q" + (AUDIT.indexOf(q7) + 1) + ", " + esc(q7.short.toLowerCase()) +
       ", as the hardest to answer honestly.</span>" + cross + "</p><p>" + esc(BLIND[q7key]) + "</p>";
   } else {

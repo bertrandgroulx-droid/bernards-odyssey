@@ -42,11 +42,17 @@ geometry in different hardware, then name your own instance of each element.
 
 Delivered in two parts, as specified.
 
+Before the questions, you pick **what you are bringing** — work, a stalled project, a relationship, a
+rupture, or someone else's story. Every question then offers three **sentence stems** you can click to
+seed the box ("I stay because…", "By [date] I will…"), and a **worked answer** from someone in that
+situation. A sentence is enough, any question can be **skipped**, and *"I don't know"* is a real
+answer the mirror reads as a position rather than an absence.
+
 **Part One** is the six foundational questions that locate the breakdown in your current script: the
 original ambition, the comfortable box, the sudden shock, the ruminating loop, the executive decision,
 the daily practice.
 
-**Part Two** unlocks once all six are answered, and asks the one question that isolates the blind spot:
+**Part Two** unlocks once you have been through four of the six, and asks the one question that isolates the blind spot:
 *which of these six feels hardest to answer honestly right now?* The mirror leads with whichever
 question you name, and weights its reading toward it.
 
@@ -119,7 +125,7 @@ python3 -m http.server 8000
 
 ## Notes
 
-- Single `index.html`, ~2,400 lines, zero dependencies and zero network requests.
+- Single `index.html`, ~2,600 lines, zero dependencies and zero network requests.
 - State (answers, named elements, stored readings, reflections) persists in `localStorage` only.
 - Responsive, keyboard-navigable tabs, and honours `prefers-reduced-motion`.
 - A structured reflection instrument. Not therapy, diagnosis or treatment.
