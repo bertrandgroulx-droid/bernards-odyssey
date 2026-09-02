@@ -4,8 +4,23 @@ on:
   workflow_dispatch:
 
 jobs:
-  hello:
+  third_party_action:
     runs-on: ubuntu-latest
     steps:
-      - name: Bare step, no third-party actions
-        run: echo "runner reached the step"
+      - uses: actions/checkout@v4
+      - run: echo "checkout allowed"
+
+  pages_environment:
+    runs-on: ubuntu-latest
+    environment: github-pages
+    steps:
+      - run: echo "github-pages environment allowed"
+
+  pages_token:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - run: echo "pages/id-token permissions allowed"
