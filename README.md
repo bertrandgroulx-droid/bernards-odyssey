@@ -6,10 +6,22 @@ A single-file, dependency-free web app running the *Universal Storytelling Syste
 one `index.html`, no build step, no API keys, no network calls. Everything you type stays in your own
 browser.
 
-Every resilient narrative maps onto a single structural continuum. The technological **props** change
-to match an era's lifestyle. The internal **cognitive geometry** does not.
+## Why it works
 
-## The five modules
+1. **Narrative is a survival mechanism.** Before writing, the only way to transmit what kills you and
+   what saves you was a story a person could carry on foot. The teaching is the payload; the plot is
+   the packaging that survives the journey.
+2. **Stories are selected, like DNA.** A story lasts three thousand years only if it keeps teaching
+   something necessary. The *Odyssey* is not preserved because it is old — it is old because it kept
+   being needed, and the same structure re-instantiates in every era with new props.
+3. **Rehearsal rewires.** A story run repeatedly through a nervous system trains the response before
+   the event. Good stories produce better adapters, by pre-loading a pattern for terrain you have not
+   met yet.
+
+Which is why the app sequences **recognition first, then the questions**: you find your own terrain in
+the ledger before anything personal is asked, so the connection is made before it is examined.
+
+## The six modules
 
 ### 🗺️ The Ledger — the Deep-Time Parallel Matrix
 
@@ -72,10 +84,21 @@ Eight forced-choice questions read one person against all five. None is the heal
 survival strategy with a bill attached. Read yourself, then switch the subject and read your partner —
 two stored readings unlock the **pairing** analysis across all fifteen combinations.
 
+### 📉 The Drift — readings over time
+
+Claim three is a claim about repetition, so one reading proves nothing. Every run of the mirror is
+stored with its date and its measurable signals — hedges at the point of decision, whether Q5 carries
+a date or a named party, whether Q6 carries a cadence, deferral markers, which anchor you landed on,
+which question you named hardest. Run the audit again in a month and **what moved** is shown plainly.
+Your written answers to the open questions are kept alongside each reading.
+
+The numbers are descriptions, not scores. Nothing in the app says which direction is correct.
+
 ### 🍯 Worked Example — the Hundred Acre Wood
 
-If the geometry is universal it holds on a narrative nobody would call heroic. Milne's wood is the
-control case: the comparative alignment, the element mapping ledger against the Homeric baseline, the
+The test of claim two. If stories are selected for what they teach, the geometry should appear in
+narratives nobody would call heroic — and a children's book from 1926, still transmitted a century
+later, is the control case: the comparative alignment, the element mapping ledger against the Homeric baseline, the
 four-part lifecycle, and the six-question audit — run end to end on Pooh, Piglet, Rabbit and Eeyore.
 
 ## Run it
@@ -96,6 +119,7 @@ python3 -m http.server 8000
 
 ## Notes
 
-- Single `index.html`, ~2,100 lines, zero dependencies and zero network requests.
-- State (answers, named elements, stored readings) persists in `localStorage` only.
+- Single `index.html`, ~2,400 lines, zero dependencies and zero network requests.
+- State (answers, named elements, stored readings, reflections) persists in `localStorage` only.
 - Responsive, keyboard-navigable tabs, and honours `prefers-reduced-motion`.
+- A structured reflection instrument. Not therapy, diagnosis or treatment.

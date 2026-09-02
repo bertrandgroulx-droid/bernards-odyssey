@@ -647,6 +647,98 @@
   .demo-q { margin-bottom: 1rem; }
   .demo-q .qq { font-family: var(--serif); color: var(--gold); margin: 0 0 0.2rem; font-size: 1rem; }
   .demo-q p { margin: 0; color: var(--muted); font-size: 0.93rem; }
+  /* ---------- Thesis ---------- */
+  .thesis { margin: 2.4rem 0 0; }
+  .thesis .claims { display: grid; gap: 0.8rem; }
+  .claim {
+    display: grid;
+    grid-template-columns: 2.1rem 1fr;
+    gap: 0.9rem;
+    background: var(--card);
+    border: 1px solid rgba(148, 170, 188, 0.16);
+    border-left: 2px solid var(--bronze);
+    border-radius: var(--radius);
+    padding: 0.95rem 1.1rem;
+    text-align: left;
+  }
+  .claim .n {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--bronze);
+    line-height: 1;
+  }
+  .claim h4 {
+    margin: 0 0 0.28rem;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.08rem;
+    color: var(--papyrus);
+  }
+  .claim p { margin: 0; color: var(--muted); font-size: 0.93rem; }
+
+  /* ---------- Path CTAs ---------- */
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 1.6rem;
+    padding-top: 1.2rem;
+    border-top: 1px dashed rgba(148, 170, 188, 0.18);
+  }
+  .cta-row .step {
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+
+  /* ---------- Reflection capture ---------- */
+  .reflect {
+    margin-top: 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(4, 18, 31, 0.5);
+    padding: 0.95rem 1rem;
+  }
+  .reflect label {
+    display: block;
+    font-size: 0.64rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 0.45rem;
+  }
+  .reflect .saved { font-family: var(--mono); font-size: 0.72rem; color: var(--dim); margin: 0.45rem 0 0; }
+
+  /* ---------- Drift ---------- */
+  .drift-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+  .drift-table th {
+    text-align: left;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--dim);
+    font-weight: 600;
+    padding: 0.4rem 0.7rem 0.4rem 0;
+    border-bottom: 1px solid rgba(148, 170, 188, 0.2);
+    white-space: nowrap;
+  }
+  .drift-table td {
+    padding: 0.55rem 0.7rem 0.55rem 0;
+    border-bottom: 1px dashed rgba(148, 170, 188, 0.14);
+    vertical-align: top;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .drift-table td.when { color: var(--papyrus); }
+  .drift-table td.anch { color: var(--gold); white-space: normal; }
+  .delta-up { color: #7fd39b; }
+  .delta-down { color: #e9a17f; }
+  .delta-flat { color: var(--dim); }
+  .run-note { border-left: 2px solid var(--line); padding-left: 0.9rem; margin: 0.3rem 0 1.2rem; color: var(--muted); font-size: 0.9rem; }
+  .run-note .rq { color: var(--gold); font-style: italic; display: block; margin-bottom: 0.2rem; font-size: 0.86rem; }
+  .disclaimer { color: var(--dim); font-size: 0.78rem; max-width: 44rem; margin: 0.9rem auto 0; }
 </style>
 </head>
 <body>
@@ -664,6 +756,33 @@
     <input type="text" id="cyclops" placeholder="Name the raw, devouring power that owes you nothing." autocomplete="off" />
     <p class="hint">Polyphemus was escaped by cunning, not by force &mdash; and naming him out loud cost ten more years at sea.</p>
   </div>
+
+  <div class="thesis">
+    <div class="claims">
+      <div class="claim">
+        <span class="n">1</span>
+        <div>
+          <h4>Narrative is a survival mechanism.</h4>
+          <p>Before writing, the only way to transmit what kills you and what saves you was a story a person could carry on foot. The teaching is the payload. The plot is the packaging that survives the journey.</p>
+        </div>
+      </div>
+      <div class="claim">
+        <span class="n">2</span>
+        <div>
+          <h4>Stories are selected, like DNA.</h4>
+          <p>A story lasts three thousand years only if it keeps teaching something necessary. The <i>Odyssey</i> is not preserved because it is old. It is old because it kept being needed &mdash; and the same structure re-instantiates in every era with new props.</p>
+        </div>
+      </div>
+      <div class="claim">
+        <span class="n">3</span>
+        <div>
+          <h4>Rehearsal rewires.</h4>
+          <p>A story run repeatedly through a nervous system trains the response before the event; the brain treats the rehearsal as experience. Good stories produce better adapters &mdash; not by consolation, but by pre-loading a pattern for terrain you have not met yet.</p>
+        </div>
+      </div>
+    </div>
+    <p class="disclaimer">Which is why the questions come after the map, not before it. Recognition first &mdash; find your own terrain in the ledger &mdash; then the audit.</p>
+  </div>
 </header>
 
 <nav class="tabs" role="tablist" aria-label="Sections">
@@ -671,6 +790,7 @@
   <button class="tab" role="tab" id="tab-audit"  aria-controls="panel-audit"  aria-selected="false">The Audit</button>
   <button class="tab" role="tab" id="tab-lotus"  aria-controls="panel-lotus"  aria-selected="false">Lotus Island</button>
   <button class="tab" role="tab" id="tab-crew"   aria-controls="panel-crew"   aria-selected="false">The Anchors</button>
+  <button class="tab" role="tab" id="tab-drift"  aria-controls="panel-drift"  aria-selected="false">The Drift</button>
   <button class="tab" role="tab" id="tab-demo"   aria-controls="panel-demo"   aria-selected="false">Worked Example</button>
 </nav>
 
@@ -693,6 +813,11 @@
   <div class="ledger" id="ledger"></div>
 
   <p class="callout">The ledger is not a metaphor exercise. It is a coordinate system. You cannot steer out of terrain you have not named.</p>
+
+  <div class="cta-row">
+    <span class="step">Step 1 of 2 — recognition</span>
+    <button class="btn" data-goto="audit">Now run the audit &rarr;</button>
+  </div>
 </section>
 
 <!-- ============ AUDIT ============ -->
@@ -795,10 +920,17 @@
   <div class="mirror" id="crew-out" aria-live="polite"></div>
 </section>
 
+<!-- ============ DRIFT ============ -->
+<section class="panel" id="panel-drift" role="tabpanel" aria-labelledby="tab-drift" hidden>
+  <h2>The Drift</h2>
+  <p class="sub">Claim three is a claim about repetition: rehearsal changes the responder. One reading is a snapshot and proves nothing. Run the audit again in a month and the same six questions become an instrument &mdash; every reading is stored here with its measurable signals, so adaptation is visible rather than asserted.</p>
+  <div id="drift"></div>
+</section>
+
 <!-- ============ DEMO ============ -->
 <section class="panel" id="panel-demo" role="tabpanel" aria-labelledby="tab-demo" hidden>
   <h2>The System, Run on the Hundred Acre Wood</h2>
-  <p class="sub">Bronze Age maritime isolation to Edwardian pastoral. If the geometry is universal, it holds on a narrative nobody would call heroic. Milne&rsquo;s wood is the control case.</p>
+  <p class="sub">The test of claim two. If stories are selected for what they teach, the geometry should appear in narratives nobody would call heroic &mdash; and a children&rsquo;s book from 1926, still transmitted a century later, is the control case. Bronze Age maritime isolation to Edwardian pastoral: same load-bearing structure, different props.</p>
   <div id="demo"></div>
 </section>
 
@@ -807,6 +939,7 @@
 <footer>
   <p>Bernard&rsquo;s Odyssey &mdash; a clean, unvarnished mirror. No diagnosis, no plan, no checklist.</p>
   <p>Everything runs in your browser. Ownership stays with you; so does the route back to Ithaca.</p>
+  <p class="disclaimer">A structured reflection instrument. Not therapy, diagnosis or treatment. If you are in crisis, contact your local emergency number or a crisis line.</p>
 </footer>
 
 </div>
@@ -1174,7 +1307,7 @@ const STORE_KEY = "bernards-odyssey.v2";
 
 const DEFAULT_STATE = {
   cyclops: "", era: "homeric", ledger: {}, audit: {}, step: 0, q7: "",
-  lotusName: "", lotus: {}, lotusLines: [],
+  lotusName: "", lotus: {}, lotusLines: [], runs: [],
   crewRole: "self", crewName: "", crewAnswers: {}, crewResults: {}
 };
 
@@ -1759,8 +1892,17 @@ function renderMirror() {
       "</div>" +
       '<p class="closing" style="margin-top:1.1rem">' + esc(closer) + "</p>" +
       '<p class="attrib">No diagnosis is offered and no plan follows. The route back to Ithaca is navigated by the person who drew the map.</p>' +
-      '<div class="btn-row" style="margin-top:1.1rem"><button class="btn ghost" id="copy-mirror">Copy the mirror</button></div>' +
+      '<div class="reflect"><label for="reflect-in">Your answer to that question</label>' +
+        '<textarea id="reflect-in" rows="3" placeholder="Written for you, stored with this reading, visible in The Drift."></textarea>' +
+        '<p class="saved" id="reflect-saved"></p></div>' +
+      '<div class="btn-row" style="margin-top:1.1rem"><button class="btn ghost" id="copy-mirror">Copy the mirror</button>' +
+        '<button class="btn ghost" data-goto="drift">See the drift &rarr;</button></div>' +
     "</div>";
+
+  recordRun(m, all, A.primary);
+  renderDrift();
+  bindReflection();
+  bindGoto(host);
 
   $("#copy-mirror").addEventListener("click", () => {
     const blocks = $$(".mirror-block", host).map(b => b.innerText.replace(/\nCopy the mirror\s*$/, "").trim());
@@ -1835,6 +1977,152 @@ q7 ? "Question " + (AUDIT.indexOf(q7) + 1) + " — " + q7.short + "." : "(not an
 "---",
 "Run the analysis now, under the constraints above."
   ]).join("\n");
+}
+
+/* ============================================================
+   7b. THE DRIFT — readings over time
+   ============================================================ */
+
+function runFingerprint() {
+  return AUDIT.map(a => (S.audit[a.key] || "").trim()).join("|") + "::" + S.q7;
+}
+
+function recordRun(m, all, anchor) {
+  const fp = runFingerprint();
+  const run = {
+    t: Date.now(), fp: fp, q7: S.q7, anchor: anchor,
+    total: all.total, agency: all.agency, external: all.external,
+    legs: AUDIT.map(a => m[a.key].words),
+    dHedge: m.decision.hedge,
+    dAct: m.decision.agency,
+    dTimed: (m.decision.digits || m.decision.proper) ? 1 : 0,
+    pCadence: m.practice.frequency,
+    defer: m.trap.deferral + m.loop.deferral + m.decision.deferral,
+    reflection: ""
+  };
+  const last = S.runs[S.runs.length - 1];
+  if (last && last.fp === fp) {
+    run.reflection = last.reflection;
+    S.runs[S.runs.length - 1] = run;
+  } else {
+    S.runs.push(run);
+  }
+  if (S.runs.length > 24) S.runs = S.runs.slice(-24);
+  save();
+}
+
+function bindReflection() {
+  const ta = $("#reflect-in");
+  if (!ta || !S.runs.length) return;
+  ta.value = S.runs[S.runs.length - 1].reflection || "";
+  ta.addEventListener("input", () => {
+    S.runs[S.runs.length - 1].reflection = ta.value;
+    save();
+    $("#reflect-saved").textContent = ta.value.trim() ? "stored with this reading" : "";
+    renderDrift();
+  });
+  $("#reflect-saved").textContent = ta.value.trim() ? "stored with this reading" : "";
+}
+
+function bindGoto(root) {
+  $$("[data-goto]", root).forEach(b => {
+    if (b.dataset.bound) return;
+    b.dataset.bound = "1";
+    b.addEventListener("click", () => {
+      selectTab($("#tab-" + b.dataset.goto));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+}
+
+function fmtDate(t) {
+  const d = new Date(t);
+  return d.toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
+}
+
+function moved(label, a, b, unit) {
+  if (a === b) return "";
+  return "<li><b>" + esc(label) + ":</b> " + a + (unit || "") + " → <span class=\"em\">" + b + (unit || "") + "</span></li>";
+}
+
+function renderDrift() {
+  const host = $("#drift");
+  if (!host) return;
+  const runs = S.runs;
+
+  if (!runs.length) {
+    host.innerHTML = '<div class="mirror-block"><h3>No readings on record</h3>' +
+      "<p>Run the audit once to open the record. The instrument only becomes an instrument on the second reading.</p>" +
+      '<div class="btn-row" style="margin-top:1rem"><button class="btn" data-goto="audit">Go to the audit &rarr;</button></div></div>';
+    bindGoto(host);
+    return;
+  }
+
+  const rows = runs.slice().reverse().map(r => {
+    const q7 = r.q7 ? AUDIT.filter(a => a.key === r.q7)[0] : null;
+    return "<tr>" +
+      '<td class="when">' + esc(fmtDate(r.t)) + "</td>" +
+      '<td class="anch">' + esc(ANCHORS[r.anchor] ? ANCHORS[r.anchor].figure : "—") + "</td>" +
+      "<td>" + esc(q7 ? q7.short : "not named") + "</td>" +
+      "<td>" + r.total + "w</td>" +
+      "<td>" + r.dHedge + "</td>" +
+      "<td>" + (r.dTimed ? "yes" : "no") + "</td>" +
+      "<td>" + (r.pCadence ? "yes" : "no") + "</td>" +
+      "<td>" + r.defer + "</td>" +
+      "</tr>";
+  }).join("");
+
+  const table = '<div class="scroller"><table class="drift-table"><thead><tr>' +
+    "<th>Reading</th><th>Anchor</th><th>Named hardest</th><th>Words</th>" +
+    "<th>Q5 hedges</th><th>Q5 timed</th><th>Q6 cadence</th><th>Deferral</th>" +
+    "</tr></thead><tbody>" + rows + "</tbody></table></div>";
+
+  let whatMoved;
+  if (runs.length < 2) {
+    whatMoved = "<p>One reading on record, taken " + esc(fmtDate(runs[0].t)) +
+      ". A single reading is a snapshot and proves nothing about adaptation. Come back to the same six questions in a few weeks; the comparison is the instrument.</p>";
+  } else {
+    const a = runs[0], b = runs[runs.length - 1];
+    const items = [
+      moved("Total words", a.total, b.total, "w"),
+      moved("Hedges at the point of decision", a.dHedge, b.dHedge),
+      moved("Deferral markers", a.defer, b.defer),
+      moved("First-person acts", a.agency, b.agency),
+      moved("Third parties", a.external, b.external)
+    ];
+    if (a.dTimed !== b.dTimed) items.push("<li><b>A date, number or named party in Q5:</b> " + (a.dTimed ? "present" : "absent") + " → <span class=\"em\">" + (b.dTimed ? "present" : "absent") + "</span></li>");
+    if (a.pCadence !== b.pCadence) items.push("<li><b>A cadence in Q6:</b> " + (a.pCadence ? "present" : "absent") + " → <span class=\"em\">" + (b.pCadence ? "present" : "absent") + "</span></li>");
+    if (a.anchor !== b.anchor) items.push("<li><b>Anchor:</b> " + esc(ANCHORS[a.anchor].figure) + " → <span class=\"em\">" + esc(ANCHORS[b.anchor].figure) + "</span></li>");
+    if (a.q7 !== b.q7) {
+      const qa = AUDIT.filter(x => x.key === a.q7)[0], qb = AUDIT.filter(x => x.key === b.q7)[0];
+      items.push("<li><b>Hardest to answer honestly:</b> " + esc(qa ? qa.short : "not named") + " → <span class=\"em\">" + esc(qb ? qb.short : "not named") + "</span></li>");
+    }
+    const list = items.filter(Boolean).join("");
+    whatMoved = "<p>" + runs.length + " readings, " + esc(fmtDate(a.t)) + " to " + esc(fmtDate(b.t)) + ".</p>" +
+      (list ? '<ul class="ledger-fill" style="margin-top:0.4rem">' + list + "</ul>"
+            : "<p>Nothing measurable moved between the first reading and the latest. The script is stable, which is a finding rather than a failure.</p>") +
+      "<p>The numbers are descriptions, not scores. Nothing here says which direction is correct.</p>";
+  }
+
+  const notes = runs.slice().reverse().filter(r => (r.reflection || "").trim()).map(r =>
+    '<div class="run-note"><span class="rq">' + esc(fmtDate(r.t)) + "</span>" + esc(r.reflection) + "</div>"
+  ).join("");
+
+  host.innerHTML =
+    '<div class="mirror-block"><h3>I. What moved</h3>' + whatMoved + "</div>" +
+    '<div class="mirror-block"><h3>II. The record</h3>' + table +
+      '<div class="btn-row" style="margin-top:1.1rem"><button class="btn ghost" data-goto="audit">Run it again &rarr;</button>' +
+      '<button class="btn ghost" id="clear-runs">Clear the record</button></div></div>' +
+    (notes ? '<div class="mirror-block"><h3>III. What you wrote back</h3>' + notes + "</div>" : "");
+
+  bindGoto(host);
+  const cr = $("#clear-runs");
+  if (cr) cr.addEventListener("click", () => {
+    if (!confirm("Delete every stored reading and reflection?")) return;
+    S.runs = [];
+    save();
+    renderDrift();
+  });
 }
 
 /* ============================================================
@@ -2099,12 +2387,17 @@ function renderDemo() {
     save();
   });
   initTabs();
+  $$("[data-goto]").forEach(b => b.addEventListener("click", () => {
+    selectTab($("#tab-" + b.dataset.goto));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }));
   renderLedger();
   initEras();
   initAudit();
   initLotus();
   initCrew();
   renderDemo();
+  renderDrift();
 })();
 </script>
 </body>
