@@ -1,0 +1,11 @@
+name: Diagnostic
+
+on:
+  workflow_dispatch:
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bare step, no third-party actions
+        run: echo "runner reached the step"
