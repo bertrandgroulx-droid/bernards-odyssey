@@ -821,6 +821,129 @@
   }
   .leg[data-state="skipped"] { background: repeating-linear-gradient(90deg, rgba(148,170,188,0.35) 0 4px, transparent 4px 8px); }
   .enough { font-size: 0.78rem; color: var(--dim); margin: 0.45rem 0 0; }
+  /* ---------- Step rail ---------- */
+  .steps { gap: 0.15rem; }
+  .tab .idx {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    opacity: 0.75;
+    margin-right: 0.4rem;
+  }
+  .tab[data-locked="1"] { opacity: 0.38; cursor: not-allowed; }
+  .tab[data-locked="1"]:hover { color: var(--muted); }
+  .further {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    margin: -1.2rem 0 2rem;
+  }
+  .further .flabel {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-right: 0.3rem;
+  }
+  .further .tab { font-size: 0.7rem; padding: 0.32rem 0.6rem; letter-spacing: 0.12em; }
+
+  /* ---------- Story input ---------- */
+  .story-slot {
+    background: var(--card);
+    border: 1px solid rgba(148, 170, 188, 0.16);
+    border-left: 2px solid var(--bronze);
+    border-radius: var(--radius);
+    padding: 1rem 1.15rem;
+    margin-bottom: 0.8rem;
+  }
+  .story-slot .slot-n {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin: 0 0 0.6rem;
+  }
+  .story-slot .row { display: grid; grid-template-columns: 1fr auto; gap: 0.6rem; align-items: start; }
+  .story-slot .why { margin-top: 0.6rem; }
+  .story-slot .why label,
+  .story-slot .title-label {
+    display: block;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 0.3rem;
+  }
+  .drop {
+    appearance: none;
+    background: transparent;
+    border: 1px solid rgba(148, 170, 188, 0.2);
+    border-radius: var(--radius);
+    color: var(--dim);
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0.62rem 0.7rem;
+    cursor: pointer;
+  }
+  .drop:hover { color: var(--gold); border-color: var(--bronze); }
+  .suggest { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.6rem; }
+
+  /* ---------- Cultural DNA ---------- */
+  .dna {
+    background: var(--card-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.3rem;
+    margin-bottom: 0.9rem;
+  }
+  .dna .dna-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--papyrus);
+    margin: 0 0 0.15rem;
+    line-height: 1.15;
+  }
+  .dna .dna-kind {
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin: 0 0 1rem;
+  }
+  .strand { list-style: none; margin: 0; padding: 0; }
+  .strand li {
+    display: grid;
+    grid-template-columns: 12.5rem 1fr;
+    gap: 0.8rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed rgba(148, 170, 188, 0.14);
+    font-size: 0.95rem;
+  }
+  .strand li:last-child { border-bottom: none; }
+  .strand .k {
+    font-size: 0.64rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--dim);
+    padding-top: 0.22rem;
+  }
+  .strand .homeric-side { color: var(--dim); font-style: italic; display: block; font-size: 0.82rem; }
+  .strand .v { color: var(--papyrus); }
+  .strand .v.absent { color: var(--dim); font-style: italic; }
+  .dna .verdict { margin: 1rem 0 0; color: var(--muted); }
+  .dna .verdict b { color: var(--gold); font-weight: 600; }
+  .unmatched-form { display: grid; gap: 0.7rem; margin-top: 0.9rem; }
+  .unmatched-form .f label {
+    display: block;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 0.25rem;
+  }
+  .unmatched-form .f .hint { color: var(--dim); font-size: 0.8rem; margin: 0 0 0.3rem; }
 </style>
 </head>
 <body>
@@ -832,12 +955,6 @@
   <h1>Bernard<span class="apos">&rsquo;</span>s Odyssey</h1>
   <div class="rule" aria-hidden="true"></div>
   <p class="lede">Every resilient narrative maps onto a single structural continuum. The technological <b>props</b> change to match an era&rsquo;s lifestyle. The internal <b>cognitive geometry</b> does not. Homer&rsquo;s maritime terrain is the universal baseline; your situation is the instance.</p>
-
-  <div class="hero-ask">
-    <label for="cyclops">Who is the Cyclops in your Odyssey?</label>
-    <input type="text" id="cyclops" placeholder="Name the raw, devouring power that owes you nothing." autocomplete="off" />
-    <p class="hint">Polyphemus was escaped by cunning, not by force &mdash; and naming him out loud cost ten more years at sea.</p>
-  </div>
 
   <div class="thesis">
     <div class="claims">
@@ -863,49 +980,63 @@
         </div>
       </div>
     </div>
-    <p class="disclaimer">Which is why the questions come after the map, not before it. Recognition first &mdash; find your own terrain in the ledger &mdash; then the audit.</p>
+    <p class="disclaimer">So the app runs in that order. <b>You name a story you love.</b> The app shows you the cultural DNA it is carrying. Only then does it ask about you.</p>
   </div>
 </header>
 
-<nav class="tabs" role="tablist" aria-label="Sections">
-  <button class="tab" role="tab" id="tab-ledger" aria-controls="panel-ledger" aria-selected="true">The Ledger</button>
-  <button class="tab" role="tab" id="tab-audit"  aria-controls="panel-audit"  aria-selected="false">The Audit</button>
-  <button class="tab" role="tab" id="tab-lotus"  aria-controls="panel-lotus"  aria-selected="false">Lotus Island</button>
-  <button class="tab" role="tab" id="tab-crew"   aria-controls="panel-crew"   aria-selected="false">The Anchors</button>
-  <button class="tab" role="tab" id="tab-drift"  aria-controls="panel-drift"  aria-selected="false">The Drift</button>
-  <button class="tab" role="tab" id="tab-demo"   aria-controls="panel-demo"   aria-selected="false">Worked Example</button>
+<nav class="tabs steps" role="tablist" aria-label="Steps">
+  <button class="tab" role="tab" id="tab-story"   aria-controls="panel-story"   aria-selected="true"><span class="idx">1</span>Your story</button>
+  <button class="tab" role="tab" id="tab-dna"     aria-controls="panel-dna"     aria-selected="false"><span class="idx">2</span>Cultural DNA</button>
+  <button class="tab" role="tab" id="tab-audit"   aria-controls="panel-audit"   aria-selected="false"><span class="idx">3</span>The six questions</button>
+  <button class="tab" role="tab" id="tab-seventh" aria-controls="panel-seventh" aria-selected="false"><span class="idx">4</span>The seventh</button>
 </nav>
+<div class="further">
+  <span class="flabel">Further instruments</span>
+  <button class="tab" role="tab" id="tab-lotus" aria-controls="panel-lotus" aria-selected="false">Lotus Island</button>
+  <button class="tab" role="tab" id="tab-crew"  aria-controls="panel-crew"  aria-selected="false">The Anchors</button>
+  <button class="tab" role="tab" id="tab-drift" aria-controls="panel-drift" aria-selected="false">The Drift</button>
+</div>
 
 <main>
 
 <!-- ============ LEDGER ============ -->
-<section class="panel" id="panel-ledger" role="tabpanel" aria-labelledby="tab-ledger">
-  <h2>The Deep-Time Parallel Matrix</h2>
-  <p class="sub">Five elements. Each holds its function across three thousand years; only the hardware is swapped. Switch the era to see the same geometry in different props, then name your own instance in the field under each row.</p>
+<!-- ============ 1. YOUR STORY ============ -->
+<section class="panel" id="panel-story" role="tabpanel" aria-labelledby="tab-story">
+  <h2>Name a story you love</h2>
+  <p class="sub">Not a story about you. A film, a novel, a myth, a series &mdash; anything you have returned to more than once. The one you would defend at a dinner table. Stories that last are carrying something; the first job is to find out what yours is carrying.</p>
 
-  <div class="era-bar" role="group" aria-label="Era">
-    <span class="era-label">Props</span>
-    <button class="era" data-era="homeric" aria-pressed="true">Homeric</button>
-    <button class="era" data-era="pastoral" aria-pressed="false">Hundred Acre Wood</button>
-    <button class="era" data-era="industrial" aria-pressed="false">Industrial</button>
-    <button class="era" data-era="corporate" aria-pressed="false">Corporate</button>
-    <button class="era" data-era="digital" aria-pressed="false">Digital</button>
+  <div id="story-slots"></div>
+
+  <div class="btn-row">
+    <button class="btn ghost" id="add-story">+ Add another story</button>
+    <button class="btn" id="run-dna">Find its DNA &rarr;</button>
+  </div>
+  <p class="enough">One is enough. Two or three is better &mdash; what they have in common is the part that is about you.</p>
+</section>
+
+<!-- ============ 2. CULTURAL DNA ============ -->
+<section class="panel" id="panel-dna" role="tabpanel" aria-labelledby="tab-dna" hidden>
+  <h2>The Cultural DNA of your story</h2>
+  <p class="sub">Every durable narrative runs on the same five elements. The props change with the era; the internal geometry does not. Here is your story, read against the Homeric baseline.</p>
+
+  <div id="dna-out" aria-live="polite"></div>
+
+  <div class="card" style="margin-top:1.4rem">
+    <h3>The five elements</h3>
+    <p class="sub" style="margin-bottom:1rem">The baseline the reading above is measured against.</p>
+    <div class="ledger" id="ledger"></div>
   </div>
 
-  <div class="ledger" id="ledger"></div>
-
-  <p class="callout">The ledger is not a metaphor exercise. It is a coordinate system. You cannot steer out of terrain you have not named.</p>
-
-  <div class="cta-row">
-    <span class="step">Step 1 of 2 — recognition</span>
-    <button class="btn" data-goto="audit">Now run the audit &rarr;</button>
+  <div class="cta-row" id="dna-cta" hidden>
+    <span class="step">Step 2 of 4 &mdash; the pattern is now visible</span>
+    <button class="btn" data-goto="audit">Now the six questions &rarr;</button>
   </div>
 </section>
 
 <!-- ============ AUDIT ============ -->
 <section class="panel" id="panel-audit" role="tabpanel" aria-labelledby="tab-audit" hidden>
   <h2>The Plain-Spoken Socratic Audit</h2>
-  <p class="sub">Delivered in two parts. <b>Part One</b> is the six foundational questions that locate the exact breakdown in your current script. <b>Part Two</b> is a single question that isolates the blind spot. Plain words. The mirror reads what you actually wrote, not what you meant.</p>
+  <p class="sub" id="audit-bridge">Six questions, in your own terrain this time. Plain words. The mirror reads what you actually wrote, not what you meant.</p>
 
   <div class="subject-pick">
     <p class="lead">First: what are you bringing?</p>
@@ -941,9 +1072,20 @@
     </div>
   </div>
 
+  <div class="cta-row" id="audit-cta">
+    <span class="step" id="audit-step-note"></span>
+    <button class="btn" data-goto="seventh" id="to-seventh">The seventh question &rarr;</button>
+  </div>
+</section>
+
+<!-- ============ 4. THE SEVENTH ============ -->
+<section class="panel" id="panel-seventh" role="tabpanel" aria-labelledby="tab-seventh" hidden>
+  <h2>The Seventh Question</h2>
+  <p class="sub">Six answers are on record. One question remains, and it is the one that isolates the blind spot: the others tell the mirror what your script says, this one tells it where the script is defended.</p>
+
   <div class="gate" id="gate">
-    <span class="part-flag">Part Two</span>
-    <p class="q7">Which of these six questions feels the hardest to answer honestly right now?</p>
+    <span class="part-flag">Question 7</span>
+    <p class="q7">Which of these six questions felt the hardest to answer honestly?</p>
     <div class="opts" id="q7-opts"></div>
     <p class="stored-note" id="gate-note"></p>
   </div>
@@ -951,9 +1093,9 @@
   <div class="btn-row" style="margin-top:1.1rem">
     <button class="btn" id="run-mirror">Run the mirror</button>
     <button class="btn ghost" id="copy-prompt">Copy full prompt</button>
-    <button class="btn ghost" id="clear-audit">Clear</button>
+    <button class="btn ghost" id="clear-audit">Clear the audit</button>
   </div>
-  <p class="stored-note">Answers stay in this browser. Nothing is uploaded. &ldquo;Copy full prompt&rdquo; wraps them in the locked Homeric system prompt so the same analysis can be run through any model.</p>
+  <p class="stored-note">Everything stays in this browser. Nothing is uploaded. &ldquo;Copy full prompt&rdquo; wraps your answers in the system prompt so the same analysis can be run through any model.</p>
 
   <div class="mirror" id="mirror" aria-live="polite"></div>
 </section>
@@ -1025,13 +1167,6 @@
   <div id="drift"></div>
 </section>
 
-<!-- ============ DEMO ============ -->
-<section class="panel" id="panel-demo" role="tabpanel" aria-labelledby="tab-demo" hidden>
-  <h2>The System, Run on the Hundred Acre Wood</h2>
-  <p class="sub">The test of claim two. If stories are selected for what they teach, the geometry should appear in narratives nobody would call heroic &mdash; and a children&rsquo;s book from 1926, still transmitted a century later, is the control case. Bronze Age maritime isolation to Edwardian pastoral: same load-bearing structure, different props.</p>
-  <div id="demo"></div>
-</section>
-
 </main>
 
 <footer>
@@ -1049,14 +1184,6 @@
    1. THE DEEP-TIME PARALLEL MATRIX
    ============================================================ */
 
-const ERA_LABEL = {
-  homeric: "Homeric baseline",
-  pastoral: "Hundred Acre Wood",
-  industrial: "Industrial",
-  corporate: "Corporate",
-  digital: "Digital"
-};
-
 const LEDGER = [
   {
     key: "stasis",
@@ -1064,13 +1191,7 @@ const LEDGER = [
     element: "The Trapped State of Stasis",
     fn: "Comfort that neutralises the functional map.",
     ask: "Name your Lotus Island",
-    props: {
-      homeric: "The deceptive, amnesiac shores of Lotus-Eater Island. The crew is not chained. They are fed something pleasant and stop asking about home.",
-      pastoral: "Rabbit's tight doorway and the imagined Heffalump trap. A physical space of absolute stasis, entered by appetite and held by routine.",
-      industrial: "The company town. The wage returns to the company store by Friday. Nobody locks the gate because nobody walks to it.",
-      corporate: "The golden-handcuff seat. The vesting schedule replaces the horizon. Four more years is always four more years.",
-      digital: "The infinite feed. Time passes, nothing is retained, and the day ends with no record of where it went."
-    }
+    baseline: "The deceptive, amnesiac shores of Lotus-Eater Island. The crew is not chained. They are fed something pleasant and stop asking about home."
   },
   {
     key: "transit",
@@ -1078,13 +1199,7 @@ const LEDGER = [
     element: "The Medium of Geographic Transit",
     fn: "The vehicle you must master but did not design.",
     ask: "Name your ship",
-    props: {
-      homeric: "The wooden sailing ship, hand-steered into water no one has charted. It carries you and it can drown you.",
-      pastoral: "Christopher Robin's umbrella boat and the floating honey jar — <i>The Brain of Pooh</i>. A vessel improvised out of what was already in the room.",
-      industrial: "The rail line and the steamship timetable. You move fast, along track someone else laid.",
-      corporate: "The ladder, the transfer, the org chart. Advancement along a route designed by people who are not you.",
-      digital: "The platform and its ranking function. Reach is granted, not held, and the terms change without notice."
-    }
+    baseline: "The wooden sailing ship, hand-steered into water no one has charted. It carries you and it can drown you."
   },
   {
     key: "terrain",
@@ -1092,13 +1207,7 @@ const LEDGER = [
     element: "The Formless Dangerous Terrain",
     fn: "Ground with no path. Only bearings.",
     ask: "Name your open sea",
-    props: {
-      homeric: "The untamed, chaotic maritime void. No landmarks, no guarantees, indifferent to intent.",
-      pastoral: "The foggy, flood-prone Hundred Acre Wood. Familiar in daylight, unnavigable in weather, and larger than the map of it.",
-      industrial: "The unmapped interior. Distance measured in weeks and in people who did not come back.",
-      corporate: "The market. Demand nobody forecasts correctly, dressed up as a quarterly plan.",
-      digital: "The open network. Unranked, unfiltered, and entirely uninterested in whether you are seen."
-    }
+    baseline: "The untamed, chaotic maritime void. No landmarks, no guarantees, indifferent to intent."
   },
   {
     key: "threat",
@@ -1106,13 +1215,7 @@ const LEDGER = [
     element: "The Sovereign Predatory Threat",
     fn: "Raw devouring power. Escaped by cunning, never by force.",
     ask: "Name your Cyclops",
-    props: {
-      homeric: "The cave of Polyphemus. One eye, no law, and no obligation to hear your case.",
-      pastoral: "The unseen, devouring Heffalump and the chaotic displacing energy of Tigger. One is imagined and one arrives; both consume the predictable reality.",
-      industrial: "The owner who holds the deed, the ledger, and the constable. Appeal exists on paper.",
-      corporate: "The gatekeeper with arbitrary discretion over your file. No stated criteria, no right of reply.",
-      digital: "The platform that can delete you overnight. No hearing, no human, no appeal that reaches one."
-    }
+    baseline: "The cave of Polyphemus. One eye, no law, and no obligation to hear your case."
   },
   {
     key: "agency",
@@ -1120,15 +1223,343 @@ const LEDGER = [
     element: "The Tool of Pure Agency",
     fn: "High-friction mastery. Nobody can string it for you.",
     ask: "Name your bow",
-    props: {
-      homeric: "The heavy bow of Odysseus. Every suitor in the hall tries it. Not one can bend it. The tool is the proof.",
-      pastoral: "The simple honey pot, salvaged and re-engineered as a floating vessel. An object of appetite converted into an instrument of rescue.",
-      industrial: "The mastered trade. The machine only you can run, the joint only you can cut true.",
-      corporate: "The judgment that cannot be delegated. The call that is yours whether or not it is rewarded.",
-      digital: "The unautomatable daily rep. The friction nobody outsources, because outsourcing it removes the point."
-    }
+    baseline: "The heavy bow of Odysseus. Every suitor in the hall tries it. Not one can bend it. The tool is the proof."
   }
 ];
+
+/* ---- The corpus: durable stories mapped to the Homeric elements ---- */
+const STORIES = [
+  { id:"odyssey", t:"The Odyssey", alt:["odysseus","homer"], kind:"Epic poem, c. 8th century BC",
+    stasis:"Calypso's island — seven years of comfort offered as a gift",
+    transit:"A wooden ship, and later a raft he builds himself",
+    terrain:"The wine-dark sea, unmapped and indifferent",
+    threat:"Polyphemus in the cave, and Poseidon behind him",
+    agency:"The heavy bow no other man in the hall can string",
+    read:"The map is a soldier's certainty that the war is the hard part. The collision is ten years of sea. The armour is the cunning that saved him and then hid him from his own household. The exit is the bow, and the discipline to wait in rags until the hour.",
+    anchor:"mast" },
+  { id:"gatsby", t:"The Great Gatsby", alt:["gatsby"], kind:"Novel, 1925",
+    stasis:"The parties. Every week, the same lights, the same nobody",
+    transit:"The yellow car, and the green light used as a compass",
+    terrain:"The valley of ashes between the money and the dream",
+    threat:"Tom Buchanan — inherited power that never has to answer",
+    agency:"Absent. He has a performance where the tool should be",
+    read:"The map is that the past can be bought back. The collision is Daisy in the room, smaller than the idea of her. The armour is Gatsby himself, invented and load-bearing. There is no exit: the story is what the pattern does when the fourth phase never arrives.",
+    anchor:"penelope" },
+  { id:"hamlet", t:"Hamlet", alt:["prince of denmark"], kind:"Play, c. 1600",
+    stasis:"Elsinore. Everyone waiting for him to do something",
+    transit:"A ship to England he does not control",
+    terrain:"A court where nothing said can be trusted",
+    threat:"Claudius — power that has already killed once",
+    agency:"The sword, taken up four acts late",
+    read:"The map is that certainty must come before action. The collision is the ghost. The armour is the performance of madness, which starts as cover and becomes the residence. The exit arrives, and arrives too late to be an exit.",
+    anchor:"penelope" },
+  { id:"shawshank", t:"The Shawshank Redemption", alt:["shawshank"], kind:"Film, 1994",
+    stasis:"Institutionalisation. Brooks could not live outside the wall",
+    transit:"A tunnel dug with a rock hammer, over nineteen years",
+    terrain:"A system with no appeal that reaches a human being",
+    threat:"Warden Norton — sovereign power wearing a Bible",
+    agency:"The hammer, and the ledger of the warden's crimes",
+    read:"The map is that an innocent man will be recognised as one. The collision is the sentence. The armour is hope, which the film treats as dangerous before it treats it as saving. The exit is high-friction and daily: a spoonful of wall at a time.",
+    anchor:"mast" },
+  { id:"matrix", t:"The Matrix", alt:["neo"], kind:"Film, 1999",
+    stasis:"The simulation itself — comfort as a manufactured map",
+    transit:"The Nebuchadnezzar, and the phone line out",
+    terrain:"The real world: ruined, unmapped, worse than the lie",
+    threat:"Agent Smith — a power that can wear anyone",
+    agency:"Seeing the code. Not given; trained for",
+    read:"The literal statement of phase one: a comfortable manufactured map mistaken for terrain. The collision is unplugging. The armour is the belief that he is not the one. The exit is the moment he stops dodging and stands still.",
+    anchor:"mast" },
+  { id:"godfather", t:"The Godfather", alt:["corleone"], kind:"Film, 1972",
+    stasis:"The family business, described as temporary for thirty years",
+    transit:"Sicily, and the war-time uniform he arrives home in",
+    terrain:"A country where the law is another family",
+    threat:"The other families — and eventually Michael himself",
+    agency:"The decision at the restaurant table",
+    read:"The map is: that's my family, it's not me. The collision is the shooting of his father. The armour is the war hero who was never going to be in it. The exit is taken in the wrong direction, and taken completely.",
+    anchor:"ajax" },
+  { id:"breakingbad", t:"Breaking Bad", alt:["walter white","heisenberg"], kind:"Television, 2008–2013",
+    stasis:"The classroom and the car wash — a life he did not choose out loud",
+    transit:"The RV, then the lab beneath the laundry",
+    terrain:"A market with no law and no forecast",
+    threat:"Gus Fring — courteous, sovereign, absolutely predatory",
+    agency:"Chemistry. Real mastery, aimed at the wrong door",
+    read:"The map is that provision equals love. The collision is the diagnosis. The armour is Heisenberg, built to survive the box and then preferred to the man. The exit is an act of pure agency pointed away from Ithaca.",
+    anchor:"ajax" },
+  { id:"groundhog", t:"Groundhog Day", alt:["phil connors"], kind:"Film, 1993",
+    stasis:"The literal loop — the same day, comfortable and consequence-free",
+    transit:"None. The vehicle is the repetition itself",
+    terrain:"A town he considers beneath him",
+    threat:"No Cyclops. The predator is his own contempt",
+    agency:"Practice: piano, ice, medicine, one day at a time",
+    read:"The purest four-phase story in film. The map is cynicism. The collision is repetition without escape. The armour is the persona that plays every angle. The exit is askēsis — he stops trying to leave and starts getting good at the day.",
+    anchor:"elpenor" },
+  { id:"truman", t:"The Truman Show", alt:["truman burbank"], kind:"Film, 1998",
+    stasis:"Seahaven. Everything pleasant, nothing real",
+    transit:"A small boat, sailed by a man taught to fear water",
+    terrain:"A sea that was engineered to stop him",
+    threat:"Christof — a benign-sounding power with total discretion",
+    agency:"Sailing anyway, into the manufactured storm",
+    read:"Phase one made literal: a constructed map sold as terrain. The collision is the light falling from the sky. The armour is his own agreeableness. The exit is a bow to the camera and a door.",
+    anchor:"mast" },
+  { id:"fightclub", t:"Fight Club", alt:["tyler durden"], kind:"Novel 1996, film 1999",
+    stasis:"The catalogue apartment, and insomnia as a lifestyle",
+    transit:"The house on Paper Street",
+    terrain:"An economy that sells identity by mail order",
+    threat:"Tyler — the persona, which becomes sovereign",
+    agency:"Shooting himself. Ownership taken at the last possible cost",
+    read:"The map is that the right possessions constitute a self. The collision is the explosion. The armour is Tyler, built to escape the box and then running the house. The exit is the narrator retaking authorship of his own script.",
+    anchor:"patroclus" },
+  { id:"prideprejudice", t:"Pride and Prejudice", alt:["elizabeth bennet","darcy"], kind:"Novel, 1813",
+    stasis:"Longbourn, and a marriage market with one exit",
+    transit:"Carriages, letters, and a walk to Netherfield",
+    terrain:"An economy where a woman's future is other people's opinions",
+    threat:"Lady Catherine — inherited power that expects obedience",
+    agency:"Refusing Collins, then refusing Darcy. The word no",
+    read:"The map is first impressions treated as knowledge. The collision is the letter. The armour is wit, which protects her and also keeps her from being read. The exit is the reversal of her own judgement, which costs more than the refusals.",
+    anchor:"ajax" },
+  { id:"janeeyre", t:"Jane Eyre", alt:["jane"], kind:"Novel, 1847",
+    stasis:"Thornfield — safety offered on terms she cannot accept",
+    transit:"The road out, on foot, with nothing",
+    terrain:"The moors, and a century with no provision for her",
+    threat:"Rochester's secret, and St John's colder claim on her life",
+    agency:"Walking out. Choosing destitution over a false position",
+    read:"The map is that love will settle the question of her standing. The collision is the interrupted wedding. The armour is self-sufficiency built in childhood. The exit is leaving with nothing and returning as an equal.",
+    anchor:"mast" },
+  { id:"mobydick", t:"Moby-Dick", alt:["ahab","whale"], kind:"Novel, 1851",
+    stasis:"The voyage itself, extended indefinitely by one man's purpose",
+    transit:"The Pequod",
+    terrain:"The open ocean, indifferent and total",
+    threat:"The whale — power without malice or negotiation",
+    agency:"The harpoon, mastered and aimed at the wrong target",
+    read:"The map is that the injury has a defendant. The collision already happened, before page one. The armour is the captaincy, which converts a private wound into everyone's course. There is no exit; the pursuit is the cage.",
+    anchor:"ajax" },
+  { id:"christmascarol", t:"A Christmas Carol", alt:["scrooge"], kind:"Novella, 1843",
+    stasis:"The counting house. Every day identical and defensible",
+    transit:"Three nights of forced travel he did not book",
+    terrain:"A London he has not actually looked at in decades",
+    threat:"The last spirit — a future with no appeal",
+    agency:"The turkey, the raise, the visit. Small, immediate, costly",
+    read:"The map is that thrift is virtue. The collision is being shown his own grave. The armour is the miser, built in a cold childhood. The exit is executed the same morning, in public, at expense.",
+    anchor:"elpenor" },
+  { id:"lotr", t:"The Lord of the Rings", alt:["frodo","tolkien","fellowship"], kind:"Novel 1954, films 2001–2003",
+    stasis:"The Shire — comfort so complete it cannot imagine the war",
+    transit:"Walking. The entire distance, on foot",
+    terrain:"Everything between Hobbiton and the mountain",
+    threat:"Sauron, and the ring's own quieter appetite",
+    agency:"Carrying it. The refusal to use the thing he holds",
+    read:"The map is that this is somebody else's war. The collision is the ring in his hand. The armour is the smallness he keeps claiming. The exit is not victory — at the crack he fails — it is having walked there at all.",
+    anchor:"mast" },
+  { id:"hungergames", t:"The Hunger Games", alt:["katniss"], kind:"Novel 2008, film 2012",
+    stasis:"District 12 — survival narrow enough to look like order",
+    transit:"The train to the Capitol",
+    terrain:"The arena, redesigned mid-game to kill her",
+    threat:"President Snow — sovereign power with a garden",
+    agency:"The bow. Literally the bow",
+    read:"The map is that keeping your head down is a strategy. The collision is the reaping. The armour is the girl on fire, built by stylists and then required of her. The exit is the berries: an act that takes the game's own rule and returns it.",
+    anchor:"mast" },
+  { id:"starwars", t:"Star Wars", alt:["luke skywalker","a new hope"], kind:"Film, 1977",
+    stasis:"Tatooine, and a moisture farm with one more season in it",
+    transit:"The Millennium Falcon",
+    terrain:"Space, and a rebellion with no margin",
+    threat:"The Empire, and Vader inside it",
+    agency:"Switching off the targeting computer",
+    read:"The map is that his life begins after the harvest. The collision is the burning farm. The armour is the farm boy who is not ready. The exit is trusting the trained thing over the instrument.",
+    anchor:"mast" }
+  ,
+  { id:"toystory", t:"Toy Story", alt:["woody","buzz lightyear"], kind:"Film, 1995",
+    stasis:"The bedroom, and a hierarchy that never had to be defended",
+    transit:"The RC car, the rocket, a moving van",
+    terrain:"The world outside the house — Sid's, the road, the gap",
+    threat:"Sid, and beneath him the fact of being outgrown",
+    agency:"Falling with style. Cooperation neither of them wanted",
+    read:"The map is that being the favourite is a permanent condition. The collision is Buzz. The armour is Woody's status, defended past the point of dignity. The exit is the two of them strapped to a rocket, which only works jointly.",
+    anchor:"ajax" },
+  { id:"findingnemo", t:"Finding Nemo", alt:["nemo","marlin"], kind:"Film, 2003",
+    stasis:"The anemone. Safety maintained by never going out",
+    transit:"The ocean itself, and a current he must learn to ride",
+    terrain:"Open water, exactly as formless as it looks",
+    threat:"The net, the sharks, the dentist's tank",
+    agency:"Letting go — of the reef, of the fin, of the boy",
+    read:"The map is that vigilance prevents loss. The collision already happened, before the film starts. The armour is the anxious father, built out of a real catastrophe. The exit is telling his son to swim.",
+    anchor:"penelope" },
+  { id:"lionking", t:"The Lion King", alt:["simba"], kind:"Film, 1994",
+    stasis:"Hakuna matata — a literal amnesiac shore with a soundtrack",
+    transit:"The long walk back across the desert",
+    terrain:"Exile, and a homeland going to ruin behind him",
+    threat:"Scar — power that took the throne and rewrote the story",
+    agency:"Returning. Saying the true version of events out loud",
+    read:"Textbook. The map is inherited certainty. The collision is his father's death and the lie about it. The armour is the carefree exile, which is grief with a philosophy attached. The exit is walking back to a place he was told he had no right to.",
+    anchor:"elpenor" },
+  { id:"spiritedaway", t:"Spirited Away", alt:["chihiro"], kind:"Film, 2001",
+    stasis:"The bathhouse, and the name Yubaba takes from her",
+    transit:"The train across the water, one way",
+    terrain:"A spirit world with rules nobody explains",
+    threat:"Yubaba — sovereign, contractual, entirely arbitrary",
+    agency:"Work. Unglamorous, daily, and it is what saves her",
+    read:"The map is a sulking child's assumption that the world is arranged for her. The collision is her parents turned to pigs. The armour is helplessness. The exit is remembering her own name, which she keeps by working.",
+    anchor:"mast" },
+  { id:"up", t:"Up", alt:["carl fredricksen"], kind:"Film, 2009",
+    stasis:"The house, preserved exactly, with the world built over it",
+    transit:"The house itself, flown by balloon",
+    terrain:"Paradise Falls, which turns out not to be the point",
+    threat:"Muntz — a hero who became a predator by not letting go",
+    agency:"Cutting the furniture loose",
+    read:"The map is that a promise to Ellie means keeping the house. The collision is her death and the court order. The armour is the grief the house is made of. The exit is emptying it, one object at a time, to make the thing fly.",
+    anchor:"penelope" },
+  { id:"whiplash", t:"Whiplash", alt:["andrew neiman","fletcher"], kind:"Film, 2014",
+    stasis:"Practice as a place to hide from every other part of a life",
+    transit:"The drive to the competition. The bus, the crash",
+    terrain:"A field with no objective measure and one gatekeeper",
+    threat:"Fletcher — arbitrary sovereign power, on purpose",
+    agency:"The solo he takes without permission",
+    read:"The map is that greatness is conferred by an authority. The collision is the crash and the expulsion. The armour is the prodigy, which cannot tolerate being ordinary. The exit is real mastery, taken at a cost the film refuses to call worth it.",
+    anchor:"ajax" },
+  { id:"deadpoets", t:"Dead Poets Society", alt:["keating","neil perry"], kind:"Film, 1989",
+    stasis:"Welton. A track laid down before any of them arrived",
+    transit:"The cave, and the poems carried into it",
+    terrain:"A future decided by fathers",
+    threat:"Mr Perry — domestic sovereign power with no appeal",
+    agency:"Standing on the desk. Small, public, and costly",
+    read:"The map is that obedience buys a future. The collision is Neil's death. The armour is the good son. The exit belongs to the boys who stand up, and the film is honest that it is not enough for everyone.",
+    anchor:"patroclus" },
+  { id:"goodwillhunting", t:"Good Will Hunting", alt:["will hunting"], kind:"Film, 1997",
+    stasis:"South Boston, the same bar, the same three friends, forever",
+    transit:"The car west, in the last scene",
+    terrain:"A life he could have but has never seen anyone live",
+    threat:"His own record, and the men who made it",
+    agency:"Sitting in the chair and saying the thing out loud",
+    read:"The map is that being underestimated is safer than being seen. The collision is being found out — as a genius, which is worse. The armour is the wit that ends every conversation early. The exit is the drive, taken without telling anyone.",
+    anchor:"ajax" },
+  { id:"devilwearsprada", t:"The Devil Wears Prada", alt:["andy sachs","miranda priestly"], kind:"Novel 2003, film 2006",
+    stasis:"One year at Runway — always framed as temporary",
+    transit:"Paris. The trip that was supposed to be the reward",
+    terrain:"An industry where the terms are never written down",
+    threat:"Miranda — discretion without criteria",
+    agency:"Dropping the phone in the fountain",
+    read:"The map is that a year of this buys the career she wants. The collision is watching Miranda sacrifice Nigel. The armour is the girl who is above it all while doing all of it. The exit is walking out mid-assignment, with nothing arranged.",
+    anchor:"patroclus" },
+  { id:"erinbrockovich", t:"Erin Brockovich", alt:["erin"], kind:"Film, 2000",
+    stasis:"Unemployment, three kids, and a résumé nobody reads",
+    transit:"The car, and the drive to Hinkley",
+    terrain:"A legal system built to outlast a plaintiff",
+    threat:"PG&E — a corporation that can wait longer than a person",
+    agency:"The files. Six hundred and thirty-four signatures, collected on foot",
+    read:"The map is that she is what her CV says. The collision is the accident and the lost case. The armour is the way she is dressed, which everyone reads and nobody reads correctly. The exit is unglamorous, repetitive fieldwork nobody else would do.",
+    anchor:"mast" },
+  { id:"thelmalouise", t:"Thelma & Louise", alt:["thelma","louise"], kind:"Film, 1991",
+    stasis:"A marriage and a diner, both accepted as the available options",
+    transit:"The 1966 Thunderbird",
+    terrain:"The American West, and a law with no version of their account",
+    threat:"Every institution that will not hear them",
+    agency:"The wheel. Both hands, at the end",
+    read:"The map is that a weekend away is the size of the problem. The collision is the parking lot. The armour is politeness, dropped in stages. The exit is total agency and total cost, held in one frame.",
+    anchor:"ajax" },
+  { id:"madmax", t:"Mad Max: Fury Road", alt:["furiosa","fury road"], kind:"Film, 2015",
+    stasis:"The Citadel — dependence engineered as religion",
+    transit:"The War Rig",
+    terrain:"The wasteland, which has no green place in it",
+    threat:"Immortan Joe — sovereign power over water itself",
+    agency:"Turning the rig around and driving back",
+    read:"The map is that escape means somewhere else. The collision is finding the green place gone. The armour is the flight itself. The exit is the U-turn: taking the place they fled instead of looking for a better one.",
+    anchor:"mast" },
+  { id:"moana", t:"Moana", alt:["vaiana"], kind:"Film, 2016",
+    stasis:"The island, and a rule about the reef nobody questions",
+    transit:"The canoe — the one hidden in the cave",
+    terrain:"The ocean beyond the reef",
+    threat:"Te Kā, who is Te Fiti with her heart taken",
+    agency:"Wayfinding. A craft, learned, not granted",
+    read:"The map is that the island is the world. The collision is the blight and her grandmother's death. The armour is the dutiful daughter of the chief. The exit is going past the reef and learning the skill on the water.",
+    anchor:"mast" },
+  { id:"coco", t:"Coco", alt:["miguel"], kind:"Film, 2017",
+    stasis:"The workshop, and a family rule laid down generations back",
+    transit:"The marigold bridge",
+    terrain:"The land of the dead, on a deadline",
+    threat:"Ernesto de la Cruz — a stolen legacy defending itself",
+    agency:"Playing the song to a woman who is forgetting",
+    read:"The map is that the family and the music are opposed. The collision is the crossing. The armour is the boy who must choose one. The exit is remembering out loud, which costs him the version of the story he wanted.",
+    anchor:"patroclus" },
+  { id:"tedlasso", t:"Ted Lasso", alt:["lasso"], kind:"Television, 2020–2023",
+    stasis:"Relentless optimism used as a place not to look at anything",
+    transit:"The flight to London, taken to be somewhere else",
+    terrain:"A sport he does not know, in a country that is not his",
+    threat:"Rupert — charm as a weapon, with money behind it",
+    agency:"Sitting down with the therapist. The hardest thing he does",
+    read:"The map is that being relentlessly good will hold everything together. The collision is the divorce and the panic attacks. The armour is the folksy optimism, which is a defence before it is a philosophy. The exit is asking for help.",
+    anchor:"elpenor" },
+  { id:"fleabag", t:"Fleabag", alt:[], kind:"Television, 2016–2019",
+    stasis:"The café, the jokes to camera, the loop of the same night",
+    transit:"None. The bus stop at the end is the whole distance travelled",
+    terrain:"A family that will not say anything directly",
+    threat:"Grief, and her own account of what she did",
+    agency:"Dropping the camera. Refusing the audience",
+    read:"The map is that if it is funny it is survivable. The collision is Boo. The armour is the address to camera — the literal device she uses to avoid being in the scene. The exit is the last shot, where she does not let us follow.",
+    anchor:"elpenor" },
+  { id:"severance", t:"Severance", alt:["lumon"], kind:"Television, 2022–",
+    stasis:"The severed floor — comfort by amputation of memory",
+    transit:"The lift, and the stairwell nobody is meant to use",
+    terrain:"A building whose map is deliberately withheld",
+    threat:"Lumon — sovereign, benevolent-sounding, total",
+    agency:"The overtime contingency. Waking up outside",
+    read:"The map is the one the company issues, and it is literally partial. The collision is the discovery that the outside self is also trapped. The armour is the innie, built to be a worker. The exit is speaking with a mouth the company does not control.",
+    anchor:"mast" },
+  { id:"thebear", t:"The Bear", alt:["carmy"], kind:"Television, 2022–",
+    stasis:"The sandwich shop, run exactly as it always was",
+    transit:"The renovation. The restaurant itself as vehicle",
+    terrain:"An industry with no margin and no forgiveness",
+    threat:"The debt, the brother's absence, his own standard",
+    agency:"System. Prep lists, call-backs, the daily discipline of a kitchen",
+    read:"The map is that excellence will settle a grief. The collision is Michael's death and the books. The armour is the perfectionist, which is how the family speaks. The exit, where it happens, is procedural: the same tasks, done in order, every service.",
+    anchor:"mast" },
+  { id:"1984", t:"1984", alt:["orwell","winston smith"], kind:"Novel, 1949",
+    stasis:"The Ministry, and a routine that survives by being unexamined",
+    transit:"The room above the shop",
+    terrain:"A country where the past is edited nightly",
+    threat:"O'Brien — the Cyclops who is kind first",
+    agency:"The diary. A private sentence, which is the whole rebellion",
+    read:"The map is that an interior life is inviolable. The collision is the arrest. The armour is the small private self. The exit is refused: the book exists to show the pattern failing at phase four.",
+    anchor:"penelope" },
+  { id:"countofmontecristo", t:"The Count of Monte Cristo", alt:["edmond dantes","monte cristo"], kind:"Novel, 1844",
+    stasis:"The Château d'If. Fourteen years of it",
+    transit:"The sea, the sack, and a fortune",
+    terrain:"A society that runs entirely on reputation",
+    threat:"The three men who wrote the letter",
+    agency:"Patience, education, and an assumed name",
+    read:"The map is that merit is recognised. The collision is the cell. The armour is the Count, built to be unrecognisable and then hard to take off. The exit is the moment he stops the machine he built.",
+    anchor:"patroclus" },
+  { id:"littlewomen", t:"Little Women", alt:["jo march"], kind:"Novel, 1868",
+    stasis:"The attic, the family, and a world that ends at the garden",
+    transit:"The train to New York",
+    terrain:"A market that will buy her writing only in one shape",
+    threat:"The economics of being a woman with a pen",
+    agency:"The manuscript. Written nightly, in a cap, at speed",
+    read:"The map is that the four of them stay as they are. The collision is Beth. The armour is Jo's refusal of anything that looks like softening. The exit is the book itself, negotiated on terms she partly loses.",
+    anchor:"mast" },
+  { id:"oldmansea", t:"The Old Man and the Sea", alt:["santiago","hemingway"], kind:"Novella, 1952",
+    stasis:"Eighty-four days without a fish, and a village that has decided about him",
+    transit:"The skiff",
+    terrain:"The Gulf Stream, out past where anyone follows",
+    threat:"The sharks — power with no interest in the meaning of it",
+    agency:"The line across his back. Craft, endurance, hands",
+    read:"The map is that the streak proves something. The collision is the marlin, which is a triumph and a ruin. The armour is the old man's pride. The exit is the skeleton lashed to the boat: proof that was never going to be sellable.",
+    anchor:"mast" },
+  { id:"titanic", t:"Titanic", alt:["rose","jack dawson"], kind:"Film, 1997",
+    stasis:"First class. A cage with excellent food",
+    transit:"The ship. And then a door",
+    terrain:"The North Atlantic",
+    threat:"Cal, and the class arrangement standing behind him",
+    agency:"The whistle. Blown, at last, by someone who chose to live",
+    read:"The map is that the engagement is the only available future. The collision is the iceberg, which arrives after she has already decided. The armour is the well-behaved daughter. The exit is a name given to a stranger on a rescue list.",
+    anchor:"penelope" },
+  { id:"casablanca", t:"Casablanca", alt:["rick blaine"], kind:"Film, 1942",
+    stasis:"Rick's Café — neutrality maintained as a personality",
+    transit:"The letters of transit, and the plane",
+    terrain:"A war that will not stay outside the door",
+    threat:"Strasser, and the occupation behind him",
+    agency:"Giving away the letters",
+    read:"The map is that he sticks his neck out for nobody. The collision is Ilsa walking in. The armour is the neutrality, which is heartbreak with a business attached. The exit is handing over the thing he needed most.",
+    anchor:"elpenor" }
+];
+
 
 /* ---- Part One: the six foundational questions ---- */
 const AUDIT = [
@@ -1409,37 +1840,6 @@ const LOTUS_CLOSERS = {
   someday: "What would have to be true for you to start on Monday — and who decides whether it is true?"
 };
 
-/* ---- Worked example: the Hundred Acre Wood ---- */
-const DEMO = {
-  alignment: [
-    "The transition from the ancient maritime isolation of Homer's <i>Odyssey</i> to the Edwardian pastoral landscape of A. A. Milne's Winnie-the-Pooh mythos demonstrates that both stories trace the same psychological architecture.",
-    "The Hundred Acre Wood is the structural equivalent of Odysseus's wooden sailing ship navigating a closed, untamed Mediterranean universe. Entering the confusing thicket of the Woozle hunt, or getting physically wedged in Rabbit's front door, parallels stepping inside Plato's subterranean cave or crashing onto the amnesiac shores of Lotus-Eater Island: a physical space of absolute stasis, where the character's original functional map is neutralised by comfort or routine.",
-    "The perceived threats — from the imagined Heffalumps to the predatory arrival of Tigger — mirror the lawless threat of Polyphemus inside his cave. Both are unmediated external forces that consume the protagonist's predictable reality.",
-    "The simple physical objects — Pooh's honey pots, Christopher Robin's pop-gun, the umbrella used to rescue Piglet from the flood — function as the exact structural equivalents of the veil of Leucothea or the bow of Odysseus. They are the tools the protagonist must physically master to execute agency, conquer psychological paralysis, and survive the breakdown of a safe environment."
-  ],
-  mapping: [
-    { el: "The Trapped State of Stasis",      hom: "Plato's cave; the deceptive shores of Lotus Island",  woods: "Rabbit's tight doorway; the imagined Heffalump trap" },
-    { el: "The Medium of Geographic Transit", hom: "The Bronze Age wooden sailing ship",                  woods: "The umbrella boat; the floating honey jar (<i>The Brain of Pooh</i>)" },
-    { el: "The Formless Dangerous Terrain",   hom: "The untamed Mediterranean void",                      woods: "The foggy, flood-prone Hundred Acre Wood" },
-    { el: "The Sovereign Predatory Threat",   hom: "The cave of the Cyclops Polyphemus",                  woods: "The unseen devouring Heffalump; the displacing energy of Tigger" },
-    { el: "The Tool of Pure Agency",          hom: "The heavy bow of Odysseus",                           woods: "The simple honey pot; the salvaged floating jar" }
-  ],
-  lifecycle: [
-    { name: "The Map", text: "The characters live inside a curated, safe psychological map: the eternal childhood afternoon of the Hundred Acre Wood. Pooh operates on an immediate-gratification loop where tracking a Woozle is a circular game and life is governed by small predictable routines. The map mistakes a protected, artificial sanctuary for the actual chaotic terrain of the wider world." },
-    { name: "The Collision", text: "Raw reality intrudes through environmental shock: the great flood that submerges Piglet's home, the winter that threatens Eeyore's shelter. Stripped of immediate comforts, the characters hit a wall where their simple mental models cannot cope with the scale of the threat." },
-    { name: "The Armor", text: "Each character meets the limits of a persona hardened into a cage. Pooh is trapped by appetite and by his self-description as a Bear of Very Little Brain. Piglet is paralysed by chronic anxiety worn as defensive armour. Rabbit is locked in futile, hyper-organised control. Each stews in the helplessness specific to their archetype when the external system breaks." },
-    { name: "The Exit", text: "Survival requires askēsis: a disciplined shift from passive victimhood to internal mastery. During the flood Pooh stops acting as a consumer of honey, looks at what is in front of him, and re-engineers a honey jar into a functional vessel of rescue. Taking ownership of the immediate physical tools, the characters reject paralysis and step outside the infantilising box of their past programming." }
-  ],
-  audit: [
-    { q: "1. The original ambition", a: "Preservation of absolute comfort, predictable nourishment, and a static social harmony that no external threat can penetrate." },
-    { q: "2. The comfortable box", a: "The Hundred Acre Wood itself — an insulated loop of safe routines, zero systemic stakes, and no real-world friction, which keeps everyone safe and permanently arrested in development." },
-    { q: "3. The sudden shock", a: "Unmanageable physical crises: torrential rain and existential flood, the arrival of a disruptive outsider who does not respect the established order, and the looming departure of Christopher Robin to school, which threatens to dissolve the entire reality." },
-    { q: "4. The ruminating loop", a: "Circular tracking of their own footprints (chasing Woozles); paralysing fear of imaginary monsters (Heffalumps); and stubborn resignation to structural neglect (Eeyore's cycle of self-pity)." },
-    { q: "5. The executive decision", a: "Pooh stops waiting for Christopher Robin to solve the crisis. He observes the physics of a floating honey pot, deduces a mechanism for navigation, and takes absolute ownership of the emergency." },
-    { q: "6. The daily practice", a: "Piglet practises facing small terrors despite trembling. Rabbit actively suppresses the need to control every variable. Pooh disciplines his physical impulses so his mind stays clear enough to navigate real friction." }
-  ]
-};
-
 /* ============================================================
    2. UTILITIES AND STATE
    ============================================================ */
@@ -1467,6 +1867,7 @@ const STORE_KEY = "bernards-odyssey.v2";
 const DEFAULT_STATE = {
   cyclops: "", era: "homeric", ledger: {}, audit: {}, step: 0, q7: "",
   subject: "work", skipped: {},
+  stories: [], dnaRun: false,
   lotusName: "", lotus: {}, lotusLines: [], runs: [],
   crewRole: "self", crewName: "", crewAnswers: {}, crewResults: {}
 };
@@ -1527,11 +1928,16 @@ function initTabs() {
   });
 }
 function selectTab(tab) {
+  if (tab.dataset.locked === "1") {
+    toast(tab.id === "tab-seventh" ? "Answer all six first" : "Name a story first");
+    return;
+  }
   $$(".tab").forEach(t => {
     const on = t === tab;
     t.setAttribute("aria-selected", on ? "true" : "false");
     $("#" + t.getAttribute("aria-controls")).hidden = !on;
   });
+  paintBridge();
 }
 
 /* ============================================================
@@ -1547,8 +1953,7 @@ function renderLedger() {
         <p class="fn">${esc(row.fn)}</p>
       </div>
       <div>
-        <p class="baseline"><span class="tag">Homeric</span>${esc(row.props.homeric)}</p>
-        <p class="translation" data-translation="${row.key}"></p>
+        <p class="baseline">${esc(row.baseline)}</p>
         <div class="yours">
           <label for="yours-${row.key}">${esc(row.ask)}</label>
           <input type="text" id="yours-${row.key}" data-ledger="${row.key}" autocomplete="off"
@@ -1559,29 +1964,245 @@ function renderLedger() {
 
   $$("[data-ledger]").forEach(input => input.addEventListener("input", () => {
     S.ledger[input.dataset.ledger] = input.value;
-    if (input.dataset.ledger === "threat" && !S.cyclops) {
-      S.cyclops = input.value;
-      $("#cyclops").value = input.value;
-    }
     save();
   }));
 
-  paintEra();
 }
 
-function paintEra() {
-  $$(".era").forEach(b => b.setAttribute("aria-pressed", b.dataset.era === S.era ? "true" : "false"));
-  LEDGER.forEach(row => {
-    const el = $('[data-translation="' + row.key + '"]');
-    if (!el) return;
-    el.innerHTML = S.era === "homeric"
-      ? '<span class="tag">Function</span>' + esc(row.fn)
-      : '<span class="tag">' + esc(ERA_LABEL[S.era]) + "</span>" + row.props[S.era];
+/* ============================================================
+   4b. STEP ONE — the stories, and their cultural DNA
+   ============================================================ */
+
+const MAX_STORIES = 3;
+const ELEMENT_ORDER = ["stasis", "transit", "terrain", "threat", "agency"];
+const ELEMENT_LABEL = {
+  stasis: "The trapped state of stasis",
+  transit: "The medium of transit",
+  terrain: "The formless terrain",
+  threat: "The sovereign threat",
+  agency: "The tool of pure agency"
+};
+const ELEMENT_HOMERIC = {
+  stasis: "Lotus-Eater Island",
+  transit: "The wooden ship",
+  terrain: "The maritime void",
+  threat: "The cave of Polyphemus",
+  agency: "The bow of Odysseus"
+};
+
+function normTitle(t) {
+  return String(t || "").toLowerCase()
+    .replace(/[^a-z0-9 ]/g, " ")
+    .replace(/\b(the|a|an|of|and)\b/g, " ")
+    .replace(/\s+/g, " ").trim();
+}
+
+function matchStory(title) {
+  const q = normTitle(title);
+  if (!q) return null;
+  let best = null, bestScore = 0;
+  STORIES.forEach(st => {
+    const names = [st.t].concat(st.alt || []).map(normTitle);
+    let score = 0;
+    names.forEach(n => {
+      if (!n) return;
+      if (n === q) score = Math.max(score, 1);
+      else if (n.indexOf(q) === 0 || q.indexOf(n) === 0) score = Math.max(score, 0.9);
+      else if (n.indexOf(q) !== -1 || q.indexOf(n) !== -1) score = Math.max(score, 0.8);
+      else {
+        const qt = q.split(" "), nt = n.split(" ");
+        const shared = qt.filter(w => w.length > 2 && nt.indexOf(w) !== -1).length;
+        const ratio = shared / Math.max(1, Math.min(qt.length, nt.length));
+        if (ratio >= 0.6) score = Math.max(score, 0.7 * ratio);
+      }
+    });
+    if (score > bestScore) { bestScore = score; best = st; }
   });
+  return bestScore >= 0.55 ? best : null;
 }
 
-function initEras() {
-  $$(".era").forEach(b => b.addEventListener("click", () => { S.era = b.dataset.era; save(); paintEra(); }));
+function blankStory() { return { title: "", why: "", own: {} }; }
+
+function renderStorySlots() {
+  if (!S.stories.length) S.stories = [blankStory()];
+  $("#story-slots").innerHTML = S.stories.map((st, i) => `
+    <div class="story-slot">
+      <p class="slot-n">Story ${i + 1}${i === 0 ? "" : " (optional)"}</p>
+      <div class="row">
+        <div>
+          <label class="title-label" for="st-title-${i}">A story you love</label>
+          <input type="text" id="st-title-${i}" data-st-title="${i}" autocomplete="off"
+                 value="${esc(st.title)}" placeholder="A film, a novel, a myth, a series…" />
+        </div>
+        ${S.stories.length > 1 ? `<button class="drop" data-st-drop="${i}" title="Remove this story" aria-label="Remove story ${i + 1}">&times;</button>` : ""}
+      </div>
+      <div class="why">
+        <label for="st-why-${i}">Why it stuck with you (optional)</label>
+        <input type="text" id="st-why-${i}" data-st-why="${i}" autocomplete="off"
+               value="${esc(st.why)}" placeholder="One line is plenty." />
+      </div>
+    </div>`).join("");
+
+  $$("[data-st-title]").forEach(inp => inp.addEventListener("input", () => {
+    S.stories[inp.dataset.stTitle].title = inp.value;
+    save();
+    paintSteps();
+  }));
+  $$("[data-st-why]").forEach(inp => inp.addEventListener("input", () => {
+    S.stories[inp.dataset.stWhy].why = inp.value;
+    save();
+  }));
+  $$("[data-st-drop]").forEach(b => b.addEventListener("click", () => {
+    S.stories.splice(Number(b.dataset.stDrop), 1);
+    save();
+    renderStorySlots();
+    paintSteps();
+  }));
+  $("#add-story").disabled = S.stories.length >= MAX_STORIES;
+}
+
+function storyElements(st) {
+  const hit = matchStory(st.title);
+  if (hit) {
+    const out = { matched: true, ref: hit };
+    ELEMENT_ORDER.forEach(k => { out[k] = hit[k]; });
+    return out;
+  }
+  const out = { matched: false, ref: null };
+  ELEMENT_ORDER.forEach(k => { out[k] = (st.own && st.own[k]) || ""; });
+  return out;
+}
+
+function renderDNA() {
+  const host = $("#dna-out");
+  const told = S.stories.filter(st => st.title.trim());
+  if (!told.length) {
+    host.innerHTML = '<div class="dna"><p class="dna-title">No story yet</p><p>Name one on the previous step. Any story you have returned to more than once will do.</p></div>';
+    $("#dna-cta").hidden = true;
+    return;
+  }
+
+  const cards = told.map((st, idx) => {
+    const i = S.stories.indexOf(st);
+    const e = storyElements(st);
+    if (!e.matched) {
+      return '<div class="dna"><p class="dna-title">' + esc(st.title) + "</p>" +
+        '<p class="dna-kind">Not in the corpus — map it yourself</p>' +
+        "<p>The corpus holds forty-one stories. Yours is not one of them, which changes nothing about the method: the five elements are in there, and you are the one who has read it. Name them and the reading assembles.</p>" +
+        '<div class="unmatched-form">' + ELEMENT_ORDER.map(k =>
+          '<div class="f"><label for="own-' + i + "-" + k + '">' + esc(ELEMENT_LABEL[k]) + "</label>" +
+          '<p class="hint">In the Odyssey: ' + esc(ELEMENT_HOMERIC[k]) + ". In " + esc(st.title) + "?</p>" +
+          '<input type="text" id="own-' + i + "-" + k + '" data-own="' + i + '" data-own-key="' + k + '" autocomplete="off" value="' +
+          esc((st.own && st.own[k]) || "") + '" /></div>').join("") + "</div></div>";
+    }
+    return '<div class="dna"><p class="dna-title">' + esc(e.ref.t) + "</p>" +
+      '<p class="dna-kind">' + esc(e.ref.kind) + " &mdash; carrying the same five elements</p>" +
+      '<ul class="strand">' + ELEMENT_ORDER.map(k =>
+        '<li><span class="k">' + esc(ELEMENT_LABEL[k]) + '<span class="homeric-side">' + esc(ELEMENT_HOMERIC[k]) +
+        '</span></span><span class="v">' + esc(e[k]) + "</span></li>").join("") + "</ul>" +
+      '<p class="verdict">' + esc(e.ref.read) + "</p>" +
+      '<p class="verdict"><b>The posture it runs:</b> ' + esc(ANCHORS[e.ref.anchor].figure) + " &mdash; " +
+      esc(ANCHORS[e.ref.anchor].pattern.toLowerCase()) + ".</p>" +
+      (st.why.trim() ? '<p class="verdict"><b>You said it stuck because:</b> &ldquo;' + esc(clause(st.why, 140)) + "&rdquo;</p>" : "") +
+      "</div>";
+  }).join("");
+
+  host.innerHTML = cards + sharedStrand(told);
+  $$("[data-own]").forEach(inp => inp.addEventListener("input", () => {
+    const st = S.stories[inp.dataset.own];
+    st.own = st.own || {};
+    st.own[inp.dataset.ownKey] = inp.value;
+    save();
+  }));
+  $("#dna-cta").hidden = false;
+  paintSteps();
+}
+
+function sharedStrand(told) {
+  const matched = told.map(storyElements).filter(e => e.matched);
+  let body;
+  if (told.length < 2) {
+    body = "<p>One story gives you the elements. Two or three give you something better: what they have in common is not a fact about the stories, it is a fact about the reader. Add another on the previous step if you want that reading.</p>";
+  } else {
+    const anchors = matched.map(e => e.ref.anchor);
+    const counts = {};
+    anchors.forEach(a => { counts[a] = (counts[a] || 0) + 1; });
+    const repeated = Object.keys(counts).filter(a => counts[a] > 1);
+    const words = {};
+    matched.forEach(e => {
+      ELEMENT_ORDER.forEach(k => {
+        contentWords(e[k]).forEach(w => {
+          words[w] = words[w] || {};
+          words[w][e.ref.id] = 1;
+        });
+      });
+    });
+    const common = Object.keys(words).filter(w => Object.keys(words[w]).length >= 2).slice(0, 4);
+    const bits = [];
+    if (repeated.length) {
+      bits.push("<p>The stories you chose run the same posture more than once: <span class=\"em\">" +
+        esc(ANCHORS[repeated[0]].figure) + "</span> &mdash; " + esc(ANCHORS[repeated[0]].pattern.toLowerCase()) +
+        ". You did not pick that twice by accident.</p>");
+    }
+    if (common.length) {
+      bits.push("<p>Their elements share vocabulary: <i>" + common.map(esc).join(", ") +
+        "</i>. Whatever that names, it is the terrain you keep going back to watch someone else survive.</p>");
+    }
+    if (!bits.length) {
+      bits.push("<p>Your stories share the five elements and little else in their surface. The pattern holds across genres that have nothing in common, which is the claim: the props are era-deep, the geometry is not.</p>");
+    }
+    body = bits.join("");
+  }
+  return '<div class="dna" style="border-left:2px solid var(--gold)">' +
+    '<p class="dna-title">The shared strand</p>' +
+    '<p class="dna-kind">What your choices have in common</p>' + body +
+    "<p class=\"verdict\">A story lasts because it keeps teaching something someone needed. You have been rehearsing this structure for years without being asked to name it. The next six questions put the same five elements on your own terrain.</p></div>";
+}
+
+function initStories() {
+  renderStorySlots();
+  $("#add-story").addEventListener("click", () => {
+    if (S.stories.length >= MAX_STORIES) return;
+    S.stories.push(blankStory());
+    save();
+    renderStorySlots();
+  });
+  $("#run-dna").addEventListener("click", () => {
+    if (!S.stories.some(st => st.title.trim())) { toast("Name a story first"); return; }
+    S.dnaRun = true;
+    save();
+    renderDNA();
+    selectTab($("#tab-dna"));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  if (S.dnaRun) renderDNA();
+}
+
+/* ---- Step locking ---- */
+function stepState() {
+  const hasStory = S.stories.some(st => st.title.trim());
+  return {
+    dna: hasStory,
+    audit: hasStory && S.dnaRun,
+    seventh: hasStory && S.dnaRun && answeredCount() === AUDIT.length
+  };
+}
+
+function paintSteps() {
+  const st = stepState();
+  [["tab-dna", st.dna], ["tab-audit", st.audit], ["tab-seventh", st.seventh]].forEach(pair => {
+    const el = $("#" + pair[0]);
+    if (el) el.dataset.locked = pair[1] ? "0" : "1";
+  });
+  const note = $("#audit-step-note");
+  if (note) {
+    const n = answeredCount();
+    note.textContent = n === AUDIT.length
+      ? "Six answers on record. The seventh question is open."
+      : "Step 3 of 4 — " + n + " of " + AUDIT.length + " answered. The seventh question opens at six.";
+  }
+  const to7 = $("#to-seventh");
+  if (to7) to7.disabled = !st.seventh;
 }
 
 /* ============================================================
@@ -1612,6 +2233,20 @@ function answeredCount() {
   return AUDIT.filter(a => (S.audit[a.key] || "").trim().length > 0).length;
 }
 
+function paintBridge() {
+  const el = $("#audit-bridge");
+  if (!el) return;
+  const told = S.stories.filter(st => st.title.trim());
+  const named = told.map(st => {
+    const hit = matchStory(st.title);
+    return hit ? hit.t : st.title.trim();
+  });
+  el.innerHTML = named.length
+    ? "You brought " + named.map(n => "<b>" + esc(n) + "</b>").join(named.length === 2 ? " and " : ", ") +
+      ". The same five elements are in there, and you found them without being taught the frame. Now the same six questions, in your own terrain. Plain words &mdash; the mirror reads what you actually wrote, not what you meant."
+    : "Six questions, in your own terrain this time. Plain words. The mirror reads what you actually wrote, not what you meant.";
+}
+
 function renderStep() {
   const a = AUDIT[S.step];
   $("#qnum").textContent = "Question " + (S.step + 1) + " of " + AUDIT.length + " — " + a.homeric;
@@ -1622,6 +2257,7 @@ function renderStep() {
   $("#next").disabled = S.step === AUDIT.length - 1;
   renderStems(a);
   renderExample(a);
+  paintBridge();
   updateCount();
   paintVoyage();
   paintGate();
@@ -1694,15 +2330,13 @@ function renderGate() {
 
 function paintGate() {
   const done = answeredCount();
-  const seen = done + Object.keys(S.skipped).filter(k => S.skipped[k]).length;
-  const open = seen >= 4;
+  const open = done === AUDIT.length;
   $("#gate").classList.toggle("locked", !open);
   $$("[data-q7]").forEach(i => { i.disabled = !open; });
   $("#gate-note").textContent = open
-    ? (done === AUDIT.length
-        ? "Part Two isolates the blind spot. The mirror leads with whichever question you name here."
-        : "Open at " + done + " of " + AUDIT.length + " answered. A question you skipped is a candidate for this one.")
-    : "Opens once you have been through four of the six. " + done + " answered, " + (seen - done) + " skipped.";
+    ? "This is the one that isolates the blind spot. The mirror leads with whichever question you name."
+    : "Not yet. " + done + " of " + AUDIT.length + " answered — the seventh question only means anything once the six are on record.";
+  paintSteps();
 }
 
 function initAudit() {
@@ -2591,53 +3225,22 @@ function initCrew() {
 }
 
 /* ============================================================
-   10. WORKED EXAMPLE — the Hundred Acre Wood
-   ============================================================ */
-
-function renderDemo() {
-  $("#demo").innerHTML =
-    '<div class="demo-part card"><p class="label">Part 1 — Comparative alignment</p>' +
-      DEMO.alignment.map(p => "<p>" + p + "</p>").join("") +
-      '<div class="scroller" style="margin-top:1.1rem"><table class="maptable"><thead><tr>' +
-        "<th>Element</th><th>Homeric baseline</th><th>Hundred Acre Wood</th></tr></thead><tbody>" +
-        DEMO.mapping.map(r => '<tr><td class="el">' + esc(r.el) + "</td><td>" + r.hom + '</td><td class="woods">' + r.woods + "</td></tr>").join("") +
-      "</tbody></table></div></div>" +
-
-    '<div class="demo-part card"><p class="label">Part 2 — The four-part lifecycle</p>' +
-      DEMO.lifecycle.map(l => '<div class="phase"><span class="pk">' + esc(l.name) + "</span><span>" + esc(l.text) + "</span></div>").join("") +
-    "</div>" +
-
-    '<div class="demo-part card"><p class="label">Part 3 — The plain-spoken Socratic audit</p>' +
-      DEMO.audit.map(a => '<div class="demo-q"><p class="qq">' + esc(a.q) + "</p><p>" + esc(a.a) + "</p></div>").join("") +
-    "</div>" +
-
-    '<p class="callout">The props are honey pots and flood water rather than bows and the wine-dark sea. The geometry is identical. That is the claim the system makes, and this is the test of it.</p>';
-}
-
-/* ============================================================
    11. BOOT
    ============================================================ */
 
 (function init() {
   load();
-  $("#cyclops").value = S.cyclops || "";
-  $("#cyclops").addEventListener("input", e => {
-    S.cyclops = e.target.value;
-    const led = $("#yours-threat");
-    if (led && !S.ledger.threat) led.value = e.target.value;
-    save();
-  });
   initTabs();
   $$("[data-goto]").forEach(b => b.addEventListener("click", () => {
     selectTab($("#tab-" + b.dataset.goto));
     window.scrollTo({ top: 0, behavior: "smooth" });
   }));
   renderLedger();
-  initEras();
+  initStories();
   initAudit();
   initLotus();
   initCrew();
-  renderDemo();
+  paintSteps();
   renderDrift();
 })();
 </script>

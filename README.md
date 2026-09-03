@@ -21,91 +21,69 @@ browser.
 Which is why the app sequences **recognition first, then the questions**: you find your own terrain in
 the ledger before anything personal is asked, so the connection is made before it is examined.
 
-## The six modules
+## How it runs — four steps, in order
 
-### 🗺️ The Ledger — the Deep-Time Parallel Matrix
+### 1 · Name a story you love
 
-Five elements, each holding its function across three thousand years:
+Not a story about you. A film, a novel, a myth, a series — anything you have returned to more than
+once. Up to three. Stories that last are carrying something; the first job is to find out what yours
+is carrying.
 
-| Element | Homeric baseline | Function |
-| --- | --- | --- |
-| The Trapped State of Stasis | The amnesiac shores of Lotus-Eater Island | Comfort that neutralises the functional map |
-| The Medium of Geographic Transit | The wooden sailing ship | The vehicle you must master but did not design |
-| The Formless Dangerous Terrain | The untamed maritime void | Ground with no path — only bearings |
-| The Sovereign Predatory Threat | The cave of Polyphemus | Raw devouring power, escaped by cunning |
-| The Tool of Pure Agency | The heavy bow of Odysseus | High-friction mastery nobody can perform for you |
+### 2 · Its Cultural DNA
 
-Switch the era — **Homeric / Hundred Acre Wood / Industrial / Corporate / Digital** — to see the same
-geometry in different hardware, then name your own instance of each element.
+The app reads your story against the Homeric baseline and shows the five elements inside it:
 
-### 🧭 The Audit — six questions, then the seventh
-
-Delivered in two parts, as specified.
-
-Before the questions, you pick **what you are bringing** — work, a stalled project, a relationship, a
-rupture, or someone else's story. Every question then offers three **sentence stems** you can click to
-seed the box ("I stay because…", "By [date] I will…"), and a **worked answer** from someone in that
-situation. A sentence is enough, any question can be **skipped**, and *"I don't know"* is a real
-answer the mirror reads as a position rather than an absence.
-
-**Part One** is the six foundational questions that locate the breakdown in your current script: the
-original ambition, the comfortable box, the sudden shock, the ruminating loop, the executive decision,
-the daily practice.
-
-**Part Two** unlocks once you have been through four of the six, and asks the one question that isolates the blind spot:
-*which of these six feels hardest to answer honestly right now?* The mirror leads with whichever
-question you name, and weights its reading toward it.
-
-The mirror is a local lexical engine — it reads what you actually wrote, not what you meant. It
-weighs agency verbs against hedges, obligation against decision, first-person acts against third
-parties, past-conditional turns, deferral markers, fixed-identity nouns, cadence markers, and shared
-vocabulary between answers. Four compressed sections come back:
-
-1. **The ledger, filled** — your five elements, named back to you
-2. **The Homeric archetypal mirror** — your posture, matched to a figure in the epic
-3. **The four-part lifecycle** — Map, Collision, Armor, Exit
-4. **The blind spot** — the question you named, the probabilities, and one question left open
-
-No diagnosis. No plan. No checklist. **Copy full prompt** exports your answers wrapped in the locked
-system prompt if you want to run the same analysis through a model.
-
-### 🌺 Lotus Island — the shape of your stasis
-
-The crew was not imprisoned. They were fed something pleasant and stopped wanting to leave. Four
-forced-choice questions sort the shore into **Provisioned** (material), **Named** (identity),
-**Amnesiac** (relief on demand) or **Preparing** (deferral), plus a tally of the ten sentences people
-say on the island.
-
-### ⚓ The Anchors — five postures from the epic
-
-| Pattern | Figure |
+| Element | Homeric baseline |
 | --- | --- |
-| The Stasis / Delay Loop | Penelope at the loom — weaving by day, unpicking by night |
-| The Proxy Battle / Sacrificial Defence | Patroclus in another's armour |
-| The Amnesiac Escape / Comfort Trap | Elpenor on Circe's roof |
-| The Hubristic Defiance | Ajax son of Oileus, defying the gods on the rocks |
-| The Bound Vigilance | Odysseus tied to the mast |
+| The trapped state of stasis | Lotus-Eater Island |
+| The medium of transit | The wooden ship |
+| The formless terrain | The maritime void |
+| The sovereign threat | The cave of Polyphemus |
+| The tool of pure agency | The bow of Odysseus |
 
-Eight forced-choice questions read one person against all five. None is the healthy one; each is a
-survival strategy with a bill attached. Read yourself, then switch the subject and read your partner —
-two stored readings unlock the **pairing** analysis across all fifteen combinations.
+A corpus of **41 durable stories** is mapped element by element, with a four-phase reading and the
+archetypal posture its protagonist runs. Story not in the corpus? Five fields let you map it yourself
+against the same baseline — the method does not depend on the library.
 
-### 📉 The Drift — readings over time
+Name two or three and you get **the shared strand**: the posture you chose more than once, and the
+vocabulary your stories have in common. That part is not a fact about the stories. It is a fact about
+the reader.
 
-Claim three is a claim about repetition, so one reading proves nothing. Every run of the mirror is
-stored with its date and its measurable signals — hedges at the point of decision, whether Q5 carries
-a date or a named party, whether Q6 carries a cadence, deferral markers, which anchor you landed on,
-which question you named hardest. Run the audit again in a month and **what moved** is shown plainly.
-Your written answers to the open questions are kept alongside each reading.
+### 3 · The six questions
 
-The numbers are descriptions, not scores. Nothing in the app says which direction is correct.
+Only now does the app ask about you — the same five elements, on your own terrain: the original
+ambition, the comfortable box, the sudden shock, the ruminating loop, the executive decision, the
+daily practice.
 
-### 🍯 Worked Example — the Hundred Acre Wood
+Each question offers three **sentence stems** you can click to seed the box, and a **worked answer**
+from someone in a situation like yours (work, a stalled project, a relationship, a rupture, or
+someone else's story). A sentence is enough, questions can be skipped, and *"I don't know"* is read
+as a position rather than an absence.
 
-The test of claim two. If stories are selected for what they teach, the geometry should appear in
-narratives nobody would call heroic — and a children's book from 1926, still transmitted a century
-later, is the control case: the comparative alignment, the element mapping ledger against the Homeric baseline, the
-four-part lifecycle, and the six-question audit — run end to end on Pooh, Piglet, Rabbit and Eeyore.
+### 4 · The seventh question
+
+It appears only once all six are answered, and it is the one that isolates the blind spot: *which of
+these six felt hardest to answer honestly?* The mirror leads with whichever you name and weights its
+whole reading toward it.
+
+Then the mirror returns four compressed sections: **the ledger filled**, **the Homeric archetypal
+mirror** (Penelope at the loom, Patroclus in another's armour, Elpenor on the roof, Ajax son of
+Oileus, or Odysseus at the mast — scored from your own text and cited), **the four-part lifecycle**
+(Map, Collision, Armor, Exit), and **the blind spot with one question left open**.
+
+No diagnosis. No plan. No checklist. **Copy full prompt** exports your answers wrapped in the system
+prompt if you want the same analysis run through a model.
+
+## Further instruments
+
+Available after the mirror, not competing with it:
+
+- **Lotus Island** — four questions on the shape of your stasis, plus the ten sentences people say on
+  the island.
+- **The Anchors** — eight forced-choice questions reading one person against the five postures, for
+  you or your partner, with pairing analysis across all fifteen combinations.
+- **The Drift** — every reading stored with its date and measurable signals, and what moved between
+  the first and the latest. Rehearsal is a claim about repetition; one reading proves nothing.
 
 ## Run it
 
@@ -125,7 +103,7 @@ python3 -m http.server 8000
 
 ## Notes
 
-- Single `index.html`, ~2,600 lines, zero dependencies and zero network requests.
+- Single `index.html`, ~3,250 lines, zero dependencies and zero network requests.
 - State (answers, named elements, stored readings, reflections) persists in `localStorage` only.
 - Responsive, keyboard-navigable tabs, and honours `prefers-reduced-motion`.
 - A structured reflection instrument. Not therapy, diagnosis or treatment.
