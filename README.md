@@ -1,100 +1,84 @@
-# 🏛️ Bernard's Odyssey
+# 🐴 Trojan Horse
 
-**Storytelling is a survival tool. Homer's maritime terrain is the baseline; your situation is the instance.**
+**Storytelling as a survival tool.**
 
-A single-file, dependency-free web app running the *Universal Storytelling System (Homeric Baseline)*:
-one `index.html`, no build step, no API keys, no network calls. Everything you type stays in your own
-browser.
+Name a story you love. The app reads it against the Homeric baseline, shows the cultural DNA it
+carries, and then asks you seven questions that link that story to your own experience.
 
-## Why it works
+No account, no password, no server. Everything you type stays in your browser, and you can save it to
+a file you own or delete it in one click.
 
-1. **Narrative is a survival mechanism.** Before writing, the only way to transmit what kills you and
-   what saves you was a story a person could carry on foot. The teaching is the payload; the plot is
-   the packaging that survives the journey.
-2. **Stories are selected, like DNA.** A story lasts three thousand years only if it keeps teaching
-   something necessary. The *Odyssey* is not preserved because it is old — it is old because it kept
-   being needed, and the same structure re-instantiates in every era with new props.
-3. **Rehearsal rewires.** A story run repeatedly through a nervous system trains the response before
-   the event. Good stories produce better adapters, by pre-loading a pattern for terrain you have not
-   met yet.
+## The model
 
-Which is why the app sequences **recognition first, then the questions**: you find your own terrain in
-the ledger before anything personal is asked, so the connection is made before it is examined.
+Every durable story runs on a **four-part survival framework** with **six process elements**. The
+processes are structural actions, not characters — the engine never asks who the Cyclops in your life
+is, because that reduces things like an economic shift or a private loop to a cartoon villain.
 
-## How it runs — four steps, in order
-
-### 1 · Name a story you love
-
-Not a story about you. A film, a novel, a myth, a series — anything you have returned to more than
-once. Up to three. Stories that last are carrying something; the first job is to find out what yours
-is carrying.
-
-### 2 · Its Cultural DNA
-
-The app reads your story against the Homeric baseline and shows the five elements inside it:
-
-| Element | Homeric baseline |
+| Stage | Process |
 | --- | --- |
-| The trapped state of stasis | Lotus-Eater Island |
-| The medium of transit | The wooden ship |
-| The formless terrain | The maritime void |
-| The sovereign threat | The cave of Polyphemus |
-| The tool of pure agency | The bow of Odysseus |
+| **1 · Constructed Illusion** | **A** Lotus Island Stasis |
+| **2 · Collapse to Point Zero** | **B** The Open Sea Void · **C** The Crew's Mistake |
+| **3 · Identity Cage** | **D** The Cyclops's Cave · **E** Circe's Sedative Stagnation |
+| **4 · Act of Pure Agency** | **F** The Ship & Bow Navigation |
 
-A corpus of **41 durable stories** is mapped element by element, with a four-phase reading and the
-archetypal posture its protagonist runs. Story not in the corpus? Five fields let you map it yourself
-against the same baseline — the method does not depend on the library.
+Each stage returns a two-phase response, each one a compressed paragraph of **25 words or fewer** —
+never a seven-to-nine word fragment:
 
-Name two or three and you get **the shared strand**: the posture you chose more than once, and the
-vocabulary your stories have in common. That part is not a fact about the stories. It is a fact about
-the reader.
+- **Phase 1** — how your story fits the mechanics of that stage.
+- **Phase 2** — how the action lines up with the corresponding Homeric process.
 
-### 3 · The six questions
+## How it runs
 
-Only now does the app ask about you — the same five elements, on your own terrain: the original
-ambition, the comfortable box, the sudden shock, the ruminating loop, the executive decision, the
-daily practice.
+1. **Your Story** — a prompt box opens a single input, *The Story You Love*, then **Find its DNA**.
+   Typeahead over the reference set, a file loader, or type anything at all.
+2. **Cultural DNA** — the four stages and six processes, filled in for your story. A story outside the
+   reference set gets six one-line fields so you can map it yourself; the method does not depend on
+   the library.
+3. **Multivariate Analysis** — three parts: **(a)** the input loaded, **(b)** the six process
+   intensities with derived stasis / collapse / cage / agency indices, and **(c)** the plotted data —
+   the whole set projected onto its first two principal components, with your story and your answers
+   added without moving anything already on the map.
+4. **Six Questions** — your turn, with a short reading of what the answers show.
+5. **The Seventh** — behind a plainly-worded note about professional help, privacy and ownership.
+6. **Close** — a quiet read, then the option to add another story.
 
-Each question offers three **sentence stems** you can click to seed the box, and a **worked answer**
-from someone in a situation like yours (work, a stalled project, a relationship, a rupture, or
-someone else's story). A sentence is enough, questions can be skipped, and *"I don't know"* is read
-as a position rather than an absence.
+## Architecture
 
-### 4 · The seventh question
+Plain ES modules, no build step, no dependencies. Each module has one job, so the corpus, the scoring
+and the presentation can each be replaced without touching the others.
 
-It appears only once all six are answered, and it is the one that isolates the blind spot: *which of
-these six felt hardest to answer honestly?* The mirror leads with whichever you name and weights its
-whole reading toward it.
+```
+index.html               shell and stage markup
+assets/css/app.css       one stylesheet, design tokens at the top
+assets/js/
+  content.js             the creator's fixed script — never rewritten by the engine
+  model.js               schema, factories, validation, migrations
+  store.js               localStorage, file export and import
+  corpus.js              30 stories mapped to the four stages and six processes
+  analysis.js            matching, the two-phase read, vectors, PCA
+  charts.js              inline SVG charts with a hover layer
+  ui.js                  views and interaction
+  app.js                 bootstrap
+```
 
-Then the mirror returns four compressed sections: **the ledger filled**, **the Homeric archetypal
-mirror** (Penelope at the loom, Patroclus in another's armour, Elpenor on the roof, Ajax son of
-Oileus, or Odysseus at the mast — scored from your own text and cited), **the four-part lifecycle**
-(Map, Collision, Armor, Exit), and **the blind spot with one question left open**.
+**Data model.** One `Record` per browser holds an ordered list of `Round`s; a `Round` is one story
+taken through DNA → six questions → seventh question. Every round carries a six-dimensional `Vector`
+(one value per process), which is what the charts and the projection consume. Adding a process, a
+stage or a field means editing `content.js` and `model.js` — the charts, the indices and the
+projection all read the vector generically. Saved records carry a schema version and pass through a
+migration chain on load, so old files keep working.
 
-No diagnosis. No plan. No checklist. **Copy full prompt** exports your answers wrapped in the system
-prompt if you want the same analysis run through a model.
+**Extending the corpus.** Append an entry to `CORPUS` in `corpus.js` — `id`, `t`, `alt[]`, `kind`,
+`sum`, the six weights `w{A..F}`, four stage lines `s{1..4}` and six process clauses `p{A..F}`.
+Nothing else changes: matching, plotting and the projection pick it up.
 
-## Further instruments
-
-Available after the mirror, not competing with it:
-
-- **Lotus Island** — four questions on the shape of your stasis, plus the ten sentences people say on
-  the island.
-- **The Anchors** — eight forced-choice questions reading one person against the five postures, for
-  you or your partner, with pairing analysis across all fifteen combinations.
-- **The Drift** — every reading stored with its date and measurable signals, and what moved between
-  the first and the latest. Rehearsal is a claim about repetition; one reading proves nothing.
+**Charts.** Two forms only — magnitude bars for the six processes, and a 2-D projection of the set.
+The categorical colours are validated for the dark surface across all pairs (worst-pair CVD ΔE 9.4,
+normal-vision ΔE 20.9), every chart has a hover layer, and the bar chart is paired with a table view.
 
 ## Run it
 
-It's a static page, so just open it:
-
-```bash
-open index.html        # macOS
-xdg-open index.html    # Linux
-```
-
-Or serve it locally:
+The app uses ES modules, so it needs to be served rather than opened from disk:
 
 ```bash
 python3 -m http.server 8000
@@ -103,7 +87,6 @@ python3 -m http.server 8000
 
 ## Notes
 
-- Single `index.html`, ~3,250 lines, zero dependencies and zero network requests.
-- State (answers, named elements, stored readings, reflections) persists in `localStorage` only.
-- Responsive, keyboard-navigable tabs, and honours `prefers-reduced-motion`.
-- A structured reflection instrument. Not therapy, diagnosis or treatment.
+- No credentials, no network calls, no analytics.
+- Responsive, keyboard-navigable, and honours `prefers-reduced-motion`.
+- This is a story game. It is not therapy, diagnosis or treatment.
