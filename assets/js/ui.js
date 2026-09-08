@@ -10,6 +10,7 @@ import { activeRound, newRound, roundProgress } from "./model.js";
 import * as store from "./store.js";
 import * as A from "./analysis.js";
 import { processBars, corpusMap, legend } from "./charts.js";
+import { CORPUS } from "./corpus.js";
 
 const $ = (s, r) => (r || document).querySelector(s);
 const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
@@ -253,7 +254,7 @@ function renderMva(record) {
     '<div class="card"><h3>a · Input loaded</h3>' +
       '<div class="readout">' +
         stat("Story", esc(round.story.resolvedTitle), esc(round.story.kind)) +
-        stat("Source", round.story.source === "corpus" ? "Reference set" : "Your own map", "30 stories in the set") +
+        stat("Source", round.story.source === "corpus" ? "Reference set" : "Your own map", CORPUS.length + " stories in the set") +
         stat("Six answers", hasAnswers ? QIDS.filter(id => String(round.answers[id] || "").trim()).length + " of 6" : "none yet", "added as you go") +
         stat("Rounds", String(record.rounds.length), "in this record") +
       "</div>" +

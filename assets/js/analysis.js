@@ -32,6 +32,18 @@ export function normTitle(t) {
     .trim();
 }
 
+/** Shortest string that may match as a fragment. Below this, only an exact hit
+ *  counts — otherwise a two-letter title like "Up" matches almost any sentence. */
+const MIN_FRAGMENT = 4;
+
+function containsWord(haystack, needle) {
+  const i = haystack.indexOf(needle);
+  if (i === -1) return false;
+  const before = i === 0 || haystack[i - 1] === " ";
+  const after = i + needle.length === haystack.length || haystack[i + needle.length] === " ";
+  return before && after;
+}
+
 export function matchStory(title) {
   const q = normTitle(title);
   if (!q) return null;
@@ -41,14 +53,20 @@ export function matchStory(title) {
     for (const n of names) {
       if (!n) continue;
       let s = 0;
-      if (n === q) s = 1;
-      else if (n.startsWith(q) || q.startsWith(n)) s = 0.92;
-      else if (n.includes(q) || q.includes(n)) s = 0.84;
-      else {
+      const shortest = Math.min(n.length, q.length);
+      if (n === q) {
+        s = 1;
+      } else if (shortest >= MIN_FRAGMENT && (n.startsWith(q + " ") || q.startsWith(n + " "))) {
+        s = 0.92;
+      } else if (shortest >= MIN_FRAGMENT && (containsWord(n, q) || containsWord(q, n))) {
+        s = 0.84;
+      } else {
         const qt = q.split(" "), nt = n.split(" ");
-        const shared = qt.filter(w => w.length > 2 && nt.includes(w)).length;
-        const ratio = shared / Math.max(1, Math.min(qt.length, nt.length));
-        if (ratio >= 0.6) s = 0.7 * ratio;
+        const shared = qt.filter(w => w.length > 2 && nt.includes(w));
+        const ratio = shared.length / Math.max(1, Math.min(qt.length, nt.length));
+        // one shared word only counts when it is distinctive on its own
+        const distinctive = shared.length > 1 || (shared.length === 1 && shared[0].length >= 5);
+        if (ratio >= 0.6 && distinctive) s = 0.7 * ratio;
       }
       if (s > score) { score = s; best = entry; }
     }

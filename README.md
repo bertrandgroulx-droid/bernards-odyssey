@@ -54,7 +54,7 @@ assets/js/
   content.js             the creator's fixed script — never rewritten by the engine
   model.js               schema, factories, validation, migrations
   store.js               localStorage, file export and import
-  corpus.js              30 stories mapped to the four stages and six processes
+  corpus.js              60 stories mapped to the four stages and six processes
   analysis.js            matching, the two-phase read, vectors, PCA
   charts.js              inline SVG charts with a hover layer
   ui.js                  views and interaction
