@@ -39,7 +39,7 @@ export const CONTENT = Object.freeze({
 
   sixQuestionsLabel: "Six Questions",
   questions: Object.freeze([
-    { id: "q1", stage: 1, process: "A", title: "Was is your dream or ambition?", sub: "The original ambition; the specific ideal outcome you’re hoping to achieve, maintain, or advance?" },
+    { id: "q1", stage: 1, process: "A", title: "What is your dream or ambition?", sub: "The original ambition; the specific ideal outcome you’re hoping to achieve, maintain, or advance?" },
     { id: "q2", stage: 1, process: "A", title: "What’s holding you back?", sub: "" },
     { id: "q3", stage: 2, process: "B", title: "What shock, crisis, speed-bump intruding on your comfort zone?", sub: "" },
     { id: "q4", stage: 3, process: "D", title: "How do you let yourself become stuck?", sub: "In your head, motivation, energy, anxiety etc." },
