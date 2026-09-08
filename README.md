@@ -48,17 +48,21 @@ Plain ES modules, no build step, no dependencies. Each module has one job, so th
 and the presentation can each be replaced without touching the others.
 
 ```
-index.html               shell and stage markup
-assets/css/app.css       one stylesheet, design tokens at the top
+index.html                     shell and stage markup
+assets/css/app.css             one stylesheet, design tokens at the top
+assets/data/
+  corpus.json                  the 60 stories — content, not code
+  corpus.schema.json           the field rules, documented
 assets/js/
-  content.js             the creator's fixed script — never rewritten by the engine
-  model.js               schema, factories, validation, migrations
-  store.js               localStorage, file export and import
-  corpus.js              60 stories mapped to the four stages and six processes
-  analysis.js            matching, the two-phase read, vectors, PCA
-  charts.js              inline SVG charts with a hover layer
-  ui.js                  views and interaction
-  app.js                 bootstrap
+  content.js                   the creator's fixed script — never rewritten by the engine
+  model.js                     schema, factories, validation, migrations
+  store.js                     localStorage, file export and import
+  corpus.js                    fetches and validates corpus.json
+  analysis.js                  matching, the two-phase read, vectors, PCA
+  charts.js                    inline SVG charts with a hover layer
+  ui.js                        views and interaction
+  app.js                       bootstrap
+tools/validate-corpus.mjs      checks the story set before it ships
 ```
 
 **Data model.** One `Record` per browser holds an ordered list of `Round`s; a `Round` is one story
@@ -68,9 +72,24 @@ stage or a field means editing `content.js` and `model.js` — the charts, the i
 projection all read the vector generically. Saved records carry a schema version and pass through a
 migration chain on load, so old files keep working.
 
-**Extending the corpus.** Append an entry to `CORPUS` in `corpus.js` — `id`, `t`, `alt[]`, `kind`,
-`sum`, the six weights `w{A..F}`, four stage lines `s{1..4}` and six process clauses `p{A..F}`.
-Nothing else changes: matching, plotting and the projection pick it up.
+**Editing the story set.** The stories are data, not code: `assets/data/corpus.json` holds them, and
+you do not need to touch a JavaScript file to add one. Copy an existing entry and fill in `id`, `t`,
+`alt[]` (other things a reader might type), `kind`, `sum`, the six weights `w{A..F}`, four stage lines
+`s{1..4}` and six process clauses `p{A..F}`. Every field is documented in
+`assets/data/corpus.schema.json`, and editors that understand JSON Schema will autocomplete and
+validate as you type.
+
+Check your edit before committing:
+
+```bash
+node tools/validate-corpus.mjs
+```
+
+It fails on anything that would break the app — a missing field, a weight outside 0–100, a duplicate
+`id` — and warns about things that merely read badly, such as prose over the word limits, a name that
+two stories both answer to, or a word the tone rules exclude. The deploy runs the same check, so a
+broken story set stops the release rather than shipping. At runtime a single bad entry is skipped with
+a console warning rather than taking the app down.
 
 **Charts.** Two forms only — magnitude bars for the six processes, and a 2-D projection of the set.
 The categorical colours are validated for the dark surface across all pairs (worst-pair CVD ΔE 9.4,

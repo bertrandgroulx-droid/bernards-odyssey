@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trojan Horse reference set",
+  "description": "The corpus of durable stories, each mapped to the four lifecycle stages and the six process elements.",
+  "type": "object",
+  "required": ["version", "stories"],
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "description": { "type": "string" },
+    "stories": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/story" }
+    }
+  },
+  "$defs": {
+    "sentence": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Prose. Keep it to 25 words or fewer — the engine compresses anything longer."
+    },
+    "clause": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A short clause, 14 words or fewer. The engine appends the matching Homeric action to it."
+    },
+    "story": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "t", "kind", "sum", "w", "s1", "s2", "s3", "s4", "pA", "pB", "pC", "pD", "pE", "pF"],
+      "properties": {
+        "id":   { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "Stable key. Never reuse or change one that is already published." },
+        "t":    { "type": "string", "minLength": 1, "description": "Display title." },
+        "alt":  { "type": "array", "items": { "type": "string" }, "description": "Other things a reader might type: characters, abbreviations, common misspellings." },
+        "kind": { "type": "string", "minLength": 1, "description": "Form and year, shown under the title. e.g. 'Film, 1994'." },
+        "sum":  { "$ref": "#/$defs/sentence", "description": "What the story is carrying, in one line." },
+        "w": {
+          "type": "object",
+          "description": "Process intensity, 0-100. Drives the bars and the projection.",
+          "additionalProperties": false,
+          "required": ["A", "B", "C", "D", "E", "F"],
+          "properties": {
+            "A": { "$ref": "#/$defs/weight", "title": "Lotus Island Stasis" },
+            "B": { "$ref": "#/$defs/weight", "title": "The Open Sea Void" },
+            "C": { "$ref": "#/$defs/weight", "title": "The Crew's Mistake" },
+            "D": { "$ref": "#/$defs/weight", "title": "The Cyclops's Cave" },
+            "E": { "$ref": "#/$defs/weight", "title": "Circe's Sedative Stagnation" },
+            "F": { "$ref": "#/$defs/weight", "title": "The Ship & Bow Navigation" }
+          }
+        },
+        "s1": { "$ref": "#/$defs/sentence", "title": "Stage 1 — Constructed Illusion" },
+        "s2": { "$ref": "#/$defs/sentence", "title": "Stage 2 — Collapse to Point Zero" },
+        "s3": { "$ref": "#/$defs/sentence", "title": "Stage 3 — Identity Cage" },
+        "s4": { "$ref": "#/$defs/sentence", "title": "Stage 4 — Act of Pure Agency" },
+        "pA": { "$ref": "#/$defs/clause", "title": "Process A — Lotus Island Stasis" },
+        "pB": { "$ref": "#/$defs/clause", "title": "Process B — The Open Sea Void" },
+        "pC": { "$ref": "#/$defs/clause", "title": "Process C — The Crew's Mistake" },
+        "pD": { "$ref": "#/$defs/clause", "title": "Process D — The Cyclops's Cave" },
+        "pE": { "$ref": "#/$defs/clause", "title": "Process E — Circe's Sedative Stagnation" },
+        "pF": { "$ref": "#/$defs/clause", "title": "Process F — The Ship & Bow Navigation" }
+      }
+    },
+    "weight": { "type": "integer", "minimum": 0, "maximum": 100 }
+  }
+}

@@ -1,0 +1,1700 @@
+{
+  "version": 1,
+  "description": "Reference set for Trojan Horse. Each entry maps one durable story to the four stages and six processes. See corpus.schema.json for the field rules.",
+  "stories": [
+    {
+      "id": "odyssey",
+      "t": "The Odyssey",
+      "alt": [
+        "odysseus",
+        "homer",
+        "the oddysey"
+      ],
+      "kind": "Epic poem, c. 8th century BC",
+      "sum": "A man who is good at everything takes ten years to learn the one thing that gets him home.",
+      "w": {
+        "A": 70,
+        "B": 95,
+        "C": 90,
+        "D": 80,
+        "E": 75,
+        "F": 100
+      },
+      "s1": "Seven years on Calypso's island, offered immortality. The comfort is real, and it is still the thing keeping him from home.",
+      "s2": "Every prop goes: fleet, crew, name, clothes. He washes up on Phaeacia with nothing, and has to ask for help.",
+      "s3": "Trapped in the cave by his own announcement, then held a full year by Circe without anyone raising the subject of leaving.",
+      "s4": "He builds the raft himself, waits in rags in his own hall, and strings the bow no one else can bend.",
+      "pA": "He stays seven years somewhere pleasant",
+      "pB": "He loses the fleet, the crew and his name",
+      "pC": "The crew opens the bag of winds in sight of Ithaca",
+      "pD": "He is shut in the cave by his own boast",
+      "pE": "A year passes on Circe's island before anyone mentions home",
+      "pF": "He builds the raft and strings the bow himself"
+    },
+    {
+      "id": "iliad",
+      "t": "The Iliad",
+      "alt": [
+        "achilles",
+        "troy"
+      ],
+      "kind": "Epic poem, c. 8th century BC",
+      "sum": "A man withdraws over an insult, and the person who pays is the one who borrowed his armour.",
+      "w": {
+        "A": 35,
+        "B": 70,
+        "C": 95,
+        "D": 90,
+        "E": 80,
+        "F": 65
+      },
+      "s1": "Nine years of siege have become a routine with its own comforts. Everyone behaves as if the war is the permanent condition.",
+      "s2": "The quarrel strips the prize, the standing and then the friend. What is left is a man with nothing to defend but the grievance.",
+      "s3": "He sits by the ships repeating the same case to anyone sent to him. The tent is a cage he built and locked.",
+      "s4": "He returns to the field, and later hands the body back. The second act costs him more than the first.",
+      "pA": "The siege becomes a way of life",
+      "pB": "The prize and the standing are taken in public",
+      "pC": "Patroclus goes out in borrowed armour and does not come back",
+      "pD": "He argues the same grievance from inside the tent",
+      "pE": "Weeks pass with the ships beached and nothing moving",
+      "pF": "He gives the body back, which no rule required"
+    },
+    {
+      "id": "shawshank",
+      "t": "The Shawshank Redemption",
+      "alt": [
+        "shawshank",
+        "andy dufresne"
+      ],
+      "kind": "Film, 1994",
+      "sum": "A man keeps one small unglamorous act going for nineteen years and it turns out to be the whole plan.",
+      "w": {
+        "A": 80,
+        "B": 90,
+        "C": 45,
+        "D": 95,
+        "E": 85,
+        "F": 100
+      },
+      "s1": "Brooks cannot live outside the wall. The institution has become the map, and everyone inside calls that being settled.",
+      "s2": "The sentence takes the profession, the marriage, the name and the daylight. What arrives at the gate is a man with nothing.",
+      "s3": "The library, the tax returns, the routine. A comfortable position inside the cage that could have lasted the rest of his life.",
+      "s4": "A rock hammer and a poster. Nineteen years of the same small action, done nightly, with no way to check the progress.",
+      "pA": "Institutional routine becomes the only map anyone has",
+      "pB": "The trial takes his profession, his marriage and his name",
+      "pC": "He hands the warden a laundered fortune and gets years added",
+      "pD": "Solitary, and the loop of a conviction he cannot appeal",
+      "pE": "He builds a comfortable position inside the walls",
+      "pF": "A rock hammer, used nightly, for nineteen years"
+    },
+    {
+      "id": "gatsby",
+      "t": "The Great Gatsby",
+      "alt": [
+        "gatsby",
+        "jay gatsby"
+      ],
+      "kind": "Novel, 1925",
+      "sum": "A man builds a whole life as an instrument for repeating one evening, and the instrument works perfectly.",
+      "w": {
+        "A": 95,
+        "B": 55,
+        "C": 85,
+        "D": 75,
+        "E": 90,
+        "F": 20
+      },
+      "s1": "The parties run weekly and go nowhere. The wealth is real; the map it was bought to reach was drawn in 1917.",
+      "s2": "Daisy in the room is smaller than the idea of her. The collision is not a disaster, it is an ordinary afternoon.",
+      "s3": "He cannot revise the plan. Every conversation is steered back to the same year, and the persona he built cannot say so.",
+      "s4": "There is no fourth stage. The story is what the pattern does when the ownership never arrives.",
+      "pA": "West Egg parties that repeat and reach nothing",
+      "pB": "The war and the missing years strip the original name",
+      "pC": "He lets Daisy drive, and takes the consequence",
+      "pD": "Every route leads back to one afternoon in 1917",
+      "pE": "Five years of arrangements that keep the plan comfortable",
+      "pF": "Absent — the performance stands where the tool should be"
+    },
+    {
+      "id": "hamlet",
+      "t": "Hamlet",
+      "alt": [
+        "prince of denmark"
+      ],
+      "kind": "Play, c. 1600",
+      "sum": "A man who needs certainty before acting builds a four-act delay and calls it caution.",
+      "w": {
+        "A": 40,
+        "B": 85,
+        "C": 80,
+        "D": 100,
+        "E": 70,
+        "F": 60
+      },
+      "s1": "Court life at Elsinore resumes quickly after the funeral. Everyone has agreed on a version of events, and it holds until it does not.",
+      "s2": "Father dead, mother remarried, throne taken. The certainties are gone in a single month and nothing has replaced them.",
+      "s3": "The performance of madness starts as cover and becomes the residence. He talks himself out of the act, in public, repeatedly.",
+      "s4": "It arrives in the final scene, unplanned, and works. Ownership taken that late is indistinguishable from accident.",
+      "pA": "The court settles back into its routine after the funeral",
+      "pB": "Father, mother, throne and certainty gone in a month",
+      "pC": "He stabs through a curtain without checking who is behind it",
+      "pD": "He argues the case against himself, out loud, repeatedly",
+      "pE": "The play, the pacing, the postponement — motion instead of movement",
+      "pF": "He acts in the last scene, unrehearsed"
+    },
+    {
+      "id": "christmascarol",
+      "t": "A Christmas Carol",
+      "alt": [
+        "scrooge",
+        "ebenezer scrooge"
+      ],
+      "kind": "Novella, 1843",
+      "sum": "A man is shown the ordinary consequences of his own routine and changes it the same morning.",
+      "w": {
+        "A": 100,
+        "B": 60,
+        "C": 50,
+        "D": 70,
+        "E": 95,
+        "F": 90
+      },
+      "s1": "The counting house runs identically every day and every day is defensible. Thrift has been promoted from habit to principle.",
+      "s2": "Three nights strip the story he tells about himself: the childhood, the engagement he let lapse, the grave with his own name.",
+      "s3": "The miser was built in a cold room by a boy with no other options. It kept working long after the room was gone.",
+      "s4": "The turkey, the raise, the visit. All of it executed before noon, in public, at his own expense.",
+      "pA": "A daily routine so tight it cannot be questioned",
+      "pB": "Three nights remove every version he tells about himself",
+      "pC": "He let the engagement lapse and never revisited it",
+      "pD": "The same ledger, the same answer, for decades",
+      "pE": "Comfort by subtraction — nothing risked, nothing spent",
+      "pF": "The turkey, the raise and the visit, all before noon"
+    },
+    {
+      "id": "lotr",
+      "t": "The Lord of the Rings",
+      "alt": [
+        "frodo",
+        "tolkien",
+        "fellowship of the ring",
+        "return of the king"
+      ],
+      "kind": "Novel 1954, films 2001–2003",
+      "sum": "Someone with no aptitude for it carries the thing the whole distance, and fails at the last step anyway.",
+      "w": {
+        "A": 90,
+        "B": 85,
+        "C": 70,
+        "D": 80,
+        "E": 45,
+        "F": 95
+      },
+      "s1": "The Shire is comfortable enough that it cannot picture the war. The map ends at the borders and nobody minds.",
+      "s2": "Home, company, health and the use of one hand, given up in stages. By Mordor there is nothing left to strip.",
+      "s3": "The ring's own loop: carrying it makes it heavier, and the weight is the argument for keeping it.",
+      "s4": "He walks the whole distance and fails at the crack. The ownership is the walking, which nobody else volunteered for.",
+      "pA": "A comfortable county that has not noticed the war",
+      "pB": "Home, health and company given up in stages",
+      "pC": "Boromir reaches for it, and the company breaks",
+      "pD": "The ring gets heavier the longer it is carried",
+      "pE": "Rivendell and Lothlórien, where time stops being counted",
+      "pF": "He walks the distance no one else volunteered for"
+    },
+    {
+      "id": "hungergames",
+      "t": "The Hunger Games",
+      "alt": [
+        "katniss",
+        "katniss everdeen"
+      ],
+      "kind": "Novel 2008, film 2012",
+      "sum": "A survival habit built for a poor district turns out to be exactly the wrong instinct inside a televised game.",
+      "w": {
+        "A": 45,
+        "B": 95,
+        "C": 60,
+        "D": 75,
+        "E": 55,
+        "F": 95
+      },
+      "s1": "District 12 is narrow enough to look like order. Keep your head down, work the fence, and the arrangement holds.",
+      "s2": "The reaping removes home, name and the option of not being watched. Every prop is replaced with a costume.",
+      "s3": "The girl on fire is built by stylists, then required of her. She cannot tell which of her reactions are hers.",
+      "s4": "The berries. She takes the game's own rule and hands it back, which is the one move the rule cannot absorb.",
+      "pA": "A district narrow enough to be mistaken for order",
+      "pB": "The reaping takes home, name and privacy at once",
+      "pC": "She trusts the arena's rules and they are changed mid-game",
+      "pD": "The tracker jacker loop, and the replays that follow",
+      "pE": "The victory tour: comfort offered as a permanent condition",
+      "pF": "The berries, offered on the game's own terms"
+    },
+    {
+      "id": "starwars",
+      "t": "Star Wars",
+      "alt": [
+        "a new hope",
+        "luke skywalker",
+        "star wars a new hope"
+      ],
+      "kind": "Film, 1977",
+      "sum": "A young man is waiting for his life to start and only moves once there is nothing left to wait for.",
+      "w": {
+        "A": 85,
+        "B": 80,
+        "C": 55,
+        "D": 50,
+        "E": 40,
+        "F": 90
+      },
+      "s1": "One more season on the farm. The plan is always next year, and the horizon is a chore list.",
+      "s2": "The farm burns with the family in it. There is no version of the old life to return to.",
+      "s3": "The farm boy who is not ready, repeated to himself and to anyone senior enough to contradict it.",
+      "s4": "He switches off the targeting computer and trusts the practice instead of the instrument.",
+      "pA": "One more season on the farm, every season",
+      "pB": "The farm burns and the family with it",
+      "pC": "He leaves training early and arrives unprepared",
+      "pD": "The loop of not being ready, said out loud",
+      "pE": "Waiting for a life to start somewhere else",
+      "pF": "He switches off the computer and trusts the training"
+    },
+    {
+      "id": "matrix",
+      "t": "The Matrix",
+      "alt": [
+        "neo",
+        "thomas anderson"
+      ],
+      "kind": "Film, 1999",
+      "sum": "A man discovers the comfortable version was manufactured, and that knowing it is not the same as being free.",
+      "w": {
+        "A": 100,
+        "B": 90,
+        "C": 50,
+        "D": 70,
+        "E": 35,
+        "F": 95
+      },
+      "s1": "The simulation is the first stage stated literally: a pleasant map, running on rails, mistaken for the terrain.",
+      "s2": "Unplugging takes the body, the job, the name and the daylight. What is left is worse than the lie and it is real.",
+      "s3": "He cannot believe he is the one. The doubt is not modesty, it is the loop that keeps him losing.",
+      "s4": "He stops dodging and stands still. The training was finished long before he was willing to use it.",
+      "pA": "A pleasant simulation running quietly on rails",
+      "pB": "Unplugging costs the body, the job and the name",
+      "pC": "He goes back in for Morpheus against every rule",
+      "pD": "The loop of not believing he is the one",
+      "pE": "The comfortable answer: take the blue pill and forget",
+      "pF": "He stops dodging and stands still"
+    },
+    {
+      "id": "lionking",
+      "t": "The Lion King",
+      "alt": [
+        "simba"
+      ],
+      "kind": "Film, 1994",
+      "sum": "A boy accepts a story about his own guilt and spends years in a pleasant place to avoid checking it.",
+      "w": {
+        "A": 95,
+        "B": 75,
+        "C": 70,
+        "D": 80,
+        "E": 100,
+        "F": 90
+      },
+      "s1": "Everything the light touches. A certainty inherited whole, with no idea what it costs to hold.",
+      "s2": "The stampede takes the father, the home and the account of himself. He leaves with nothing but a version of events.",
+      "s3": "Hakuna matata is the third and fourth process in one phrase: a loop of guilt, wrapped in a routine that numbs it.",
+      "s4": "He walks back across the desert and says the true version out loud, in front of everyone who believed the other one.",
+      "pA": "A kingdom described as a certainty, never as a job",
+      "pB": "The stampede takes father, home and his account of himself",
+      "pC": "He goes to the gorge because his uncle suggested it",
+      "pD": "The same replayed guilt, unexamined for years",
+      "pE": "Hakuna matata: a routine built to keep the question away",
+      "pF": "He crosses the desert and states what happened"
+    },
+    {
+      "id": "findingnemo",
+      "t": "Finding Nemo",
+      "alt": [
+        "nemo",
+        "marlin"
+      ],
+      "kind": "Film, 2003",
+      "sum": "A father's vigilance is a reasonable response to a real catastrophe, and it is also the thing costing him his son.",
+      "w": {
+        "A": 90,
+        "B": 85,
+        "C": 65,
+        "D": 70,
+        "E": 60,
+        "F": 85
+      },
+      "s1": "The anemone, the schedule, the rules. Safety maintained by never going out, which everyone involved calls being careful.",
+      "s2": "The boat takes the boy. Every routine that was supposed to prevent this is still in place and none of it worked.",
+      "s3": "The loop is the promise: nothing will ever happen to you. It is unkeepable, and repeating it is the cage.",
+      "s4": "He lets go — of the reef, of the plan, and finally of the fin. Ownership here looks like doing less.",
+      "pA": "A reef-sized routine described as being careful",
+      "pB": "The boat takes the boy and no routine prevented it",
+      "pC": "He swims off in the wrong direction, twice, out of panic",
+      "pD": "The promise that nothing will ever happen, repeated",
+      "pE": "The safe schedule that keeps everyone home",
+      "pF": "He lets go of the fin and lets the boy swim"
+    },
+    {
+      "id": "groundhog",
+      "t": "Groundhog Day",
+      "alt": [
+        "phil connors",
+        "ground hog day"
+      ],
+      "kind": "Film, 1993",
+      "sum": "A man tries every way out of a repeating day and is only released by getting good at the day itself.",
+      "w": {
+        "A": 100,
+        "B": 70,
+        "C": 60,
+        "D": 95,
+        "E": 90,
+        "F": 100
+      },
+      "s1": "Contempt as a comfortable position. He has an answer for everything and it is the reason nothing changes.",
+      "s2": "The loop removes consequence, and with it every prop he used: the job, the future, the possibility of a next day.",
+      "s3": "He plays every angle, then stops trying. The stalled version lasts longer on screen than the escape attempts.",
+      "s4": "Piano, ice, medicine, one day at a time, with no way to bank the progress. This is the fourth stage as daily practice.",
+      "pA": "A repeating day with no consequence attached",
+      "pB": "The loop removes the job, the future and tomorrow",
+      "pC": "He games the day for advantage and loses more time",
+      "pD": "He runs the same day looking for an exit",
+      "pE": "He settles into the loop and stops trying to leave",
+      "pF": "Piano, ice and medicine, one unbankable day at a time"
+    },
+    {
+      "id": "jane-eyre",
+      "t": "Jane Eyre",
+      "alt": [
+        "jane"
+      ],
+      "kind": "Novel, 1847",
+      "sum": "A woman refuses two comfortable arrangements that would have cost the same thing, and takes destitution instead.",
+      "w": {
+        "A": 70,
+        "B": 95,
+        "C": 40,
+        "D": 65,
+        "E": 75,
+        "F": 100
+      },
+      "s1": "Thornfield is warm, paid and pleasant. The map it draws requires one fact to stay in the attic.",
+      "s2": "She walks out with nothing, sleeps outdoors and nearly dies of it. The props are not stripped, she puts them down.",
+      "s3": "The self-sufficiency built in a cold childhood keeps working long past its use, and it nearly hands her to St John.",
+      "s4": "She goes back on her own terms, with her own money, and asks the question herself.",
+      "pA": "A warm, paid position with one fact kept upstairs",
+      "pB": "She walks out with nothing and sleeps in the open",
+      "pC": "She almost takes St John's offer out of exhaustion",
+      "pD": "The loop of being nobody's, argued in her own voice",
+      "pE": "Comfort at Thornfield, on terms she cannot examine",
+      "pF": "She returns with her own money and asks herself"
+    },
+    {
+      "id": "breakingbad",
+      "t": "Breaking Bad",
+      "alt": [
+        "walter white",
+        "heisenberg"
+      ],
+      "kind": "Television, 2008–2013",
+      "sum": "A man with real skill points it at the wrong door and calls the whole thing provision for his family.",
+      "w": {
+        "A": 85,
+        "B": 80,
+        "C": 90,
+        "D": 85,
+        "E": 70,
+        "F": 95
+      },
+      "s1": "The classroom and the car wash. A life he never chose out loud, defended daily as the responsible option.",
+      "s2": "The diagnosis removes the timeline. Everything he was deferring is now on a clock he did not set.",
+      "s3": "Heisenberg is built to survive the box and then preferred to the man. By the end he says so plainly.",
+      "s4": "Absolute ownership, executed with genuine mastery, aimed away from home. The fourth stage does not guarantee the direction.",
+      "pA": "A life never chosen out loud, defended as responsible",
+      "pB": "The diagnosis takes the timeline he was counting on",
+      "pC": "Every impatient shortcut widens the damage",
+      "pD": "The loop of what he is owed, rehearsed for five seasons",
+      "pE": "The comfortable lab, the routine, the untouched money",
+      "pF": "Real mastery, taken up and pointed away from home"
+    },
+    {
+      "id": "pride",
+      "t": "Pride and Prejudice",
+      "alt": [
+        "elizabeth bennet",
+        "darcy",
+        "p&p"
+      ],
+      "kind": "Novel, 1813",
+      "sum": "A sharp reader of people discovers her sharpest reading was wrong, and has to revise it in public.",
+      "w": {
+        "A": 80,
+        "B": 60,
+        "C": 85,
+        "D": 70,
+        "E": 65,
+        "F": 90
+      },
+      "s1": "Longbourn runs on a settled reading of everyone in it. First impressions have been promoted to knowledge.",
+      "s2": "Lydia's elopement removes the family's standing overnight. Every arrangement they were counting on stops being available.",
+      "s3": "The wit that protects her also keeps her from being read, and it makes the wrong judgement very hard to withdraw.",
+      "s4": "She revises the judgement, says so, and refuses Lady Catherine to her face. The reversal costs more than either refusal.",
+      "pA": "A settled reading of everyone, treated as fact",
+      "pB": "Lydia's elopement takes the family's standing overnight",
+      "pC": "She believes Wickham because he flatters her judgement",
+      "pD": "The first impression, defended long past its evidence",
+      "pE": "Longbourn's routine, where nothing has to be decided",
+      "pF": "She revises the judgement out loud and refuses Lady Catherine"
+    },
+    {
+      "id": "mobydick",
+      "t": "Moby-Dick",
+      "alt": [
+        "ahab",
+        "captain ahab",
+        "moby dick"
+      ],
+      "kind": "Novel, 1851",
+      "sum": "A private injury is converted into everyone's course, and the ship is very well run all the way down.",
+      "w": {
+        "A": 55,
+        "B": 90,
+        "C": 95,
+        "D": 100,
+        "E": 40,
+        "F": 70
+      },
+      "s1": "The voyage has a stated commercial purpose. Every man aboard believes he signed on for oil.",
+      "s2": "The leg was taken before page one. The collision is old, and the whole book happens after it.",
+      "s3": "The pursuit is the cage. He is stuck in one loop and has the authority to make it everyone's route.",
+      "s4": "The harpoon is genuinely mastered. Ownership without a revised script is just a well-executed course into the water.",
+      "pA": "A commercial voyage everyone believes they signed for",
+      "pB": "The leg was taken before the book begins",
+      "pC": "He nails the doubloon to the mast and overrides every warning",
+      "pD": "One loop, held with the authority to enforce it",
+      "pE": "The routine of the hunt, which postpones the reckoning",
+      "pF": "Real mastery of the harpoon, aimed at one target"
+    },
+    {
+      "id": "mockingbird",
+      "t": "To Kill a Mockingbird",
+      "alt": [
+        "atticus finch",
+        "scout finch"
+      ],
+      "kind": "Novel, 1960",
+      "sum": "A child's map of a small town is corrected by watching an adult lose a case he was always going to lose.",
+      "w": {
+        "A": 85,
+        "B": 75,
+        "C": 55,
+        "D": 60,
+        "E": 70,
+        "F": 95
+      },
+      "s1": "Maycomb is a settled place with settled people, and the children have a complete map of it by page ten.",
+      "s2": "The verdict removes the assumption that the town is fair. Nothing about the town changes; the map does.",
+      "s3": "Boo Radley is the loop: a story repeated until nobody checks it, held in place by everyone's comfort.",
+      "s4": "Atticus takes the case knowing the outcome. The ownership is in the taking, not the winning.",
+      "pA": "A settled town with a complete and wrong map",
+      "pB": "The verdict removes the assumption of fairness",
+      "pC": "The children's raid on the Radley place nearly costs them",
+      "pD": "The Radley story, repeated until nobody checks it",
+      "pE": "Maycomb's routine, which is the whole defence of it",
+      "pF": "He takes the case knowing how it ends"
+    },
+    {
+      "id": "1984",
+      "t": "1984",
+      "alt": [
+        "nineteen eighty four",
+        "orwell",
+        "winston smith"
+      ],
+      "kind": "Novel, 1949",
+      "sum": "A man keeps a private self as his whole strategy, and the state turns out to have planned for that.",
+      "w": {
+        "A": 70,
+        "B": 95,
+        "C": 80,
+        "D": 100,
+        "E": 60,
+        "F": 35
+      },
+      "s1": "The Ministry routine is survivable and that is exactly the problem. Nothing about the day requires him to notice it.",
+      "s2": "The arrest takes the room, the woman, the diary and the body. The strip is total and deliberate.",
+      "s3": "Room 101 is the cage stated plainly. The loop is not his to run any more; it is administered.",
+      "s4": "Refused. The book exists to show the pattern failing at the fourth stage, which is why it still gets read.",
+      "pA": "A survivable routine that never has to be examined",
+      "pB": "The arrest takes the room, the diary and the body",
+      "pC": "He trusts O'Brien on the strength of a look",
+      "pD": "Room 101, where the loop is administered to him",
+      "pE": "The room above the shop, where time is allowed to pass",
+      "pF": "Absent — the fourth stage is refused"
+    },
+    {
+      "id": "harrypotter",
+      "t": "Harry Potter",
+      "alt": [
+        "hogwarts",
+        "potter",
+        "philosophers stone"
+      ],
+      "kind": "Novels 1997–2007",
+      "sum": "A boy handed a destiny keeps discovering that the adults' plan for him is not the same as a plan.",
+      "w": {
+        "A": 75,
+        "B": 85,
+        "C": 70,
+        "D": 80,
+        "E": 65,
+        "F": 90
+      },
+      "s1": "The cupboard, then Hogwarts. Both are complete worlds with rules that arrive pre-decided.",
+      "s2": "Parents, godfather, mentor, certainty. The strip runs across seven books and takes something in each.",
+      "s3": "The loop is the prophecy: he keeps checking whether he was chosen or whether he chose, and cannot settle it.",
+      "s4": "He walks into the forest without a plan or a weapon, having decided what it is for.",
+      "pA": "Two complete worlds, both with pre-decided rules",
+      "pB": "Parents, godfather and mentor removed in turn",
+      "pC": "He goes to the Ministry on a vision he did not verify",
+      "pD": "The prophecy loop: chosen, or choosing",
+      "pE": "Terms at school where the war is somebody else's",
+      "pF": "He walks into the forest with no weapon"
+    },
+    {
+      "id": "titanic",
+      "t": "Titanic",
+      "alt": [
+        "rose dewitt bukater",
+        "jack dawson"
+      ],
+      "kind": "Film, 1997",
+      "sum": "A woman decides to live before the ship hits anything, and the disaster only tests the decision.",
+      "w": {
+        "A": 95,
+        "B": 90,
+        "C": 60,
+        "D": 70,
+        "E": 75,
+        "F": 85
+      },
+      "s1": "First class is a cage with excellent food, and everyone in it agrees to describe the arrangement as good fortune.",
+      "s2": "The ship takes the fiancé, the fortune, the name and the plan. She arrives in New York with none of it.",
+      "s3": "The well-behaved daughter is the mask, and the engagement is the routine that keeps it in place.",
+      "s4": "The whistle. She blows it because she has already decided to live, and gives a stranger's name on the list.",
+      "pA": "First class, described by everyone as good fortune",
+      "pB": "Fiancé, fortune, name and plan gone in a night",
+      "pC": "The ship keeps its speed to make the schedule",
+      "pD": "The loop of what a daughter is required to be",
+      "pE": "An engagement that keeps everything comfortably fixed",
+      "pF": "She blows the whistle and gives a new name"
+    },
+    {
+      "id": "casablanca",
+      "t": "Casablanca",
+      "alt": [
+        "rick blaine"
+      ],
+      "kind": "Film, 1942",
+      "sum": "A man has arranged his life so that nothing can be asked of him, and then something is.",
+      "w": {
+        "A": 100,
+        "B": 70,
+        "C": 55,
+        "D": 75,
+        "E": 95,
+        "F": 90
+      },
+      "s1": "The café runs itself. Neutrality has been promoted from a mood to a business model to a personality.",
+      "s2": "Ilsa walking in removes the arrangement. The version of the past he had settled on is no longer the version.",
+      "s3": "He sticks his neck out for nobody, said often enough that it counts as a loop rather than a policy.",
+      "s4": "He gives away the letters. It costs him the thing he wanted and he does it at the airport, in person.",
+      "pA": "A café and a neutrality that has become a personality",
+      "pB": "Ilsa arrives and the settled version of the past goes",
+      "pC": "He drinks through the night rather than ask her anything",
+      "pD": "He sticks his neck out for nobody, repeatedly",
+      "pE": "Casablanca itself: everyone waiting, nobody leaving",
+      "pF": "He hands over the letters at the airport"
+    },
+    {
+      "id": "godfather",
+      "t": "The Godfather",
+      "alt": [
+        "michael corleone",
+        "corleone"
+      ],
+      "kind": "Film, 1972",
+      "sum": "A man who has explained he is not part of the family takes it over completely, and never re-opens the question.",
+      "w": {
+        "A": 85,
+        "B": 75,
+        "C": 80,
+        "D": 70,
+        "E": 60,
+        "F": 95
+      },
+      "s1": "That's my family, it's not me. The sentence is the map, and it holds right up until it is needed.",
+      "s2": "The shooting of his father removes the separation. There is no version of the outside life still available.",
+      "s3": "The war hero who was never going to be in it. The mask is dropped, and what is under it is decisive.",
+      "s4": "Total ownership, executed with precision, in the wrong direction. The fourth stage says nothing about where you point it.",
+      "pA": "A sentence about not being part of it, used as a map",
+      "pB": "The shooting removes the separation entirely",
+      "pC": "Sonny drives out angry and is killed at the toll booth",
+      "pD": "The loop of one more thing before it is finished",
+      "pE": "Sicily, where the war is somewhere else",
+      "pF": "He takes it over completely, and closes the question"
+    },
+    {
+      "id": "fightclub",
+      "t": "Fight Club",
+      "alt": [
+        "tyler durden",
+        "the narrator"
+      ],
+      "kind": "Novel 1996, film 1999",
+      "sum": "A man outsources his agency to a persona he invented, and has to take it back the hard way.",
+      "w": {
+        "A": 100,
+        "B": 80,
+        "C": 90,
+        "D": 85,
+        "E": 55,
+        "F": 80
+      },
+      "s1": "The catalogue apartment. Identity assembled by mail order, with insomnia as the only sign anything is wrong.",
+      "s2": "The explosion removes every object he had used to describe himself. The strip is literal and it is a relief.",
+      "s3": "Tyler starts as an escape from the box and ends up running the house. The cage is self-issued.",
+      "s4": "He shoots himself to retake authorship. Ownership arrives at the last possible price.",
+      "pA": "An identity assembled from a catalogue",
+      "pB": "The explosion removes every object he was using",
+      "pC": "Project Mayhem escalates past anything he intended",
+      "pD": "He argues with a persona he built himself",
+      "pE": "The support groups, which work and change nothing",
+      "pF": "He shoots himself to take the script back"
+    },
+    {
+      "id": "whiplash",
+      "t": "Whiplash",
+      "alt": [
+        "andrew neiman",
+        "fletcher"
+      ],
+      "kind": "Film, 2014",
+      "sum": "A student mistakes an authority's approval for the goal, and only plays when he stops needing it.",
+      "w": {
+        "A": 60,
+        "B": 85,
+        "C": 95,
+        "D": 90,
+        "E": 45,
+        "F": 100
+      },
+      "s1": "Practice is the bubble. Every other part of a life is cut away and the cutting is described as seriousness.",
+      "s2": "The crash, the expulsion, the hearing. Career, teacher and the account of himself all go in one week.",
+      "s3": "The loop is whether he is one of the greats, run nightly, refereed by a man who benefits from the question.",
+      "s4": "He counts in the band and plays without permission. The mastery was already there; the ownership was not.",
+      "pA": "Practice used to cut away every other part of a life",
+      "pB": "The crash and the expulsion in one week",
+      "pC": "He drives to the gig injured rather than miss it",
+      "pD": "The nightly question of whether he is great",
+      "pE": "The safer band, where nobody is shouting",
+      "pF": "He counts in the band and plays without permission"
+    },
+    {
+      "id": "moana",
+      "t": "Moana",
+      "alt": [
+        "vaiana"
+      ],
+      "kind": "Film, 2016",
+      "sum": "An island rule that once kept everyone alive is now the reason the island is dying.",
+      "w": {
+        "A": 95,
+        "B": 85,
+        "C": 70,
+        "D": 65,
+        "E": 55,
+        "F": 95
+      },
+      "s1": "The reef is the edge of the map and nobody asks why. The rule was sound once and has outlived the reason.",
+      "s2": "The blight, the failing nets, her grandmother's death. The certainties are removed in order.",
+      "s3": "The dutiful daughter of the chief. The loop is her own question about whether the calling is allowed.",
+      "s4": "She learns wayfinding — an actual craft, on the water, badly at first — and returns the heart herself.",
+      "pA": "A rule at the reef that outlived its reason",
+      "pB": "The blight and the failing nets take the certainties",
+      "pC": "She sails out untrained and loses the boat",
+      "pD": "The loop of whether she is allowed to go",
+      "pE": "Village routine, which keeps the question comfortable",
+      "pF": "She learns wayfinding and returns the heart"
+    },
+    {
+      "id": "up",
+      "t": "Up",
+      "alt": [
+        "carl fredricksen"
+      ],
+      "kind": "Film, 2009",
+      "sum": "A house kept exactly as it was is a promise being kept in the least useful possible way.",
+      "w": {
+        "A": 100,
+        "B": 80,
+        "C": 60,
+        "D": 75,
+        "E": 90,
+        "F": 95
+      },
+      "s1": "The house is preserved to the inch while the city is built over it. Preservation has become the whole plan.",
+      "s2": "Ellie's death, then the court order. The arrangement he was defending is removed by other people.",
+      "s3": "The grief is the furniture. The loop is a promise he has been keeping in the shape of an address.",
+      "s4": "He empties the house, object by object, to make it fly. The ownership is in the throwing out.",
+      "pA": "A house preserved to the inch as the entire plan",
+      "pB": "Ellie's death and the court order remove the arrangement",
+      "pC": "He hits the workman and loses the house in a morning",
+      "pD": "A promise kept in the shape of an address",
+      "pE": "Years of the same route, the same chair, the same day",
+      "pF": "He empties the house to make it fly"
+    },
+    {
+      "id": "spiritedaway",
+      "t": "Spirited Away",
+      "alt": [
+        "chihiro",
+        "sen"
+      ],
+      "kind": "Film, 2001",
+      "sum": "A child is put to work in a place that takes names, and the work is what gets her out.",
+      "w": {
+        "A": 70,
+        "B": 95,
+        "C": 75,
+        "D": 70,
+        "E": 80,
+        "F": 95
+      },
+      "s1": "A sulking child in the back of a car, certain the world is arranged around her preferences.",
+      "s2": "Parents turned to pigs, the way home gone, her own name taken by contract. Nothing familiar is left.",
+      "s3": "The bathhouse is a comfortable holding pattern that eats names. Everyone in it has stopped counting the years.",
+      "s4": "She works, remembers her own name, and walks out without looking back because she was told not to.",
+      "pA": "A child certain the world is arranged for her",
+      "pB": "Parents, route home and name all taken",
+      "pC": "She lets No-Face into the bathhouse",
+      "pD": "The loop of a name she is losing hold of",
+      "pE": "Bathhouse routine that quietly eats the years",
+      "pF": "She works, keeps her name, and does not look back"
+    },
+    {
+      "id": "devilwearsprada",
+      "t": "The Devil Wears Prada",
+      "alt": [
+        "andy sachs",
+        "miranda priestly",
+        "prada"
+      ],
+      "kind": "Novel 2003, film 2006",
+      "sum": "A job taken for one year on the way to something else quietly becomes the thing itself.",
+      "w": {
+        "A": 90,
+        "B": 70,
+        "C": 85,
+        "D": 65,
+        "E": 95,
+        "F": 90
+      },
+      "s1": "One year at Runway, described as temporary in every conversation, including the ones she has with herself.",
+      "s2": "Paris removes the story that she is above it. She is not visiting the arrangement, she is in it.",
+      "s3": "The mask is being the girl who is not really like this, worn while doing all of it.",
+      "s4": "She drops the phone in the fountain, mid-assignment, with nothing else arranged.",
+      "pA": "A year described as temporary in every conversation",
+      "pB": "Paris removes the story of being above it",
+      "pC": "She takes the Paris seat knowing what it costs Nigel",
+      "pD": "The loop of not really being one of them",
+      "pE": "The comfortable competence of doing the job well",
+      "pF": "She drops the phone in the fountain"
+    },
+    {
+      "id": "tedlasso",
+      "t": "Ted Lasso",
+      "alt": [
+        "lasso",
+        "richmond"
+      ],
+      "kind": "Television, 2020–2023",
+      "sum": "Relentless good cheer is a real skill and also a place to stand so nothing has to be looked at.",
+      "w": {
+        "A": 95,
+        "B": 75,
+        "C": 60,
+        "D": 80,
+        "E": 70,
+        "F": 85
+      },
+      "s1": "Optimism as a complete operating system. It works on everyone else, which is what keeps it from being examined.",
+      "s2": "The divorce, the distance from his son, the panic attacks. The props come off in front of a stadium.",
+      "s3": "The loop is the cheer itself: kept up because stopping would leave the thing it was covering in plain view.",
+      "s4": "He sits down with the therapist and says the true thing, which is harder for him than any match.",
+      "pA": "Optimism running as a complete operating system",
+      "pB": "The divorce and the distance from his son",
+      "pC": "He hides the panic attacks and it costs him the room",
+      "pD": "Cheer kept up so the cover is not dropped",
+      "pE": "A season of routine where nothing is discussed",
+      "pF": "He sits down and says the true thing"
+    },
+    {
+      "id": "sopranos",
+      "t": "The Sopranos",
+      "alt": [
+        "tony soprano",
+        "soprano"
+      ],
+      "kind": "Television, 1999-2007",
+      "sum": "A man goes to therapy for twenty years and uses every session to get better at not changing.",
+      "w": {
+        "A": 95,
+        "B": 60,
+        "C": 85,
+        "D": 100,
+        "E": 90,
+        "F": 25
+      },
+      "s1": "North Caldwell, the pool, the ducks. A suburban life run in parallel with the other one, and both described as normal.",
+      "s2": "The panic attacks are the collapse. His body concedes what he will not, and the props keep working while he stops.",
+      "s3": "Two decades of the same conversation in the same office. The insight arrives every week and never survives the drive home.",
+      "s4": "Refused. The show is a long study of what happens when the fourth stage is available and declined, session after session.",
+      "pA": "A suburban routine held alongside the other life",
+      "pB": "The panic attacks concede what he will not",
+      "pC": "Every impulsive act widens damage he then has to manage",
+      "pD": "The same session, the same insight, weekly, for years",
+      "pE": "The pool, the boat, the routine that absorbs everything",
+      "pF": "Absent - the exit is available and declined"
+    },
+    {
+      "id": "thewire",
+      "t": "The Wire",
+      "alt": [
+        "mcnulty",
+        "baltimore",
+        "stringer bell"
+      ],
+      "kind": "Television, 2002-2008",
+      "sum": "Everyone in the city is good at their job, and the job is what keeps the city exactly as it is.",
+      "w": {
+        "A": 90,
+        "B": 75,
+        "C": 80,
+        "D": 95,
+        "E": 100,
+        "F": 60
+      },
+      "s1": "The stats, the clearance rate, the corner. Every institution runs a map that stopped matching the ground years ago.",
+      "s2": "Each season strips the props from someone: the case, the union, the school, the paper. Nobody gets to keep their cover.",
+      "s3": "The institutions are the cage. Individuals see clearly and are outlasted by the systems that employ them.",
+      "s4": "Small and local when it comes. Bunny with the free zone, Prez in the classroom, ownership taken where nobody is watching.",
+      "pA": "Clearance rates that describe a city nobody lives in",
+      "pB": "Each season takes the case, the job or the cover",
+      "pC": "An impatient wire, an unauthorised call, the whole detail collapses",
+      "pD": "The chain of command, repeating itself upward",
+      "pE": "The institution absorbs everything and keeps paying",
+      "pF": "Small local ownership, taken where nobody is watching"
+    },
+    {
+      "id": "madmen",
+      "t": "Mad Men",
+      "alt": [
+        "don draper",
+        "dick whitman"
+      ],
+      "kind": "Television, 2007-2015",
+      "sum": "A man wears another man name for a decade and finds the disguise has no exit written into it.",
+      "w": {
+        "A": 100,
+        "B": 70,
+        "C": 85,
+        "D": 90,
+        "E": 95,
+        "F": 70
+      },
+      "s1": "The office, the apartment, the account. A life assembled to be looked at, and successful enough that nobody checks the seams.",
+      "s2": "The identity comes apart in stages: the marriage, the agency, the name. Each collapse is answered by rebuilding the same structure.",
+      "s3": "Don Draper is the cage, worn so long that removing it takes the whole series and most of what he owns.",
+      "s4": "California, the retreat, the phone call. Ownership arrives quietly and the show refuses to say what he does with it.",
+      "pA": "A life assembled to be looked at",
+      "pB": "Marriage, agency and name come apart in stages",
+      "pC": "Each impulsive escape costs him the ground he had gained",
+      "pD": "The same childhood, re-run in every hotel room",
+      "pE": "Another account, another apartment, another version of the same year",
+      "pF": "He stops in California and picks the phone up"
+    },
+    {
+      "id": "succession",
+      "t": "Succession",
+      "alt": [
+        "roy family",
+        "kendall roy",
+        "logan roy"
+      ],
+      "kind": "Television, 2018-2023",
+      "sum": "Four people compete for a prize that only exists while the man offering it is alive to withhold it.",
+      "w": {
+        "A": 85,
+        "B": 80,
+        "C": 95,
+        "D": 100,
+        "E": 75,
+        "F": 40
+      },
+      "s1": "The plane, the compound, the birthday. Extreme comfort arranged so that no one inside it has to become an adult.",
+      "s2": "Each betrayal strips a position, and the props return within an episode. The collapse never quite completes, which is the trap.",
+      "s3": "The loop is the approval, sought from a man who withholds it on purpose. Everyone can name it and nobody can leave it.",
+      "s4": "Barely. The clearest act belongs to the one who takes the money and stops competing.",
+      "pA": "Comfort arranged so nobody has to become an adult",
+      "pB": "Each betrayal strips a position, briefly",
+      "pC": "The impulsive press conference, the leak, the vote called early",
+      "pD": "Approval sought from a man who withholds it",
+      "pE": "The jet, the compound, the endless holding pattern",
+      "pF": "The one who takes the money and stops competing"
+    },
+    {
+      "id": "fleabag",
+      "t": "Fleabag",
+      "alt": [
+        "phoebe waller bridge"
+      ],
+      "kind": "Television, 2016-2019",
+      "sum": "A woman tells the audience everything so that she never has to tell anyone in the room.",
+      "w": {
+        "A": 80,
+        "B": 90,
+        "C": 95,
+        "D": 85,
+        "E": 70,
+        "F": 90
+      },
+      "s1": "The cafe, the jokes, the same night repeated. A functioning life run on the assumption that nothing needs to be said.",
+      "s2": "Boo. The guilt is the collapse, and it happened before the first episode, which is why the first series is a performance.",
+      "s3": "The camera is the cage, made literal. She turns to us at every moment she would otherwise have to be present.",
+      "s4": "The last shot. She waves the audience off and stays in her own life without a witness.",
+      "pA": "A functioning routine where nothing has to be said",
+      "pB": "Boo, and the guilt underneath the whole first series",
+      "pC": "The impulse that cost her the friendship she is mourning",
+      "pD": "The turn to camera, used at every hard moment",
+      "pE": "The cafe and the jokes, keeping everything survivable",
+      "pF": "She waves us off and stays in the scene"
+    },
+    {
+      "id": "severance",
+      "t": "Severance",
+      "alt": [
+        "lumon",
+        "mark scout",
+        "innie"
+      ],
+      "kind": "Television, 2022-",
+      "sum": "A man solves grief by having the memory of it surgically switched off for eight hours a day.",
+      "w": {
+        "A": 100,
+        "B": 85,
+        "C": 70,
+        "D": 95,
+        "E": 90,
+        "F": 85
+      },
+      "s1": "The severed floor is the first stage built as architecture: comfort by amputation, with waffle parties as the reward structure.",
+      "s2": "The overtime contingency. Both selves discover the other is also trapped, and neither set of props was ever real.",
+      "s3": "Lumon is a predatory cage with a wellness programme. The loops are administered, scheduled and given cheerful names.",
+      "s4": "He wakes up outside and says a true sentence with a mouth the company does not control.",
+      "pA": "Comfort by amputation, with a waffle party attached",
+      "pB": "Both selves learn the other is trapped too",
+      "pC": "The escape is triggered before anyone has a plan",
+      "pD": "The break room, where the loop is administered",
+      "pE": "Perks, dance breaks and a numbered routine",
+      "pF": "He wakes outside and speaks with his own mouth"
+    },
+    {
+      "id": "thebear",
+      "t": "The Bear",
+      "alt": [
+        "carmy berzatto",
+        "carmen berzatto"
+      ],
+      "kind": "Television, 2022-",
+      "sum": "A cook inherits a debt and a grief and tries to solve both by raising the standard of the food.",
+      "w": {
+        "A": 70,
+        "B": 95,
+        "C": 90,
+        "D": 100,
+        "E": 60,
+        "F": 95
+      },
+      "s1": "The sandwich shop, run the way it has always been run. The routine is grief with a service to get through.",
+      "s2": "Michael death and the books. Everything he trained for arrives attached to a business that cannot pay its suppliers.",
+      "s3": "The perfectionist is the cage, inherited from the same family that produced the grief. He locks himself in a walk-in, literally.",
+      "s4": "Prep lists, call-backs, the same tasks in the same order, every service. Ownership here is procedural and it is daily.",
+      "pA": "A shop run the way it has always been run",
+      "pB": "The death and the books arrive together",
+      "pC": "The impatient opening, the unpaid invoice, the door left unlocked",
+      "pD": "The walk-in, and the loop he takes in there",
+      "pE": "Service after service, which postpones every real question",
+      "pF": "Prep lists and call-backs, done in order, every day"
+    },
+    {
+      "id": "bettercallsaul",
+      "t": "Better Call Saul",
+      "alt": [
+        "jimmy mcgill",
+        "saul goodman"
+      ],
+      "kind": "Television, 2015-2022",
+      "sum": "A man builds a second name to escape a brother judgement and then cannot get back out of it.",
+      "w": {
+        "A": 75,
+        "B": 85,
+        "C": 95,
+        "D": 90,
+        "E": 80,
+        "F": 85
+      },
+      "s1": "The mail room, the elder law practice, the nail salon office. Each is a legitimate life he keeps almost committing to.",
+      "s2": "Chuck letter, then the fire. The verdict he spent a decade arguing against turns out to have been written down.",
+      "s3": "Saul Goodman is the cage, and it works so well that the man who built it disappears inside it for six years.",
+      "s4": "The courtroom, at the end. He gives the true account under his own name and takes the sentence that follows.",
+      "pA": "A legitimate practice he keeps almost committing to",
+      "pB": "The letter, the fire, and the verdict in writing",
+      "pC": "Every shortcut wins the day and costs the decade",
+      "pD": "The brother voice, running long after the brother",
+      "pE": "The comfortable con, profitable and repeatable",
+      "pF": "He gives the true account under his own name"
+    },
+    {
+      "id": "gameofthrones",
+      "t": "Game of Thrones",
+      "alt": [
+        "got",
+        "a song of ice and fire",
+        "winterfell"
+      ],
+      "kind": "Television, 2011-2019",
+      "sum": "Everyone plays a game whose rules they were taught by people the game had already killed.",
+      "w": {
+        "A": 85,
+        "B": 100,
+        "C": 95,
+        "D": 80,
+        "E": 55,
+        "F": 80
+      },
+      "s1": "Winterfell in summer. An order so settled that honour reads as strategy and nobody has checked the assumption in a generation.",
+      "s2": "Ned execution and the Red Wedding. The story removes the props by removing the people who were the props.",
+      "s3": "The loop is the claim: each house repeats an inherited grievance and calls the repetition a right.",
+      "s4": "Where it works it is unglamorous - Brienne keeping an oath, Sam reading, Arya taking the ship west.",
+      "pA": "A settled order nobody has questioned in a generation",
+      "pB": "Ned execution, and every certainty after it",
+      "pC": "Honourable choices made too early, in the wrong room",
+      "pD": "An inherited grievance, repeated as a right",
+      "pE": "Kings Landing, where the game replaces the point of it",
+      "pF": "An oath kept, a book read, a ship taken west"
+    },
+    {
+      "id": "squidgame",
+      "t": "Squid Game",
+      "alt": [
+        "ojingeo geim",
+        "seong gi hun"
+      ],
+      "kind": "Television, 2021- (Korean)",
+      "sum": "Desperate people are offered a fair game, and the fairness is the most convincing lie in it.",
+      "w": {
+        "A": 60,
+        "B": 100,
+        "C": 90,
+        "D": 85,
+        "E": 50,
+        "F": 85
+      },
+      "s1": "The debt is normal life, and everyone in it has agreed to describe their situation as temporary bad luck.",
+      "s2": "The island removes name, clothes and history, and replaces them with a number. The strip is administrative and total.",
+      "s3": "The vote is the cage: they are allowed to leave, and they come back, which the game counts on.",
+      "s4": "He refuses the last move, then refuses the money for a year, then turns the plane around.",
+      "pA": "Debt described by everyone as temporary bad luck",
+      "pB": "Name, clothes and history replaced by a number",
+      "pC": "Alliances made in panic that cost more than they save",
+      "pD": "The vote, taken and reversed and taken again",
+      "pE": "The dormitory routine between rounds",
+      "pF": "He refuses the last move and turns the plane around"
+    },
+    {
+      "id": "shogun",
+      "t": "Shogun",
+      "alt": [
+        "toranaga",
+        "blackthorne",
+        "james clavell"
+      ],
+      "kind": "Novel 1975, television 2024",
+      "sum": "A pilot washes up somewhere the rules are entirely different and survives by learning them rather than arguing.",
+      "w": {
+        "A": 65,
+        "B": 100,
+        "C": 85,
+        "D": 70,
+        "E": 60,
+        "F": 95
+      },
+      "s1": "An English pilot with a mission, a crew and a certainty about his own standing. All three are era-specific and none travel.",
+      "s2": "The wreck takes the ship, the language, the rank and the right to speak. He is kept alive at someone else discretion.",
+      "s3": "The loop is his insistence on being understood on his own terms, which nearly gets him killed several times.",
+      "s4": "He learns the language, the customs and the tea, and stops trying to win the argument.",
+      "pA": "An English certainty about rank that does not travel",
+      "pB": "The wreck takes ship, language, rank and voice",
+      "pC": "Every outburst in the wrong room costs somebody their life",
+      "pD": "His insistence on being understood on his terms",
+      "pE": "Comfortable months in the village, learning nothing urgent",
+      "pF": "He learns the language and stops arguing"
+    },
+    {
+      "id": "thelastofus",
+      "t": "The Last of Us",
+      "alt": [
+        "joel miller",
+        "ellie",
+        "tlou"
+      ],
+      "kind": "Game 2013, television 2023",
+      "sum": "A man who lost a daughter is given a second one and makes a choice no one else gets to review.",
+      "w": {
+        "A": 55,
+        "B": 100,
+        "C": 80,
+        "D": 95,
+        "E": 65,
+        "F": 90
+      },
+      "s1": "The quarantine zone, twenty years in. A survivable routine of smuggling and rations that everybody treats as the world.",
+      "s2": "The first twenty minutes remove the daughter, and every subsequent loss is measured against that one.",
+      "s3": "The loop is the promise he made to himself never to have anything to lose again.",
+      "s4": "The hospital. Total ownership, executed without hesitation, in a direction he then lies about.",
+      "pA": "A survivable routine of rations and smuggling",
+      "pB": "The first loss, against which everything is measured",
+      "pC": "The decision at the hospital, made in minutes, unreviewed",
+      "pD": "The vow never to have anything to lose",
+      "pE": "Boston, Jackson, the safe years in between",
+      "pF": "He acts completely, and lies about it afterwards"
+    },
+    {
+      "id": "bojack",
+      "t": "BoJack Horseman",
+      "alt": [
+        "bojack"
+      ],
+      "kind": "Television, 2014-2020",
+      "sum": "A man with insight into exactly what is wrong with him uses the insight instead of the change.",
+      "w": {
+        "A": 100,
+        "B": 80,
+        "C": 95,
+        "D": 100,
+        "E": 95,
+        "F": 70
+      },
+      "s1": "The house above the hills, the residuals, the show playing on a loop. Comfort that removes any reason to be anywhere.",
+      "s2": "New Mexico, then the obituary, then the trial. The props are removed slowly and he replaces each one.",
+      "s3": "He narrates his own cage with great accuracy, which is the cage. Self-knowledge is used as a substitute for the exit.",
+      "s4": "Prison, and the swimming pool conversation. The ending refuses to say whether ownership held.",
+      "pA": "A house, residuals, and his own show on repeat",
+      "pB": "New Mexico, the obituary, the trial",
+      "pC": "Every impulsive night costs somebody else the decade",
+      "pD": "Accurate self-narration used instead of the exit",
+      "pE": "Another project, another bender, another year",
+      "pF": "Prison, and one conversation that is not performed"
+    },
+    {
+      "id": "schittscreek",
+      "t": "Schitts Creek",
+      "alt": [
+        "schitt creek",
+        "rose family",
+        "david rose"
+      ],
+      "kind": "Television, 2015-2020",
+      "sum": "A rich family loses everything and discovers the loss removed the one thing keeping them apart.",
+      "w": {
+        "A": 100,
+        "B": 95,
+        "C": 50,
+        "D": 65,
+        "E": 70,
+        "F": 90
+      },
+      "s1": "The wealth is the bubble, and it is doing the work of a family. Nobody has needed to be known.",
+      "s2": "The seizure takes the house, the staff, the accounts and the wardrobe, and puts four people in two motel rooms.",
+      "s3": "Each of them is wearing a persona built for a room that no longer exists, and they wear it for two seasons.",
+      "s4": "The store, the motel purchase, the apology, the wedding. Ownership taken in small, unglamorous, repeated acts.",
+      "pA": "Wealth doing the work a family should have done",
+      "pB": "House, staff, accounts and wardrobe seized",
+      "pC": "Old habits spent on money that is no longer there",
+      "pD": "A persona kept for a room that no longer exists",
+      "pE": "The motel, comfortable enough to stay indefinitely",
+      "pF": "The store, the purchase, the apology, the wedding"
+    },
+    {
+      "id": "eeaao",
+      "t": "Everything Everywhere All at Once",
+      "alt": [
+        "everything everywhere",
+        "evelyn wang",
+        "eeaao"
+      ],
+      "kind": "Film, 2022",
+      "sum": "A woman is shown every life she did not live and has to choose the one she is actually in.",
+      "w": {
+        "A": 90,
+        "B": 85,
+        "C": 80,
+        "D": 100,
+        "E": 85,
+        "F": 95
+      },
+      "s1": "The laundromat, the audit, the receipts. A life narrowed to admin, with the divorce papers unread on the counter.",
+      "s2": "The verse-jumping strips the assumption that this life is the only one, which turns out to be worse rather than better.",
+      "s3": "The bagel is the loop stated as an object: if everything is possible then nothing matters, on repeat.",
+      "s4": "She chooses the laundromat, the husband and the daughter, on purpose, with all the alternatives visible.",
+      "pA": "A life narrowed to receipts and an unread divorce",
+      "pB": "Every certainty about this life removed at once",
+      "pC": "She takes the fight to her daughter rather than the room",
+      "pD": "The bagel: if everything is possible, nothing matters",
+      "pE": "The audit, the taxes, the endlessly deferred conversation",
+      "pF": "She chooses this life with the alternatives in view"
+    },
+    {
+      "id": "parasite",
+      "t": "Parasite",
+      "alt": [
+        "gisaengchung",
+        "kim family"
+      ],
+      "kind": "Film, 2019 (Korean)",
+      "sum": "A family runs a clever plan beautifully and never notices the plan had no second half.",
+      "w": {
+        "A": 80,
+        "B": 95,
+        "C": 100,
+        "D": 70,
+        "E": 75,
+        "F": 60
+      },
+      "s1": "The semi-basement, the folded pizza boxes, the stolen wifi. Poverty run as a competent routine that nobody calls a crisis.",
+      "s2": "The flood. In one night the house, the belongings and the plan are gone, and the gym floor is the baseline.",
+      "s3": "The bunker is the cage made architectural: a man living under a house, sending messages nobody reads.",
+      "s4": "The son plan to buy the house is the fourth stage as fantasy - stated, costed, and out of reach.",
+      "pA": "Poverty run as a competent, unexamined routine",
+      "pB": "The flood takes the house and everything in it",
+      "pC": "They celebrate in the living room before the job is done",
+      "pD": "A man under the house, signalling to nobody",
+      "pE": "The comfortable weeks of being employed by the Parks",
+      "pF": "A plan to buy the house, costed and out of reach"
+    },
+    {
+      "id": "dune",
+      "t": "Dune",
+      "alt": [
+        "paul atreides",
+        "arrakis",
+        "frank herbert"
+      ],
+      "kind": "Novel 1965, films 2021-2024",
+      "sum": "A boy is handed a prophecy that was written for him by people who wanted him to obey it.",
+      "w": {
+        "A": 75,
+        "B": 100,
+        "C": 85,
+        "D": 90,
+        "E": 60,
+        "F": 95
+      },
+      "s1": "Caladan. An ordered house with an inherited role, a fencing tutor and a future everyone has already agreed on.",
+      "s2": "The betrayal takes the father, the house, the water and the name in a single night on an unfamiliar planet.",
+      "s3": "The prophecy is the cage: every step toward power confirms a story that was planted to be confirmed.",
+      "s4": "He learns the desert - the walk, the water discipline, the worm - and takes the role on terms he chooses.",
+      "pA": "An ordered house with a future already agreed",
+      "pB": "Father, house, water and name gone in one night",
+      "pC": "Every move he makes tightens the prophecy around him",
+      "pD": "A story planted to be confirmed by his own choices",
+      "pE": "The sietch years, comfortable enough to stay",
+      "pF": "He learns the desert and takes the role deliberately"
+    },
+    {
+      "id": "barbie",
+      "t": "Barbie",
+      "alt": [
+        "barbieland",
+        "greta gerwig"
+      ],
+      "kind": "Film, 2023",
+      "sum": "A perfect day repeats until one thought arrives that the perfect day has no room for.",
+      "w": {
+        "A": 100,
+        "B": 80,
+        "C": 70,
+        "D": 75,
+        "E": 85,
+        "F": 90
+      },
+      "s1": "Barbieland is the first stage rendered as production design: every day identical, every problem solved before it is stated.",
+      "s2": "The real world removes the standing, the certainty and the flat feet. Nothing she was told about herself survives the trip.",
+      "s3": "The cage is the role: she is a category rather than a person, and the category cannot hold a difficult thought.",
+      "s4": "She chooses to be ordinary and mortal, which the film treats as the harder and less glamorous option.",
+      "pA": "Every day identical, every problem pre-solved",
+      "pB": "The real world removes the standing and the certainty",
+      "pC": "Ken brings back a whole ideology from one weekend",
+      "pD": "A category that cannot hold a difficult thought",
+      "pE": "The choreographed nights that keep the question away",
+      "pF": "She chooses to be ordinary and mortal"
+    },
+    {
+      "id": "topgunmaverick",
+      "t": "Top Gun Maverick",
+      "alt": [
+        "maverick",
+        "top gun"
+      ],
+      "kind": "Film, 2022",
+      "sum": "A man avoids promotion for thirty years so he never has to be responsible for anyone else.",
+      "w": {
+        "A": 90,
+        "B": 70,
+        "C": 75,
+        "D": 85,
+        "E": 95,
+        "F": 95
+      },
+      "s1": "Still a captain, still flying, still in the same hangar. A career arranged so that nothing can be lost twice.",
+      "s2": "The mission removes the option of staying peripheral. He is made responsible for the son of the man he lost.",
+      "s3": "The loop is Goose, running for thirty years under everything he does and every promotion he declines.",
+      "s4": "He teaches, then he flies the mission himself, and lets Rooster fly the half he cannot control.",
+      "pA": "A career arranged so nothing can be lost twice",
+      "pB": "The mission removes the option of staying peripheral",
+      "pC": "Old instincts that nearly cost the team the plan",
+      "pD": "Goose, running under everything for thirty years",
+      "pE": "The hangar, the test flights, the deferred promotion",
+      "pF": "He teaches, flies, and lets Rooster take the rest"
+    },
+    {
+      "id": "encanto",
+      "t": "Encanto",
+      "alt": [
+        "madrigal",
+        "mirabel"
+      ],
+      "kind": "Film, 2021",
+      "sum": "A family holds a miracle together by never mentioning what holding it is costing each of them.",
+      "w": {
+        "A": 100,
+        "B": 85,
+        "C": 65,
+        "D": 90,
+        "E": 80,
+        "F": 90
+      },
+      "s1": "The casita, the gifts, the town. A functioning miracle with one rule: nobody talks about the cracks.",
+      "s2": "The house falls down. The gifts, the walls and the standing go together, and what is left is a family on a riverbank.",
+      "s3": "Each of them is locked in a role: the strong one, the perfect one, the one without a gift. Nobody can put it down.",
+      "s4": "They rebuild by hand, without the miracle, and the door at the end has all their names on it.",
+      "pA": "A functioning miracle with one unspoken rule",
+      "pB": "The house falls and takes the gifts with it",
+      "pC": "Mirabel forces it open before anyone is ready",
+      "pD": "A role nobody in the family can put down",
+      "pE": "The town celebration that keeps the cracks unmentioned",
+      "pF": "They rebuild the house by hand, without the gift"
+    },
+    {
+      "id": "arrival",
+      "t": "Arrival",
+      "alt": [
+        "louise banks",
+        "story of your life"
+      ],
+      "kind": "Short story 1998, film 2016",
+      "sum": "A woman learns a language that shows her the whole of a life, including the part that ends.",
+      "w": {
+        "A": 70,
+        "B": 90,
+        "C": 80,
+        "D": 75,
+        "E": 60,
+        "F": 100
+      },
+      "s1": "The lecture hall, the empty house, the routine of a grief that is being read as an ordinary quiet life.",
+      "s2": "The ships remove every assumption about time, language and what knowing something in advance is worth.",
+      "s3": "The loop is the military instinct in the room: twelve nations, all repeating a defensive reading of the same word.",
+      "s4": "She makes the call herself, and then chooses the life knowing exactly what it costs.",
+      "pA": "A quiet routine standing in for an unexamined grief",
+      "pB": "The ships remove every assumption about time",
+      "pC": "Twelve nations reading one word as a threat",
+      "pD": "A defensive reading, repeated in every capital",
+      "pE": "Protocol, briefings, and the comfort of procedure",
+      "pF": "She makes the call and chooses the life anyway"
+    },
+    {
+      "id": "furyroad",
+      "t": "Mad Max Fury Road",
+      "alt": [
+        "furiosa",
+        "fury road",
+        "mad max"
+      ],
+      "kind": "Film, 2015",
+      "sum": "They escape across a desert to a green place, and the green place has been gone for years.",
+      "w": {
+        "A": 85,
+        "B": 100,
+        "C": 70,
+        "D": 80,
+        "E": 55,
+        "F": 95
+      },
+      "s1": "The Citadel runs on manufactured scarcity and a religion built to explain it. Dependence is engineered and called order.",
+      "s2": "The run strips the rig, the fuel, the crew and finally the destination. The green place is salt and nothing.",
+      "s3": "The cage is the flight itself: motion mistaken for direction, with the whole plan pointed at a memory.",
+      "s4": "They turn the rig around and take the place they fled, which is the harder half of the film.",
+      "pA": "Manufactured scarcity, delivered as religion",
+      "pB": "The rig, the fuel, the crew and the destination gone",
+      "pC": "Years spent driving toward a place that no longer exists",
+      "pD": "Motion mistaken for direction",
+      "pE": "The bikers years in the salt, waiting it out",
+      "pF": "They turn around and take the Citadel"
+    },
+    {
+      "id": "beloved",
+      "t": "Beloved",
+      "alt": [
+        "toni morrison",
+        "sethe"
+      ],
+      "kind": "Novel, 1987",
+      "sum": "A house is haunted by an act that was a mother only available choice, and the past will not stay past.",
+      "w": {
+        "A": 60,
+        "B": 100,
+        "C": 90,
+        "D": 100,
+        "E": 70,
+        "F": 85
+      },
+      "s1": "124 and its quiet. A life arranged around not remembering, held together by keeping the doors and the conversation shut.",
+      "s2": "Freedom removes nothing that was taken. The collapse is behind her and the book refuses to let it stay there.",
+      "s3": "Beloved is the loop given a body: the past arrives, moves in, and eats everything offered to it.",
+      "s4": "The women at the gate, and Paul D at the end saying they need some kind of tomorrow.",
+      "pA": "A house arranged around not remembering",
+      "pB": "Freedom that returns nothing already taken",
+      "pC": "A choice made in minutes that governs thirty years",
+      "pD": "The past arrives, moves in, and is fed",
+      "pE": "The quiet of 124, with the doors kept shut",
+      "pF": "The women at the gate, and a tomorrow named"
+    },
+    {
+      "id": "theireyes",
+      "t": "Their Eyes Were Watching God",
+      "alt": [
+        "zora neale hurston",
+        "janie crawford"
+      ],
+      "kind": "Novel, 1937",
+      "sum": "A woman takes three marriages to find out that the pear tree was a standard, not a daydream.",
+      "w": {
+        "A": 95,
+        "B": 90,
+        "C": 70,
+        "D": 80,
+        "E": 100,
+        "F": 95
+      },
+      "s1": "The porch, the store, the position as the mayor wife. Comfort and standing arranged by someone else, on her behalf.",
+      "s2": "Eatonville ends, then the hurricane and the water take the rest. She comes back with nothing but the telling of it.",
+      "s3": "The cage is the head-rag and the counter: a role assigned to her, defended by a husband who calls it protection.",
+      "s4": "She leaves with Tea Cake, works the muck, and comes home to tell the story in her own voice.",
+      "pA": "Standing arranged for her by somebody else",
+      "pB": "The hurricane and the water take the rest",
+      "pC": "The dog, the bite, the choice that follows",
+      "pD": "A role defended by a husband as protection",
+      "pE": "Twenty years behind the store counter",
+      "pF": "She works the muck and tells it in her own voice"
+    },
+    {
+      "id": "kiterunner",
+      "t": "The Kite Runner",
+      "alt": [
+        "khaled hosseini",
+        "amir",
+        "hassan"
+      ],
+      "kind": "Novel, 2003",
+      "sum": "A boy stays silent in an alley for one minute and spends the next twenty-six years paying for it.",
+      "w": {
+        "A": 85,
+        "B": 95,
+        "C": 100,
+        "D": 100,
+        "E": 80,
+        "F": 95
+      },
+      "s1": "Kabul before the war: the house, the kites, the servant who is also the friend. An order nobody in it examines.",
+      "s2": "The invasion takes the country, the house and the standing. California is a petrol station and a flea market stall.",
+      "s3": "The alley runs on a loop for twenty-six years, and the successful life in America is built directly on top of it.",
+      "s4": "He goes back, takes the beating, and brings the boy home. Ownership is literal and it costs him.",
+      "pA": "A household order nobody in it examines",
+      "pB": "The invasion takes the country and the house",
+      "pC": "One minute of silence in an alley",
+      "pD": "The same minute, replayed for twenty-six years",
+      "pE": "A comfortable American life built over it",
+      "pF": "He goes back, takes the beating, brings the boy home"
+    },
+    {
+      "id": "thingsfallapart",
+      "t": "Things Fall Apart",
+      "alt": [
+        "chinua achebe",
+        "okonkwo"
+      ],
+      "kind": "Novel, 1958",
+      "sum": "A man builds everything in opposition to his father and cannot bend when the ground itself moves.",
+      "w": {
+        "A": 80,
+        "B": 100,
+        "C": 95,
+        "D": 95,
+        "E": 55,
+        "F": 50
+      },
+      "s1": "Umuofia, and a standing earned by work. The order is real, functioning, and assumed to be permanent by everyone in it.",
+      "s2": "Exile, then the mission, then the district commissioner. The world he mastered is replaced while he is away from it.",
+      "s3": "The cage is the fear of being his father, which decides every choice he makes including the ones that ruin him.",
+      "s4": "Refused. He acts decisively at the end, and the book is clear that decisiveness is not the same as ownership.",
+      "pA": "A functioning order assumed to be permanent",
+      "pB": "Exile, and a world replaced while he is away",
+      "pC": "The killing of Ikemefuna, done to look strong",
+      "pD": "The fear of being his father, deciding everything",
+      "pE": "Seven years in his mother village, waiting to return",
+      "pF": "He acts decisively, which is not the same as ownership"
+    },
+    {
+      "id": "hundredyears",
+      "t": "One Hundred Years of Solitude",
+      "alt": [
+        "garcia marquez",
+        "macondo",
+        "buendia"
+      ],
+      "kind": "Novel, 1967",
+      "sum": "Seven generations repeat the same names and the same mistakes, and the book lets them.",
+      "w": {
+        "A": 100,
+        "B": 80,
+        "C": 90,
+        "D": 95,
+        "E": 100,
+        "F": 35
+      },
+      "s1": "Macondo before the road: a town so complete in itself that the outside world arrives as a rumour and a novelty.",
+      "s2": "The banana company, the massacre, the rain. Everything the town believed about itself is removed in stages.",
+      "s3": "The names are the loop, printed on the page: Aureliano after Aureliano, each one repeating what the last one learned.",
+      "s4": "Refused, deliberately. The manuscript is read at the moment the wind takes the town, and nobody gets to act on it.",
+      "pA": "A town complete in itself, with no outside",
+      "pB": "The company, the massacre and the rain",
+      "pC": "Each generation makes the same choice slightly earlier",
+      "pD": "The same names, repeating down the family",
+      "pE": "Years of rain, and the house closing in on itself",
+      "pF": "Absent - the reading arrives with the wind"
+    },
+    {
+      "id": "littlewomen",
+      "t": "Little Women",
+      "alt": [
+        "jo march",
+        "louisa may alcott"
+      ],
+      "kind": "Novel, 1868",
+      "sum": "Four sisters are offered one acceptable future each, and one of them keeps writing anyway.",
+      "w": {
+        "A": 85,
+        "B": 85,
+        "C": 70,
+        "D": 75,
+        "E": 80,
+        "F": 100
+      },
+      "s1": "The attic, the plays, the four of them. A world that ends at the garden wall and is entirely sufficient inside it.",
+      "s2": "Beth, and the marriages, and the war. The version where they stay as they are is removed one person at a time.",
+      "s3": "Jo cage is the refusal to be softened, held so firmly that it costs her Laurie and nearly costs her the writing.",
+      "s4": "The manuscript, written nightly at speed in a cap, and sold on terms she partly loses and partly sets.",
+      "pA": "A world that ends at the garden wall",
+      "pB": "Beth, the marriages, the war",
+      "pC": "She burns the manuscript, and refuses Laurie in the same year",
+      "pD": "A refusal to be softened, held past its use",
+      "pE": "The comfortable years of keeping the four of them intact",
+      "pF": "The manuscript, written nightly and sold"
+    },
+    {
+      "id": "frankenstein",
+      "t": "Frankenstein",
+      "alt": [
+        "mary shelley",
+        "victor frankenstein"
+      ],
+      "kind": "Novel, 1818",
+      "sum": "A man does the hardest work of his life and then leaves the room rather than answer for it.",
+      "w": {
+        "A": 70,
+        "B": 90,
+        "C": 100,
+        "D": 95,
+        "E": 65,
+        "F": 40
+      },
+      "s1": "Ingolstadt, the study, the certainty. A young man inside his own project, with the world reduced to the next result.",
+      "s2": "The creature opens its eyes and every assumption goes: the science, the standing, the family, one member at a time.",
+      "s3": "The loop is the secret. He knows the whole answer and repeats the decision not to say it, in every chapter.",
+      "s4": "Barely, and too late. The pursuit north is ownership arriving after everything it might have saved.",
+      "pA": "A young man alone inside his own project",
+      "pB": "The creature opens its eyes and everything goes",
+      "pC": "He walks out of the room the moment it works",
+      "pD": "The secret, kept and re-kept in every chapter",
+      "pE": "Convalescence, travel, and long delays before speaking",
+      "pF": "The pursuit north, taken far too late"
+    },
+    {
+      "id": "montecristo",
+      "t": "The Count of Monte Cristo",
+      "alt": [
+        "edmond dantes",
+        "monte cristo",
+        "alexandre dumas"
+      ],
+      "kind": "Novel, 1844",
+      "sum": "A man is buried alive by three signatures and comes back with the patience they never accounted for.",
+      "w": {
+        "A": 55,
+        "B": 100,
+        "C": 75,
+        "D": 95,
+        "E": 70,
+        "F": 100
+      },
+      "s1": "The promotion, the engagement, the ship. A future so settled that a letter written in an afternoon can take all of it.",
+      "s2": "The Chateau d If. Fourteen years, the name, the fiancee, the father. There is nothing left to remove.",
+      "s3": "The Count is the cage he built to escape the cell, and by the end he cannot tell which parts of him it holds.",
+      "s4": "He stops the machine he built, gives the fortune away, and lets the last two of them live.",
+      "pA": "A future so settled a single letter can take it",
+      "pB": "Fourteen years, the name, the father, the engagement",
+      "pC": "One denunciation written in an afternoon",
+      "pD": "The plan, refined nightly for fourteen years",
+      "pE": "The Count comfortable life, which delays the reckoning",
+      "pF": "He stops the machine and gives the fortune away"
+    }
+  ]
+}
